@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FlightDetails } from '../model/flightDetails.models';
 
 @Component({
   selector: 'app-flight-listing',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FlightListingComponent implements OnInit {
 
-  constructor() { }
+  flightDetails: FlightDetails[] =[];
+  constructor() { 
+
+  }
 
   ngOnInit(): void {
+
+    var obj1 = {
+      name:"prasann",
+      amount:32
+    }
+    var obj2 = {
+      name:"prasann",
+      amount:32
+    }
+    this.flightDetails.push(obj1);
+    this.flightDetails.push(obj2);
+  
   }
+
+  
 
 }
