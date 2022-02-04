@@ -1,3 +1,4 @@
+import { FlightSearchService } from './../flight-search/flight-search-service';
 import { FlightDetailsService } from './../service/flight-details.service';
 import { Component, OnInit } from '@angular/core';
 import { FlightDetails } from '../model/flightDetails.models';
@@ -11,14 +12,28 @@ import { FlightDetails } from '../model/flightDetails.models';
 export class FlightListingComponent implements OnInit {
 
   flightDetails: FlightDetails[] =[];
-  constructor(private flightDetailsService: FlightDetailsService) { 
+  constructor(private flightSearchService: FlightSearchService) { 
 
   }
 
   ngOnInit(): void {
 
-    
+    this.flightSearchService.currentMessage.subscribe((response: any)=>
+    {
+      this.flightDetails = response;
+    })
   }
+
+
+  getTimetoDisplay(totalMinutes: number)
+  {
+    var hours = Math.floor(totalMinutes / 60);          
+    var minutes = totalMinutes % 60;
+    return hours+ "h : " + minutes + "m";
+  }
+
+
+
 
 
 

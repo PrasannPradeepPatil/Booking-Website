@@ -27,7 +27,7 @@
    <div class = "d-flex justify-content-center">
     <div class="form-row" style = "font-size: 20px">
         <div class="col-xs-18">
-            <input type="text" aria-label="source" class="form-control mdb-autocomplete" placeholder="Where from?" formcontrolname="sourceAirport" [formControl]="typeahead" (input)="suggestSource()">
+            <input type="text" aria-label="source" class="form-control mdb-autocomplete" placeholder="Where from?" [formControl]="sourceAirport" formControlName="sourceAirport" (input)="suggestSource()">
             <div class="suggestions" *ngIf="sourceSuggestions.length">
                 <div *ngFor="let s of sourceSuggestions">
                     <a style="cursor: pointer;" routerlinkactive="active" (click)="onSourceSelect(s.airportCode)">
@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="col-xs-18">
-            <input type="text" aria-label="destination" class="form-control" placeholder="Where to?" formcontrolname="destinationAirport" [formControl]="typeahead" (input)="suggestDestination()">
+            <input type="text" aria-label="destination" class="form-control" placeholder="Where to?" [formControl]="destinationAirport" formcontrolname="destinationAirport" (input)="suggestDestination()">
             <div class="suggestions" *ngIf="destinationSuggestions.length">
                 <div *ngFor="let s of destinationSuggestions">
                     <a style="cursor: pointer;" routerlinkactive="active" (click)="onDestinationSelect(s.airportCode)">

@@ -20,10 +20,14 @@ export class FlightSearchComponent implements OnInit {
     destinationAirport: new FormControl(),
   });
 
+  sourceAirportCode: string;
+  destinationAirportCode: string;
+
   flightSearch!: FlightSearch;
   calendar!: NgbCalendar;
   dateRange: DateRange;
-  typeahead: FormControl = new FormControl();
+  sourceAirport: FormControl = new FormControl();
+  destinationAirport: FormControl = new FormControl();
   sourceSuggestions: AirportSearch[] = [];
   destinationSuggestions: AirportSearch[] = [];
   flightSearchService: FlightSearchService;
@@ -89,12 +93,14 @@ export class FlightSearchComponent implements OnInit {
   {
     this.userForm.get('sourceAirport').setValue(airportCode);
     this.sourceSuggestions = [];
+    this.sourceAirport.setValue(airportCode);
   }
 
   onDestinationSelect(airportCode: string)
   {
     this.userForm.get('destinationAirport').setValue(airportCode);
     this.destinationSuggestions = [];
+    this.destinationAirport.setValue(airportCode);
   }
 
 }
