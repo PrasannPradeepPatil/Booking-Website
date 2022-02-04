@@ -22,9 +22,9 @@
                   <h5 class="card-title d-flex justify-content-start">Flight number details</h5>
                   <div class = "d-flex justify-content-between">
                       <img src="../assets/aa.png"  alt="..." width="100" height="100">
-                      <p>3:40 pm<br>MCO</p>
-                      <p>3hr 53 min<br>1 stop</p>
-                      <p>3:40 pm<br>GNV</p>
+                      <p>	{{flightDetail.departureTime | date:'short'}}<br>{{flightDetail.sourceAirportCode}}</p>
+                      <p>{{getTimetoDisplay(flightDetail.duration)}}</p>
+                      <p>{{flightDetail.arrivalTime | date:'short'}}<br>{{flightDetail.destinationAirportCode}}</p>
                   </div>
                   
 
@@ -32,7 +32,7 @@
               </div>
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">325 $ </h5>
+                  <h5 class="card-title">${{flightDetail.price}} </h5>
                   <p class="card-text">Price for all travellers<br>Include carry-on Bag, personal item</p>
                   <a href="#" class="btn btn-primary">See Flight details</a>
                 </div>

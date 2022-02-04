@@ -8,17 +8,17 @@
 
 <form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
     <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" id="round-trip" value="round-trip" formcontrolname="no_of_trip" (change)="changeTrip($event)" ngModel checked>
+        <input class="form-check-input" type="radio" name="no_of_trip" value="round-trip" formcontrolname="no_of_trip" (change)="changeTrip($event)" checked>
         <label class="form-check-label" for="inlineRadio1">Round</label>
     </div>
     <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" id="one-time" value="one-time" formcontrolname="no_of_trip" (change)="changeTrip($event)" ngModel>
+        <input class="form-check-input" type="radio" name="no_of_trip" value="one-time" formcontrolname="no_of_trip" (change)="changeTrip($event)" >
         <label class="form-check-label" for="inlineRadio2">One-time</label>
     </div>
     <div class="form-row">
 
         <div class="col-xs-18">
-            <input type="text" aria-label="source" class="form-control mdb-autocomplete" placeholder="Where from?" formcontrolname="sourceAirport" [formControl]="typeahead" (input)="suggestSource()">
+            <input type="text" aria-label="source" class="form-control mdb-autocomplete" placeholder="Where from?" [formControl]="sourceAirport" formControlName="sourceAirport" (input)="suggestSource()">
             <div class="suggestions" *ngIf="sourceSuggestions.length">
                 <div *ngFor="let s of sourceSuggestions">
                     <a style="cursor: pointer;" routerlinkactive="active" (click)="onSourceSelect(s.airportCode)">
@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="col-xs-18">
-            <input type="text" aria-label="destination" class="form-control" placeholder="Where to?" formcontrolname="destinationAirport" [formControl]="typeahead" (input)="suggestDestination()">
+            <input type="text" aria-label="destination" class="form-control" placeholder="Where to?" [formControl]="destinationAirport" formcontrolname="destinationAirport" (input)="suggestDestination()">
             <div class="suggestions" *ngIf="destinationSuggestions.length">
                 <div *ngFor="let s of destinationSuggestions">
                     <a style="cursor: pointer;" routerlinkactive="active" (click)="onDestinationSelect(s.airportCode)">
