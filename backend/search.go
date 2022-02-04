@@ -49,7 +49,7 @@ func getData(w http.ResponseWriter, req *http.Request) {
 	fmt.Println("source : "+requ.sourceName+"to dest : "+requ.destinationName+"is round trip : ", requ.isRoundTrip)
 
 	//query to get data from db
-	/*connStr := "user=postgres dbname=connect-db password=secure-password host=localhost sslmode=disable"
+	connStr := "user=postgres dbname=connect-db password=secure-password host=localhost sslmode=disable"
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		panic(err)
@@ -63,7 +63,7 @@ func getData(w http.ResponseWriter, req *http.Request) {
 	fmt.Printf("\nSuccessfully connected to database!\n")
 	querSql := "query for postgre data"
 	err = db.QueryRow(querSql).Scan(&res.airportCode, &res.airportName, &res.cityName, &res.countryName)
-	fmt.Println("response from db : " + res.airportCode)*/
+	fmt.Println("response from db : " + res.airportCode)
 
 	//var res respData
 	res := respData{"1afd", "11:30 AM", "12:45 PM", "MCO", "GNV", 200, "1hr 15min", "American Airlines"}
