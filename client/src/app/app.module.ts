@@ -10,7 +10,9 @@ import {NgbdDatepickerRangePopup} from './flight-search/datepicker-range-popup';
 import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FlightListingComponent } from './flight-listing/flight-listing.component';
+import { FlightDetailsService } from './service/flight-details.service'
+import { FlightDetailsFilterComponent } from './flight-details-filter/flight-details-filter.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FlightSearchComponent,
     NgbdDatepickerRangePopup,
-    NgbdDatepickerPopup
+    NgbdDatepickerPopup,
+    FlightListingComponent,
+    FlightDetailsFilterComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [FlightSearchService],
+  providers: [FlightDetailsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
