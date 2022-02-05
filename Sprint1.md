@@ -21,16 +21,16 @@ https://github.com/PrasannPradeepPatil/Booking-Website/projects/1?card_filter_qu
 ### Completed Features: -
 1. Header Section: We have added navbar for header section of our website which has links to Flights, Hotels and Car rentals page.
 
-![Header](./Images/Header.png?raw=true "Header")
+![Header](/Images/Header.png)
 
 2. Flight Search Box: We have added Search box which will take inputs namely source airport, destination, type of trip, start and end date.
 
-![Flight Search Box](./Images/Flight-search.png?raw=true "Flight Search")
+![Flight Search Box](/Images/Flight-search.png)
 
 
 3.	Flight Listing: Based on user input in the Flight Search Box, flight listing is displaying which consists of cost, source, destination, start time and end time.
 
-![Flight Listing](./Images/Flight-Listing.png?raw=true "Flight Listing")
+![Flight Listing](/Images/Flight-Listing.png)
 
 
 ### How to run the frontend application: -
