@@ -50,14 +50,6 @@ Backend: -
 
 7. Verifying the API request and response mechanisms by testing using Postman and hosting on a localserver using GOlang.
 
-
-### How to run the frontend application: -
-npm install
--- This will install all the necessary node modules.
-
-ng serve
-This will start the webserver.
-
 ### How to run the backend application: -
 go build
 -- This will build all the existing go files in the src folder.
