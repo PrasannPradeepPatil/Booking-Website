@@ -12,7 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FlightListingComponent } from './flight-listing/flight-listing.component';
 import { FlightDetailsService } from './service/flight-details.service'
-import { FlightDetailsFilterComponent } from './flight-details-filter/flight-details-filter.component';
+import { FlightListingFilterComponent } from './flight-listing-filter/flight-listing-filter.component';
 
 
 @NgModule({
@@ -23,7 +23,7 @@ import { FlightDetailsFilterComponent } from './flight-details-filter/flight-det
     NgbdDatepickerRangePopup,
     NgbdDatepickerPopup,
     FlightListingComponent,
-    FlightDetailsFilterComponent
+    FlightListingFilterComponent
   ],
   imports: [
     BrowserModule,
@@ -36,4 +36,4 @@ import { FlightDetailsFilterComponent } from './flight-details-filter/flight-det
   providers: [FlightDetailsService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

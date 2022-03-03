@@ -48,8 +48,7 @@ export class FlightSearchService
 
     getFlights(input: FlightSearch)
     {
-        this.http.get<FlightDetails[]>(this.getFlightsUrl).subscribe((response) => {
-            this.messageSource.next(response)});
+        this.http.get<FlightDetails[]>(this.getFlightsUrl).subscribe((response) => {this.messageSource.next(response)});
         return this.http.get(this.getFlightsUrl);
     }
 } 

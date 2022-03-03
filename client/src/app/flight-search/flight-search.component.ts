@@ -103,4 +103,6 @@ export class FlightSearchComponent implements OnInit {
     this.destinationAirport.setValue(airportCode);
   }
 
+  
+
 }

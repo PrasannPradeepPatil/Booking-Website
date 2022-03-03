@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { FlightListingFilterService } from './flight-listing-filter.service';
 
 
 @Component({
-  selector: 'app-flight-details-filter',
-  templateUrl: './flight-details-filter.component.html',
-  styleUrls: ['./flight-details-filter.component.css']
+  selector: 'app-flight-listing-filter',
+  templateUrl: './flight-listing-filter.component.html',
+  styleUrls: ['./flight-listing-filter.component.css']
 })
-export class FlightDetailsFilterComponent implements OnInit {
+export class FlightListingFilterComponent implements OnInit {
   flightFilterForm: FormGroup = new FormGroup({
     outBoundDepartureDuration1: new FormControl(''),
     outBoundDepartureDuration2: new FormControl(''),
@@ -19,9 +20,12 @@ export class FlightDetailsFilterComponent implements OnInit {
     outBoundArrivalDuration4: new FormControl(''),
   });
   outboundClicked:boolean = true
+  flightListingFilterService: FlightListingFilterService;
 
 
-  constructor() { }
+  constructor(flightListingFilterService: FlightListingFilterService) { 
+    this.flightListingFilterService = flightListingFilterService
+  }
 
   
   ngOnInit() {
@@ -33,7 +37,12 @@ export class FlightDetailsFilterComponent implements OnInit {
     let outBoundDepartureRange:string[] = this.getOutBoundDepartureFlightTimeRange()
     let outBoundArrivalRange:string[] = this.getOutBoundArrivalFlightTimeRange()
 
+    // this.flightListingFilterService.postFlightFilters()
     console.log(outBoundDepartureRange)
+
+
+
+
    
 
   }
@@ -50,6 +59,7 @@ export class FlightDetailsFilterComponent implements OnInit {
     if(this.flightFilterForm.get("outBoundDepartureDuration4").value == true)
       outBoundDepartureRange.push("06:00 PM-11:59 PM");
 
+    
     return  outBoundDepartureRange
 
 
@@ -75,13 +85,10 @@ export class FlightDetailsFilterComponent implements OnInit {
 
   }
 
-  getInBoundDepartureFlightTimeRange(){
 
-  }
 
-  getInBoundArrivalFlightTimeRange(){
 
-  }
+
 
   
 
