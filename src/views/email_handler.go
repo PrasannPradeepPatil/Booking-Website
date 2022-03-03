@@ -29,8 +29,8 @@ func Email(db *gorm.DB) gin.HandlerFunc {
 		rando := EncodeToString(6)
 		mailBody := "Dear Customer,\n\nPlease enter the below OTP for authentication.\n\n" + rando
 
-		from := "ahamadshaik333@gmail.com"
-		pass := "dbwbktkxgfshnasc"
+		from := "bookingprohelpdesk@gmail.com"
+		pass := "bsnumxkhfsemczan"
 		to := req.Email
 
 		msg := "From: " + from + "\n" +
