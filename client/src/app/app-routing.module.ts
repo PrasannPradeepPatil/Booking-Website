@@ -1,3 +1,4 @@
+import { FlightPaymentComponent } from './flight-payment/flight-payment.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
@@ -9,7 +10,8 @@ const routes: Routes = [
   {path: '', redirectTo: '/flights', pathMatch: 'full'},
   {path:'flights', component: FlightSearchComponent, children:[
     {path: 'listing', component: FlightListingComponent}]},
-    {path: 'details', component: FlightDetailsComponent}
+  {path: 'details', component: FlightDetailsComponent},
+  {path: 'payment', component: FlightPaymentComponent}
   
 ];
 

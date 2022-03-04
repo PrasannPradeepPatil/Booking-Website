@@ -2,6 +2,8 @@ import { FlightDetails } from './../model/flightDetails.models';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FlightSearchService } from '../flight-search/flight-search-service';
+import { FlightInDetails } from '../model/flightInDetails';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-flight-details',
@@ -11,11 +13,11 @@ import { FlightSearchService } from '../flight-search/flight-search-service';
 export class FlightDetailsComponent implements OnInit {
 
   @Input() flight_id: string;
-  flightDetails: FlightDetails;
+  flightDetails: FlightInDetails;
 
   ngOnInit(): void {
     this.flightSearchService.getFlightsById(this.flight_id);
-    this.flightSearchService.flightDetailByIDMsg.subscribe((response: FlightDetails)=>
+    this.flightSearchService.flightDetailByIDMsg.subscribe((response: FlightInDetails)=>
     {
       this.flightDetails = response;
     })
@@ -24,7 +26,19 @@ export class FlightDetailsComponent implements OnInit {
 
   closeResult: string;
 
-  constructor(private modalService: NgbModal, public activeModal: NgbActiveModal, private flightSearchService: FlightSearchService) {}
+  constructor(private modalService: NgbModal, public activeModal: NgbActiveModal, private flightSearchService: FlightSearchService, private router: Router) {}
+
+  getTimetoDisplay(totalMinutes: number)
+  {
+    var hours = Math.floor(totalMinutes / 60);          
+    var minutes = totalMinutes % 60;
+    return hours+ "h : " + minutes + "m";
+  }
+
+  close() {
+    this.activeModal.close();
+    this.router.navigate(['/payment']);
+  }
   
 
   // openBackDropCustomClass(content: any) {

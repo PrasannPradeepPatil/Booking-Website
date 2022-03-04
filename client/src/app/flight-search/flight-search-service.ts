@@ -8,6 +8,7 @@ import { HttpClient , HttpResponse } from "@angular/common/http"
 import { HttpHeaders } from '@angular/common/http';
 import {catchError} from 'rxjs/operators'; 
 import { BehaviorSubject } from 'rxjs';
+import { FlightInDetails } from '../model/flightInDetails';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -24,12 +25,13 @@ export class FlightSearchService
     getSuggestionUrl: string = "/booking/airports";
     searchFlightUrl: string = "/booking/flight/search";
     getFlightsUrl: string = "/booking/flights";
+    getFlightDetailsUrl: string = "/booking/flightDetails";
     flightDetails: FlightDetails;
 
     private messageSource = new BehaviorSubject<FlightDetails[]>(null);
     currentMessage = this.messageSource.asObservable();
 
-    private flightDetailByID = new BehaviorSubject<FlightDetails>(null);
+    private flightDetailByID = new BehaviorSubject<FlightInDetails>(null);
     flightDetailByIDMsg = this.flightDetailByID.asObservable();
 
     constructor(public http: HttpClient){}
@@ -56,12 +58,12 @@ export class FlightSearchService
             this.messageSource.next(response)});
         return this.http.get(this.getFlightsUrl);
     }
-
+    
     getFlightsById(id: string)
     {
         // console.log("id ");
         // console.log(id);
-        this.http.get<FlightDetails[]>(this.getFlightsUrl).subscribe((response) => {
+        this.http.get<FlightInDetails[]>(this.getFlightDetailsUrl).subscribe((response) => {
             // console.log("id ");
             // console.log(id);
             console.log(response.find(x => x.Id === id));

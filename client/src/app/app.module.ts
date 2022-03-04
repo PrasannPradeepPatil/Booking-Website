@@ -14,6 +14,7 @@ import { FlightListingComponent } from './flight-listing/flight-listing.componen
 import { FlightDetailsService } from './service/flight-details.service'
 import { FlightDetailsFilterComponent } from './flight-details-filter/flight-details-filter.component';
 import { FlightDetailsComponent } from './flight-details/flight-details.component';
+import { FlightPaymentComponent } from './flight-payment/flight-payment.component';
 // import * as mdb from 'mdb-ui-kit';
 // import { NO_ERRORS_SCHEMA } from '@angular/core';
 // import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -29,6 +30,7 @@ import { FlightDetailsComponent } from './flight-details/flight-details.componen
     FlightListingComponent,
     FlightDetailsFilterComponent,
     FlightDetailsComponent,
+    FlightPaymentComponent,
   ],
   imports: [
     BrowserModule,
