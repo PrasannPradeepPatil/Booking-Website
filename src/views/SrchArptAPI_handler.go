@@ -8,7 +8,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
-
 func SrchArptAPI(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
 		var json []models.SrchArptAPI

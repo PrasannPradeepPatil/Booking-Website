@@ -51,6 +51,5 @@ func SearchFlights(db *gorm.DB) gin.HandlerFunc {
 
 		c.JSON(http.StatusOK, json)
 	}
-
 	return gin.HandlerFunc(fn)
 }

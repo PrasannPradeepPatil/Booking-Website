@@ -12,7 +12,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
-
 func Email(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
 		var json models.EmailRes
