@@ -12,7 +12,7 @@ export class FlightDetailsService {
 
   getFlightDetails(){
     var obj1 = {"sourceString":"a","destinationString":"v","startDate":{"year":2022,"month":2,"day":1},"endDate":{"year":2022,"month":2,"day":11},"tripType":"round-trip"};
-    console.log(this.http.get(this.url));
+    //console.log(this.http.get(this.url));
 
 
   }

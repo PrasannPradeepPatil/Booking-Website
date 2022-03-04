@@ -40,7 +40,7 @@ export class FlightSearchComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log("here1");
+    //console.log("here1");
   }
 
   suggestSource() 
@@ -54,9 +54,9 @@ export class FlightSearchComponent implements OnInit {
 
     this.flightSearchService.getSuggestions(this.userForm.get('sourceAirport').value).subscribe(
       (response: any) => {
-        console.log(response);
+        //console.log(response);
         this.sourceSuggestions = response;
-        console.log(this.sourceSuggestions);
+        //console.log(this.sourceSuggestions);
       }
     );
 
@@ -66,9 +66,9 @@ export class FlightSearchComponent implements OnInit {
   {
     this.flightSearchService.getSuggestions(this.userForm.get('sourceAirport').value).subscribe(
       (response: any) => {
-        console.log(response);
+        //console.log(response);
         this.destinationSuggestions = response;
-        console.log(this.destinationSuggestions);
+        //console.log(this.destinationSuggestions);
       });
   }
 

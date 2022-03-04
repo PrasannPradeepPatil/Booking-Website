@@ -21,7 +21,7 @@ export class FlightListingFilterComponent implements OnInit {
   });
   outboundClicked:boolean = true
   flightListingFilterService: FlightListingFilterService;
-  flightSearchFilter: FlightListingFilter;
+  flightListingFilter: FlightListingFilter;
 
 
   constructor(flightListingFilterService: FlightListingFilterService) { 
@@ -35,16 +35,27 @@ export class FlightListingFilterComponent implements OnInit {
 
   onSubmit(form: FormGroup) {
    
+    //create model 
     let outBoundArrivalRange:string[] = this.getOutBoundArrivalFlightTimeRange()
     let outBoundDepartureRange:string[] = this.getOutBoundDepartureFlightTimeRange()
-   
-    //create model
-    this.flightSearchFilter = new FlightListingFilter(
-      "","","","",null, "",outBoundArrivalRange.toString(),outBoundDepartureRange.toString(),"",""  
+    let flightDetails = this.flightListingFilterService.getFlightDetails()
+    this.flightListingFilter = new FlightListingFilter(
+      flightDetails.sourceString,
+      flightDetails.destinationString,
+      flightDetails.startDate.toString(),
+      flightDetails.endDate.toString(),
+      true, 
+      "AirlineFilter: string",
+      outBoundArrivalRange.toString(),
+      outBoundDepartureRange.toString(),
+      "PriceRangeFilter:string",
+      "JourneyTimeFilter:string;"  
     );
     
+
+
     //post this model on api
-    this.flightListingFilterService.postFlightFilters(this.flightSearchFilter)
+    this.flightListingFilterService.postFlightDetails(this.flightListingFilter)
 
 
 

@@ -28,6 +28,10 @@ export class FlightSearchService
     private messageSource = new BehaviorSubject<FlightDetails[]>(null);
     currentMessage = this.messageSource.asObservable();
 
+    private currentFlightSearch: FlightSearch;
+
+
+
     constructor(public http: HttpClient){}
 
     getSuggestions(input: string)
@@ -37,12 +41,18 @@ export class FlightSearchService
 
     searchFlights(input: FlightSearch)
     {
-        console.log("making post request ");
+        this.currentFlightSearch = input;
+        //console.log("making post request ");
         // this.http.post("/booking/airports", FlightSearch, httpOptions).pipe(
         //     catchError()
         //   );;
 
         this.getFlights(input);
+    }
+
+    getCurrentFlightSearch()
+    {
+        return this.currentFlightSearch;
     }
 
 
