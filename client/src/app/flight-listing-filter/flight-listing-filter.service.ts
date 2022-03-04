@@ -3,7 +3,7 @@ import { HttpClient , HttpResponse } from "@angular/common/http"
 import { HttpHeaders } from '@angular/common/http';
 import {catchError} from 'rxjs/operators'; 
 import { BehaviorSubject } from 'rxjs';
-
+import { FlightListingFilter } from './../model/flight-listing-filter.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +17,8 @@ export class FlightListingFilterService {
 
  
   
-  postFlightFilters(input: string[]){
-    this.http.post<any>(this.flightFilterUrl, { title: 'Flight Filter Post Request' }).subscribe(data => { "";}) 
+  postFlightFilters(input: FlightListingFilter){
+    this.http.post<any>(this.flightFilterUrl,input).subscribe(data => { "";}) 
   }
 
   

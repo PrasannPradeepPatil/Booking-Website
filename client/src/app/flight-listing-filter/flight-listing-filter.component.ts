@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FlightListingFilterService } from './flight-listing-filter.service';
-
+import { FlightListingFilter } from './../model/flight-listing-filter.model';
 
 @Component({
   selector: 'app-flight-listing-filter',
@@ -21,6 +21,7 @@ export class FlightListingFilterComponent implements OnInit {
   });
   outboundClicked:boolean = true
   flightListingFilterService: FlightListingFilterService;
+  flightSearchFilter: FlightListingFilter;
 
 
   constructor(flightListingFilterService: FlightListingFilterService) { 
@@ -33,12 +34,18 @@ export class FlightListingFilterComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    
-    let outBoundDepartureRange:string[] = this.getOutBoundDepartureFlightTimeRange()
+   
     let outBoundArrivalRange:string[] = this.getOutBoundArrivalFlightTimeRange()
+    let outBoundDepartureRange:string[] = this.getOutBoundDepartureFlightTimeRange()
+   
+    //create model
+    this.flightSearchFilter = new FlightListingFilter(
+      "","","","",null, "",outBoundArrivalRange.toString(),outBoundDepartureRange.toString(),"",""  
+    );
+    
+    //post this model on api
+    this.flightListingFilterService.postFlightFilters(this.flightSearchFilter)
 
-    // this.flightListingFilterService.postFlightFilters()
-    console.log(outBoundDepartureRange)
 
 
 
