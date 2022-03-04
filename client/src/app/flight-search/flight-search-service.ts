@@ -24,9 +24,13 @@ export class FlightSearchService
     getSuggestionUrl: string = "/booking/airports";
     searchFlightUrl: string = "/booking/flight/search";
     getFlightsUrl: string = "/booking/flights";
+    flightDetails: FlightDetails;
 
     private messageSource = new BehaviorSubject<FlightDetails[]>(null);
     currentMessage = this.messageSource.asObservable();
+
+    private flightDetailByID = new BehaviorSubject<FlightDetails>(null);
+    flightDetailByIDMsg = this.flightDetailByID.asObservable();
 
     constructor(public http: HttpClient){}
 
@@ -51,5 +55,25 @@ export class FlightSearchService
         this.http.get<FlightDetails[]>(this.getFlightsUrl).subscribe((response) => {
             this.messageSource.next(response)});
         return this.http.get(this.getFlightsUrl);
+    }
+
+    getFlightsById(id: string)
+    {
+        // console.log("id ");
+        // console.log(id);
+        this.http.get<FlightDetails[]>(this.getFlightsUrl).subscribe((response) => {
+            // console.log("id ");
+            // console.log(id);
+            console.log(response.find(x => x.Id === id));
+            this.flightDetailByID.next(response.find(x => x.Id === id));
+            // console.log(this.flightDetails);
+            // return this.flightDetails;
+        });
+        // return this.http.get(this.getFlightsUrl);
+        // console.log("id ");
+        // console.log(this.flightDetails);
+        // console.log("flight ");
+        // console.log(this.flightDetails);
+        // return this.flightDetails;
     }
 } 
