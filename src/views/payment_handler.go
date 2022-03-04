@@ -41,9 +41,11 @@ func Payment(db *gorm.DB) gin.HandlerFunc {
 		if emres.EmailStatus == "success" {
 			res.ErrorCode = ""
 			res.Status = "success"
+			res.OtpCode = emres.Code
 		} else {
 			res.ErrorCode = ""
 			res.Status = "failure"
+			res.OtpCode = ""
 		}
 
 		c.JSON(http.StatusOK, res)
