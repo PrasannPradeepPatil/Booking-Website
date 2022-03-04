@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlightListingComponent } from './flight-listing/flight-listing.component';
 import { FlightDetailsService } from './service/flight-details.service'
 import { FlightListingFilterComponent } from './flight-listing-filter/flight-listing-filter.component';
+import { PaymentStage1Component } from './payment-stage1/payment-stage1.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { FlightListingFilterComponent } from './flight-listing-filter/flight-lis
     NgbdDatepickerRangePopup,
     NgbdDatepickerPopup,
     FlightListingComponent,
-    FlightListingFilterComponent
+    FlightListingFilterComponent,
+    PaymentStage1Component
   ],
   imports: [
     BrowserModule,
