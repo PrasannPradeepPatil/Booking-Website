@@ -1,38 +1,37 @@
 package views
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/PrasannPradeepPatil/Booking-Website/src/models"
 	"github.com/gin-gonic/gin"
-	"github.com/microcosm-cc/bluemonday"
 	"gorm.io/gorm"
 )
-
 func SrchArptAPI(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
-		var json models.SrchArptAPI
+		var json []models.SrchArptAPI
+		var req models.SrchArptReq
 
-		if err := c.ShouldBindJSON(&json); err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-			return
+		if err := c.BindJSON(&req); err != nil {
+			log.Println("Error in req parsing")
+		}
+		log.Println(req.ArptSrchString)
+
+		rows, err := db.Raw("select * from srch_arpt_apis where airport_code = ?", req.ArptSrchString).Rows()
+		defer rows.Close()
+		if err != nil {
+			log.Println("err : ", err)
 		}
 
-		p := bluemonday.StripTagsPolicy()
+		for rows.Next() {
+			db.ScanRows(rows, &json)
 
-		json.CityName = p.Sanitize(json.CityName)
-		json.AirportCode = p.Sanitize(json.AirportCode)
-		json.AirportName = p.Sanitize(json.AirportName)
-		json.CountryName = p.Sanitize(json.CountryName)
-		
-		result := db.Create(&json)
-
-		if result.Error != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": result.Error.Error()})
-			return
 		}
 
-		c.JSON(http.StatusOK, gin.H{"Result": "Airport Search API hit successfully!"})
+		log.Println(json)
+
+		c.JSON(http.StatusOK, json)
 	}
 
 	return gin.HandlerFunc(fn)
