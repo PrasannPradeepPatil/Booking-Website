@@ -38,4 +38,9 @@ describe("Flight page", () => {
     cy.get("input[id='invalidCheck2']").click()
 
   });
+
+  it.only("Select Ticket Type", () => {
+    cy.get("div[id='economy']").click()
+    cy.get("button[name='next']").click()
+  });
 });
