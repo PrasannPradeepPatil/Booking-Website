@@ -7,7 +7,7 @@
 <div class="row d-flex justify-content-center">
 
         <div class="col-sm-5">
-            <div class="card ">
+            <div class="card" id="economy" (click)='selectTicketType("economy")'>
                     <div class=" d-flex justify-content-center"><h4>Economy</h4></div>
                     <hr>
                     <p>
@@ -32,8 +32,8 @@
         </div>
         
         <div class="col-sm-5">
-            <div class="card ">
-                    <div class=" d-flex justify-content-center"><h4>Buisness</h4></div>
+            <div class="card"  id="business" (click)='selectTicketType("business")'>
+                    <div class=" d-flex justify-content-center"><h4>Business</h4></div>
                     <hr>
                     <p>
                     <svg viewBox="0 0 24 24" fill="#333333" width="24" height="24"><path d="M15 14.75H9a.75.75 0 010-1.5h6a.75.75 0 010 1.5zm.75 3.25a.76.76 0 00-.75-.75H9a.75.75 0 000 1.5h6a.76.76 0 00.75-.75zm3-6.5v9a2.25 2.25 0 01-2.25 2.25h-.75v.5a.75.75 0 01-1.5 0v-.5h-4.5v.5a.75.75 0 01-1.5 0v-.5H7.5a2.25 2.25 0 01-2.25-2.25v-9A2.25 2.25 0 017.5 9.25h1.75v-8C9.25.56 9.81 0 10.5 0h3c.69 0 1.25.56 1.25 1.25v8h1.75a2.25 2.25 0 012.25 2.25zm-8-2.25h2.5V1.5h-2.5zm6.5 2.25a.76.76 0 00-.75-.75h-9a.76.76 0 00-.75.75v9a.76.76 0 00.75.75h9a.76.76 0 00.75-.75z"></path></svg>
@@ -65,6 +65,6 @@
 
 <div class =" d-flex justify-content-end">
     <button class="btn btn-primary " style = "padding: 10px 40px;margin:10px ;font-size: 15px">Back</button>
-    <button class="btn btn-primary " style = "padding: 10px 40px;margin:10px ;font-size: 15px">Next</button>
+    <button class="btn btn-primary " style = "padding: 10px 40px;margin:10px ;font-size: 15px" name="next" (click) ="next()">Next</button>
 </div>
 

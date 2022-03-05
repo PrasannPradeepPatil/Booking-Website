@@ -37,7 +37,7 @@ export class FlightDetailsComponent implements OnInit {
 
   close() {
     this.activeModal.close();
-    this.router.navigate(['/payment']);
+    this.router.navigate(['/ticketType']);
   }
   
 

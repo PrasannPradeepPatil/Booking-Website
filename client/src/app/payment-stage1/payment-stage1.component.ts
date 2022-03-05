@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment-stage1',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentStage1Component implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router ) { }
+
+  selectedTicketType: string;
 
   ngOnInit(): void {
   }
 
+
+  selectTicketType(input: string)
+  {
+    console.log(input);
+    this.selectedTicketType = input;
+  }
+
+  getTicketType()
+  {
+    return this.selectTicketType;
+  }
+
+  next()
+  {
+    this.router.navigate(['/payment']);
+  }
 }
