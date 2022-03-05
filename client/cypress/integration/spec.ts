@@ -20,6 +20,11 @@ describe("Flight page", () => {
     cy.get("button[name='selectFlight']").click();
   });
 
+  it.only("Select Ticket Type", () => {
+    cy.get("div[id='economy']").click()
+    cy.get("button[name='next']").click()
+  });
+
   it.only("Enters passenger Information", () => {
     cy.get("input[id='staticEmail']").type("pnarkar19@gmail.com")
     cy.get("input[id='inputContact']").type("999999999")
@@ -30,8 +35,4 @@ describe("Flight page", () => {
 
   });
 
-  it.only("Select Ticket Type", () => {
-    cy.get("div[id='economy']").click()
-    cy.get("button[name='next']").click()
-  });
 });
