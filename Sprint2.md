@@ -14,7 +14,7 @@
 In the second sprint, we have continued with the "Flights" page which consists of flight-listing-filter component, flights-listing's details component and flight-payments components. We also have implemented automation testing using cypress. 
 
 User Stories Dashboard for Sprint 1: -
-https://github.com/PrasannPradeepPatil/Booking-Website/projects/1?card_filter_query=label%3A%22sprint+1%22
+https://github.com/PrasannPradeepPatil/Booking-Website/projects/1?card_filter_query=label%3A%22sprint+2%22
 
 
 
@@ -62,6 +62,5 @@ go run main.go
 
 
 ### Demo video link
-Frontend - https://youtu.be/TrescVcsmzU
+Demo - https://www.youtube.com/watch?v=iezFnKQA6Ts
 
-Backend - https://tinyurl.com/2s48k6b4
