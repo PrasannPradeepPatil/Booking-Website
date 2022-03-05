@@ -2,6 +2,8 @@ import { FlightSearchService } from './../flight-search/flight-search-service';
 import { FlightDetailsService } from './../service/flight-details.service';
 import { Component, OnInit } from '@angular/core';
 import { FlightDetails } from '../model/flightDetails.models';
+import { FlightDetailsComponent } from '../flight-details/flight-details.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -12,7 +14,7 @@ import { FlightDetails } from '../model/flightDetails.models';
 export class FlightListingComponent implements OnInit {
 
   flightDetails: FlightDetails[] =[];
-  constructor(private flightSearchService: FlightSearchService) { 
+  constructor(private flightSearchService: FlightSearchService, private modalService: NgbModal) { 
 
   }
 
@@ -30,6 +32,11 @@ export class FlightListingComponent implements OnInit {
     var hours = Math.floor(totalMinutes / 60);          
     var minutes = totalMinutes % 60;
     return hours+ "h : " + minutes + "m";
+  }
+
+  openXl(flightId: string) {
+    const modalRef = this.modalService.open(FlightDetailsComponent, { size: 'xl' });
+    modalRef.componentInstance.flight_id = flightId;
   }
 
 

@@ -1,0 +1,56 @@
+<div class="col-8">
+    <p class="card-text fw-bolder">Who's Flying?</p>
+    <div class="card" >
+        <div class="card-body">
+            <form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-md-4 mb-3">
+                      <input type="text" class="form-control-plaintext" id="staticEmail" formcontrolname="email">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Contact Number</label>
+                    <div class="col-md-4 mb-3">
+                      <input type="text" class="form-control" formcontrolname="contact" id="inputContact" placeholder="Contact Number">
+                    </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">First name</label>
+                    <input type="text" class="form-control" formcontrolname="first_name" id="validationDefault01" placeholder="First name"  required>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">Last name</label>
+                    <input type="text" class="form-control" formcontrolname="last_name" id="validationDefault02" placeholder="Last name" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputState">Gender</label>
+                        <select id="inputState" class="form-control" formcontrolname="gender">
+                          <option selected>Choose...</option>
+                          <option value="female">Female</option>
+                          <option value="male">Male</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="true" id="invalidCheck2" formcontrolname="check" required>
+                    <label class="form-check-label" for="invalidCheck2">
+                      Agree to terms and conditions
+                    </label>
+                    <div *ngIf="submitted && userForm.controls['check'].invalid" class="invalid-feedback">Accept Ts & Cs is required</div>
+                  </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Next</button>
+              </form>
+        </div>
+      </div>
+</div>
+
+
+
+
