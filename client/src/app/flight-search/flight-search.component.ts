@@ -42,7 +42,7 @@ export class FlightSearchComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log("here1");
+    //console.log("here1");
   }
 
   suggestSource() 
@@ -59,7 +59,7 @@ export class FlightSearchComponent implements OnInit {
       (response: any ) => {
         console.log(response);
         this.sourceSuggestions = response;
-        console.log(this.sourceSuggestions);
+        //console.log(this.sourceSuggestions);
       }
     );
 
@@ -111,5 +111,7 @@ export class FlightSearchComponent implements OnInit {
     this.destinationSuggestions = [];
     this.destinationAirport.setValue(airportCode);
   }
+
+  
 
 }

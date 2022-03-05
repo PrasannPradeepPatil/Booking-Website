@@ -12,13 +12,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FlightListingComponent } from './flight-listing/flight-listing.component';
 import { FlightDetailsService } from './service/flight-details.service'
-import { FlightDetailsFilterComponent } from './flight-details-filter/flight-details-filter.component';
 import { FlightDetailsComponent } from './flight-details/flight-details.component';
 import { FlightPaymentComponent } from './flight-payment/flight-payment.component';
-// import * as mdb from 'mdb-ui-kit';
-// import { NO_ERRORS_SCHEMA } from '@angular/core';
-// import { MDBBootstrapModule } from 'angular-bootstrap-md';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // If You need animations
+
+import { FlightListingFilterComponent } from './flight-listing-filter/flight-listing-filter.component';
+import { PaymentStage1Component } from './payment-stage1/payment-stage1.component';
+
 
 @NgModule({
   declarations: [
@@ -28,9 +27,10 @@ import { FlightPaymentComponent } from './flight-payment/flight-payment.componen
     NgbdDatepickerRangePopup,
     NgbdDatepickerPopup,
     FlightListingComponent,
-    FlightDetailsFilterComponent,
     FlightDetailsComponent,
     FlightPaymentComponent,
+    FlightListingFilterComponent,
+    PaymentStage1Component
   ],
   imports: [
     BrowserModule,
@@ -44,4 +44,4 @@ import { FlightPaymentComponent } from './flight-payment/flight-payment.componen
   providers: [FlightDetailsService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

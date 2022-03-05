@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-
+import { FlightListingFilterService } from './flight-listing-filter.service';
+import { FlightListingFilter } from './../model/flight-listing-filter.model';
 
 @Component({
-  selector: 'app-flight-details-filter',
-  templateUrl: './flight-details-filter.component.html',
-  styleUrls: ['./flight-details-filter.component.css']
+  selector: 'app-flight-listing-filter',
+  templateUrl: './flight-listing-filter.component.html',
+  styleUrls: ['./flight-listing-filter.component.css']
 })
-export class FlightDetailsFilterComponent implements OnInit {
+export class FlightListingFilterComponent implements OnInit {
   flightFilterForm: FormGroup = new FormGroup({
     outBoundDepartureDuration1: new FormControl(''),
     outBoundDepartureDuration2: new FormControl(''),
@@ -19,9 +20,13 @@ export class FlightDetailsFilterComponent implements OnInit {
     outBoundArrivalDuration4: new FormControl(''),
   });
   outboundClicked:boolean = true
+  flightListingFilterService: FlightListingFilterService;
+  flightListingFilter: FlightListingFilter;
 
 
-  constructor() { }
+  constructor(flightListingFilterService: FlightListingFilterService) { 
+    this.flightListingFilterService = flightListingFilterService
+  }
 
   
   ngOnInit() {
@@ -29,11 +34,33 @@ export class FlightDetailsFilterComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    
-    let outBoundDepartureRange:string[] = this.getOutBoundDepartureFlightTimeRange()
+   
+    //create model 
     let outBoundArrivalRange:string[] = this.getOutBoundArrivalFlightTimeRange()
+    let outBoundDepartureRange:string[] = this.getOutBoundDepartureFlightTimeRange()
+    let flightDetails = this.flightListingFilterService.getFlightDetails()
+    this.flightListingFilter = new FlightListingFilter(
+      flightDetails.sourceString,
+      flightDetails.destinationString,
+      flightDetails.startDate.toString(),
+      flightDetails.endDate.toString(),
+      true, 
+      "AirlineFilter: string",
+      outBoundArrivalRange.toString(),
+      outBoundDepartureRange.toString(),
+      "PriceRangeFilter:string",
+      "JourneyTimeFilter:string;"  
+    );
+    
 
-    console.log(outBoundDepartureRange)
+
+    //post this model on api
+    this.flightListingFilterService.postFlightDetails(this.flightListingFilter)
+
+
+
+
+
    
 
   }
@@ -50,6 +77,7 @@ export class FlightDetailsFilterComponent implements OnInit {
     if(this.flightFilterForm.get("outBoundDepartureDuration4").value == true)
       outBoundDepartureRange.push("06:00 PM-11:59 PM");
 
+    
     return  outBoundDepartureRange
 
 
@@ -75,13 +103,10 @@ export class FlightDetailsFilterComponent implements OnInit {
 
   }
 
-  getInBoundDepartureFlightTimeRange(){
 
-  }
 
-  getInBoundArrivalFlightTimeRange(){
 
-  }
+
 
   
 

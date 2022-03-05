@@ -33,6 +33,9 @@ export class FlightSearchService
 
     private flightDetailByID = new BehaviorSubject<FlightInDetails>(null);
     flightDetailByIDMsg = this.flightDetailByID.asObservable();
+    private currentFlightSearch: FlightSearch;
+
+
 
     constructor(public http: HttpClient){}
 
@@ -43,7 +46,8 @@ export class FlightSearchService
 
     searchFlights(input: FlightSearch)
     {
-        console.log("making post request ");
+        this.currentFlightSearch = input;
+        //console.log("making post request ");
         // this.http.post("/booking/airports", FlightSearch, httpOptions).pipe(
         //     catchError()
         //   );;
@@ -51,11 +55,15 @@ export class FlightSearchService
         this.getFlights(input);
     }
 
+    getCurrentFlightSearch()
+    {
+        return this.currentFlightSearch;
+    }
+
 
     getFlights(input: FlightSearch)
     {
-        this.http.get<FlightDetails[]>(this.getFlightsUrl).subscribe((response) => {
-            this.messageSource.next(response)});
+        this.http.get<FlightDetails[]>(this.getFlightsUrl).subscribe((response) => {this.messageSource.next(response)});
         return this.http.get(this.getFlightsUrl);
     }
     
