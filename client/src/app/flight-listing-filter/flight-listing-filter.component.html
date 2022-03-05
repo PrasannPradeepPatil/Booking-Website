@@ -1,8 +1,9 @@
 <form [formGroup]="flightFilterForm" (ngSubmit)="onSubmit(flightFilterForm)">
+
   <div class="card-body">
     <div class="card-group">
       <!-- LEFT SIDE -->
-      <div class="row">
+      <div class="col">
         <!-- DURATION -->
         <div class="card">
           <div class="card header">
@@ -12,9 +13,10 @@
             <label for="customRange1" class="form-label">Max Travel Time</label>
             <input type="range" class="form-range" id="customRange1">
           </div>
+
         </div>
 
-        <br><br><br>
+        <br>  <br>
 
         <!-- FLIGHT TIME -->
         <div class="card">
@@ -161,7 +163,7 @@
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
 
-        <!-- SUBMIT -->
+
         
 
 
