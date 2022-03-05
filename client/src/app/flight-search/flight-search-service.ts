@@ -38,7 +38,7 @@ export class FlightSearchService
 
     getSuggestions(input: string)
     {
-        return this.http.get(this.getSuggestionUrl);
+        return this.http.get<AirportSearch[]>(this.getSuggestionUrl);
     }
 
     searchFlights(input: FlightSearch)

@@ -5,6 +5,8 @@ import { FlightSearch } from '../model/flight-search.model';
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { filter, map, tap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-flight-search',
@@ -52,24 +54,31 @@ export class FlightSearchComponent implements OnInit {
     //   })
     //   .slice(0, 4);
 
-    this.flightSearchService.getSuggestions(this.userForm.get('sourceAirport').value).subscribe(
-      (response: any) => {
+    this.flightSearchService.getSuggestions(this.userForm.get('sourceAirport').value).pipe(
+    map(element => element.filter(x => x.airportCode === this.userForm.get('sourceAirport').value))).subscribe(
+      (response: any ) => {
         console.log(response);
         this.sourceSuggestions = response;
         console.log(this.sourceSuggestions);
       }
     );
 
+    // this.sourceSuggestions = this.flightSearchService.getSuggestions(this.userForm.get('sourceAirport').value);
+    // console.log(this.sourceSuggestions);
+
   }
 
   suggestDestination() 
   {
-    this.flightSearchService.getSuggestions(this.userForm.get('sourceAirport').value).subscribe(
+    this.userForm.get('destinationAirport').setValue("LAX");
+    this.flightSearchService.getSuggestions(this.userForm.get('destinationAirport').value).subscribe(
       (response: any) => {
-        console.log(response);
-        this.destinationSuggestions = response;
+        console.log("Responsee " +response);
+        this.destinationSuggestions = response[1];
         console.log(this.destinationSuggestions);
       });
+
+    // this.destinationSuggestions = this.flightSearchService.getSuggestions(this.userForm.get('destinationAirport').value);
   }
 
   onFormSubmit()
