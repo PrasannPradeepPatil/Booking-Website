@@ -1,5 +1,12 @@
 package models
 
 type EmailReq struct {
-	Email string
+	EmailAdd        string
+	CustomerName    string
+	MailType        string
+	Source          string
+	Destination     string
+	BookingCity     string
+	DateOfBooking   string
+	ReferenceNumber string
 }
