@@ -1,6 +1,7 @@
 package models
 
 type EmailRes struct {
-	Code        string `gorm:"not_null" form:"Code" json:"Code"`
+	OtpCode     string `gorm:"not_null" form:"OtpCode" json:"OtpCode"`
 	EmailStatus string `gorm:"not_null" form:"EmailStatus" json:"EmailStatus"`
+	ErrorCode   string `gorm:"not_null" form:"ErrorCode" json:"ErrorCode"`
 }
