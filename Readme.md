@@ -15,7 +15,7 @@ The goal is to create a website by following agile methodologies and collaborati
 - Ahamad Shaik
 
 # STACK
-- Front End -- Angular
-- Back End -- Golang
+- Front End -- Angular - Pranali Suhas Narkar, Prasann Pradeep Patil
+- Back End -- Golang - Manish Alluri, Ahamad Shaik
 - Database – MongoDB, PostgreSQL
 
