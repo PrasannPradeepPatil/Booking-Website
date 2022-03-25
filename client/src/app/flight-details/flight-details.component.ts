@@ -2,7 +2,6 @@ import { FlightDetails } from './../model/flightDetails.models';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FlightSearchService } from '../flight-search/flight-search-service';
-import { FlightInDetails } from '../model/flightInDetails';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,11 +12,11 @@ import { Router } from '@angular/router';
 export class FlightDetailsComponent implements OnInit {
 
   @Input() flight_id: string;
-  flightDetails: FlightInDetails;
+  flightDetails: FlightDetails;
 
   ngOnInit(): void {
     this.flightSearchService.getFlightsById(this.flight_id);
-    this.flightSearchService.flightDetailByIDMsg.subscribe((response: FlightInDetails)=>
+    this.flightSearchService.flightDetailByIDMsg.subscribe((response: FlightDetails)=>
     {
       this.flightDetails = response;
     })

@@ -1,14 +1,16 @@
 export class FlightDetails{
 
-    Id: string;
+    id: string;
     departureTime: string;
     arrivalTime: string;
     sourceAirportCode: string;
+    sourceAirportName: string;
     destinationAirportCode: string;
+    destinationAirportName: string;
     price: number;
     duration: number;
     flightName: string;
-    flightLogo: string;
+    logo: string;
     
     constructor(public name: string, public amount: number){}
 }

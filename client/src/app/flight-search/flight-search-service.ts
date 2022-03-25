@@ -8,7 +8,6 @@ import { HttpClient , HttpResponse } from "@angular/common/http"
 import { HttpHeaders } from '@angular/common/http';
 import {catchError} from 'rxjs/operators'; 
 import { BehaviorSubject } from 'rxjs';
-import { FlightInDetails } from '../model/flightInDetails';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -31,7 +30,7 @@ export class FlightSearchService
     private messageSource = new BehaviorSubject<FlightDetails[]>(null);
     currentMessage = this.messageSource.asObservable();
 
-    private flightDetailByID = new BehaviorSubject<FlightInDetails>(null);
+    private flightDetailByID = new BehaviorSubject<FlightDetails>(null);
     flightDetailByIDMsg = this.flightDetailByID.asObservable();
     private currentFlightSearch: FlightSearch;
 
@@ -71,11 +70,11 @@ export class FlightSearchService
     {
         // console.log("id ");
         // console.log(id);
-        this.http.get<FlightInDetails[]>(this.getFlightDetailsUrl).subscribe((response) => {
+        this.http.get<FlightDetails[]>(this.getFlightDetailsUrl).subscribe((response) => {
             // console.log("id ");
             // console.log(id);
-            console.log(response.find(x => x.Id === id));
-            this.flightDetailByID.next(response.find(x => x.Id === id));
+            console.log(response.find(x => x.id === id));
+            this.flightDetailByID.next(response.find(x => x.id === id));
             // console.log(this.flightDetails);
             // return this.flightDetails;
         });

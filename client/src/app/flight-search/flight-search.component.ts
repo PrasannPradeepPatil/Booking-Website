@@ -15,7 +15,7 @@ import { filter, map, tap } from 'rxjs/operators';
 })
 export class FlightSearchComponent implements OnInit {
 
-  tripInfo: string ="round-trip";
+  tripInfo: boolean =true;
   userForm = new FormGroup({
     no_of_trip: new FormControl(),
     sourceAirport: new FormControl(),
@@ -90,7 +90,7 @@ export class FlightSearchComponent implements OnInit {
 
   changeTrip(event: Event) 
   {
-    this.tripInfo = (event.target as HTMLInputElement).value;
+    this.tripInfo = (event.target as HTMLInputElement).value == "true";
   }
 
   getDateRange($event: DateRange)
