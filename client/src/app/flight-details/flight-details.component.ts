@@ -73,4 +73,13 @@ export class FlightDetailsComponent implements OnInit {
   //   this.modalService.open(content, { modalDialogClass: 'dark-modal' });
   // }
 
+  /*
+  ../booking
+  
+  Frontend --- request to get flights (GET/POST/PUT)
+  
+  
+  
+  */
+
 }

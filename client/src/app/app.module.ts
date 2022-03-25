@@ -17,6 +17,7 @@ import { FlightPaymentComponent } from './flight-payment/flight-payment.componen
 
 import { FlightListingFilterComponent } from './flight-listing-filter/flight-listing-filter.component';
 import { PaymentStage1Component } from './payment-stage1/payment-stage1.component';
+import { PaymentStage3Component } from './payment-stage3/payment-stage3.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { PaymentStage1Component } from './payment-stage1/payment-stage1.componen
     FlightDetailsComponent,
     FlightPaymentComponent,
     FlightListingFilterComponent,
-    PaymentStage1Component
+    PaymentStage1Component,
+    PaymentStage3Component
   ],
   imports: [
     BrowserModule,
