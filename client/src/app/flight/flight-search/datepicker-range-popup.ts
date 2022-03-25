@@ -1,4 +1,4 @@
-import { DateRange } from './../model/dateRange.model';
+import { DateRange } from '../../model/dateRange.model';
 import {Component, EventEmitter, Output} from '@angular/core';
 import {NgbDate, NgbCalendar, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 

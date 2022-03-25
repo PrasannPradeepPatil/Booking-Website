@@ -1,7 +1,7 @@
-import { FlightSearchService } from './../flight-search/flight-search-service';
-import { FlightDetailsService } from './../service/flight-details.service';
+import { FlightSearchService } from '../flight-search/flight-search-service';
+import { FlightDetailsService } from '../service/flight-details.service';
 import { Component, OnInit } from '@angular/core';
-import { FlightDetails } from '../model/flightDetails.models';
+import { FlightDetails } from '../../model/flightDetails.models';
 import { FlightDetailsComponent } from '../flight-details/flight-details.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 

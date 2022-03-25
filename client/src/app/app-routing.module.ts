@@ -1,10 +1,10 @@
-import { FlightPaymentComponent } from './flight-payment/flight-payment.component';
+import { FlightPaymentComponent } from './flight/payment/flight-payment/flight-payment.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FlightSearchComponent } from './flight-search/flight-search.component';
-import { FlightListingComponent } from './flight-listing/flight-listing.component';
-import { FlightDetailsComponent } from './flight-details/flight-details.component';
-import { PaymentStage1Component } from './payment-stage1/payment-stage1.component';
+import { FlightSearchComponent } from './flight/flight-search/flight-search.component';
+import { FlightListingComponent } from './flight/flight-listing/flight-listing.component';
+import { FlightDetailsComponent } from './flight/flight-details/flight-details.component';
+import { PaymentStage1Component } from './flight/payment/payment-stage1/payment-stage1.component';
 
 
 const routes: Routes = [

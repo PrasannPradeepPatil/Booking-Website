@@ -64,14 +64,14 @@
                 </div>
             </div>
         </div>
-        <div class="col" *ngIf='tripInfo === "round-trip"'>
+        <div class="col" *ngIf='tripInfo === true'>
             <ngbd-datepicker-range-popup (callFlightSearch)="getDateRange($event)">
 
                 
             </ngbd-datepicker-range-popup>
            
         </div>
-        <div class="col" *ngIf='tripInfo === "one-time"'>
+        <div class="col" *ngIf='tripInfo === false'>
             <ngbd-datepicker-popup></ngbd-datepicker-popup>
         </div>
 

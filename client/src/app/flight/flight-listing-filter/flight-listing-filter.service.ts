@@ -3,7 +3,7 @@ import { HttpClient , HttpResponse } from "@angular/common/http"
 import { HttpHeaders } from '@angular/common/http';
 import {catchError} from 'rxjs/operators'; 
 import { BehaviorSubject } from 'rxjs';
-import { FlightListingFilter } from './../model/flight-listing-filter.model';
+import { FlightListingFilter } from '../../model/flight-listing-filter.model';
 import { FlightSearchService } from '../flight-search/flight-search-service';
 
 

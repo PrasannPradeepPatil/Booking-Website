@@ -1,4 +1,4 @@
-import { PassengerInformation } from './../model/passenger-info';
+import { PassengerInformation } from '../../../model/passenger-info';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FlightListingFilterService } from './flight-listing-filter.service';
-import { FlightListingFilter } from './../model/flight-listing-filter.model';
+import { FlightListingFilter } from '../../model/flight-listing-filter.model';
 
 @Component({
   selector: 'app-flight-listing-filter',
@@ -40,8 +40,8 @@ export class FlightListingFilterComponent implements OnInit {
     let outBoundDepartureRange:string[] = this.getOutBoundDepartureFlightTimeRange()
     let flightDetails = this.flightListingFilterService.getFlightDetails()
     this.flightListingFilter = new FlightListingFilter(
-      flightDetails.sourceString,
-      flightDetails.destinationString,
+      flightDetails.source,
+      flightDetails.destination,
       flightDetails.startDate.toString(),
       flightDetails.endDate.toString(),
       true, 

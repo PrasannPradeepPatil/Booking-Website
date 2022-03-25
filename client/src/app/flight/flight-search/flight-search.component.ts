@@ -1,7 +1,7 @@
-import { AirportSearch } from './../model/airport-search.model';
+import { AirportSearch } from '../../model/airport-search.model';
 import { FlightSearchService } from './flight-search-service';
-import { DateRange } from './../model/dateRange.model';
-import { FlightSearch } from '../model/flight-search.model';
+import { DateRange } from '../../model/dateRange.model';
+import { FlightSearch } from '../../model/flight-search.model';
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';

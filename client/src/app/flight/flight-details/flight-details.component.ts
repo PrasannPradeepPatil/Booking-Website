@@ -1,4 +1,4 @@
-import { FlightDetails } from './../model/flightDetails.models';
+import { FlightDetails } from '../../model/flightDetails.models';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FlightSearchService } from '../flight-search/flight-search-service';

@@ -1,22 +1,22 @@
-import { FlightSearchService } from './flight-search/flight-search-service';
-import { NgbdDatepickerPopup } from './flight-search/datepicker-popup';
+import { FlightSearchService } from './flight/flight-search/flight-search-service';
+import { NgbdDatepickerPopup } from './flight/flight-search/datepicker-popup';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { FlightSearchComponent } from './flight-search/flight-search.component';
-import {NgbdDatepickerRangePopup} from './flight-search/datepicker-range-popup';
+import { FlightSearchComponent } from './flight/flight-search/flight-search.component';
+import {NgbdDatepickerRangePopup} from './flight/flight-search/datepicker-range-popup';
 import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { FlightListingComponent } from './flight-listing/flight-listing.component';
-import { FlightDetailsService } from './service/flight-details.service'
-import { FlightDetailsComponent } from './flight-details/flight-details.component';
-import { FlightPaymentComponent } from './flight-payment/flight-payment.component';
+import { FlightListingComponent } from './flight/flight-listing/flight-listing.component';
+import { FlightDetailsService } from './flight/service/flight-details.service'
+import { FlightDetailsComponent } from './flight/flight-details/flight-details.component';
+import { FlightPaymentComponent } from './flight/payment/flight-payment/flight-payment.component';
 
-import { FlightListingFilterComponent } from './flight-listing-filter/flight-listing-filter.component';
-import { PaymentStage1Component } from './payment-stage1/payment-stage1.component';
+import { FlightListingFilterComponent } from './flight/flight-listing-filter/flight-listing-filter.component';
+import { PaymentStage1Component } from './flight/payment/payment-stage1/payment-stage1.component';
 
 
 @NgModule({
