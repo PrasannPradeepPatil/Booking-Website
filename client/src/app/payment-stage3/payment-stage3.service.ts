@@ -1,25 +1,36 @@
-import { FlightDetails } from './../model/flightDetails.models';
-import { FlightSearch } from './../model/flight-search.model';
-import { AirportSearch } from './../model/airport-search.model';
-
-// import { Observable } from "rxjs/Rx"
 import { Injectable } from "@angular/core"
 import { HttpClient , HttpResponse } from "@angular/common/http"
-import { HttpHeaders } from '@angular/common/http';
-import {catchError} from 'rxjs/operators'; 
-import { BehaviorSubject } from 'rxjs';
-import { FlightInDetails } from '../model/flightInDetails';
+
+
+import { PaymentStage3 } from './../model/payment-stage3.model';
+
+
+
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class PaymentStage3Service {
 
-  constructor() { 
-    
+
+  searchFlightUrl: string = "/booking/flight/search";
+  paymentStage3:PaymentStage3
+
+
+  constructor(public http: HttpClient) {}
+
+  getPaymentDetails(){
+
+    //ip : arr of ips from "form"
+    //post arr at url and subscribe to the response 
+    //return the response from the BE
+
+
+
+
 
   }
-
 
 
 

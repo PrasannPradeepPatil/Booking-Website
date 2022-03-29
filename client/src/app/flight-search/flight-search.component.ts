@@ -1,18 +1,23 @@
-import { AirportSearch } from './../model/airport-search.model';
-import { FlightSearchService } from './flight-search-service';
-import { DateRange } from './../model/dateRange.model';
-import { FlightSearch } from '../model/flight-search.model';
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { filter, map, tap } from 'rxjs/operators';
 
 
+import { FlightSearchService } from './flight-search-service';
+import { DateRange } from './../model/dateRange.model';
+import { FlightSearch } from '../model/flight-search.model';
+import { AirportSearch } from './../model/airport-search.model';
+
 @Component({
   selector: 'app-flight-search',
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css']
+
 })
+
+
+
 export class FlightSearchComponent implements OnInit {
 
   tripInfo: string ="round-trip";
@@ -45,8 +50,7 @@ export class FlightSearchComponent implements OnInit {
     //console.log("here1");
   }
 
-  suggestSource() 
-  {
+  suggestSource() {
     // this.suggestions = this.countries
     //   .filter(c => {
     //     return c.startsWith(this.userForm.get('sourceAirport').value);
@@ -65,7 +69,6 @@ export class FlightSearchComponent implements OnInit {
 
     // this.sourceSuggestions = this.flightSearchService.getSuggestions(this.userForm.get('sourceAirport').value);
     // console.log(this.sourceSuggestions);
-
   }
 
   suggestDestination() 
@@ -81,8 +84,7 @@ export class FlightSearchComponent implements OnInit {
     // this.destinationSuggestions = this.flightSearchService.getSuggestions(this.userForm.get('destinationAirport').value);
   }
 
-  onFormSubmit()
-  {
+  onFormSubmit(){
 
     this.flightSearch = new FlightSearch(this.userForm.get('sourceAirport').value,this.userForm.get('destinationAirport').value,this.dateRange.startDate,this.dateRange.endDate,this.userForm.get('no_of_trip').value);
     this.flightSearchService.searchFlights(this.flightSearch);   
@@ -114,4 +116,17 @@ export class FlightSearchComponent implements OnInit {
 
   
 
+
 }
+
+
+
+
+
+
+
+
+
+
+
+

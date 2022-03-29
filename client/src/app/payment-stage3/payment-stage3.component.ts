@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+
+import { PaymentStage3Service } from './payment-stage3.service';
+
 @Component({
   selector: 'app-payment-stage3',
   templateUrl: './payment-stage3.component.html',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentStage3Component implements OnInit {
 
+  paymentDetails: string[] 
+  
+
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
+  getPaymentDetails(){
+
+
+  }
+
+
 
 }
