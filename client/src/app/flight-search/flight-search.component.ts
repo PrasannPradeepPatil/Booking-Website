@@ -113,11 +113,8 @@ export class FlightSearchComponent implements OnInit {
     this.destinationSuggestions = [];
     this.destinationAirport.setValue(airportCode);
   }
-
-  
-
-
 }
+
 
 
 
