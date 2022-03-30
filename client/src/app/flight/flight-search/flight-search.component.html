@@ -12,14 +12,14 @@
 
     <div class = "d-flex justify-content-center">
         <div class="form-check form-check-inline " style = "font-size: 20px; padding: 10px;"> 
-            <input class="form-check-input" type="radio" id="round-trip" name="no_of_trip" value="true" formcontrolname="no_of_trip" (change)="changeTrip($event)" checked>
+            <input class="form-check-input" type="radio" id="round-trip" name="no_of_trip" value="true" formControlname="no_of_trip" (change)="changeTrip($event)" checked>
             <label class="form-check-label" for="inlineRadio1">Round</label>
         </div>
 
     
         
         <div class="form-check form-check-inline" style = "font-size: 20px;padding: 10px;">
-            <input class="form-check-input" type="radio" id="one-time" name="no_of_trip" value="false" formcontrolname="no_of_trip" (change)="changeTrip($event)">
+            <input class="form-check-input" type="radio" id="one-time" name="no_of_trip" value="false" formControlname="no_of_trip" (change)="changeTrip($event)">
             <label class="form-check-label" for="inlineRadio2">One-time</label>
         </div>
     </div>
@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="col-xs-18">
-            <input type="text" name="destinationAirport" aria-label="destination" class="form-control" placeholder="Where to?" [formControl]="destinationAirport" formcontrolname="destinationAirport" (input)="suggestDestination()">
+            <input type="text" name="destinationAirport" aria-label="destination" class="form-control" placeholder="Where to?" [formControl]="destinationAirport" formControlName="destinationAirport" (input)="suggestDestination()">
             <div class="suggestions" *ngIf="destinationSuggestions.length">
                 <div *ngFor="let s of destinationSuggestions">
                     <a style="cursor: pointer;" name="destinationSuggestions" routerlinkactive="active" (click)="onDestinationSelect(s.airportcode)">

@@ -40,8 +40,8 @@ export class FlightListingFilterComponent implements OnInit {
     let outBoundDepartureRange:string[] = this.getOutBoundDepartureFlightTimeRange()
     let flightDetails = this.flightListingFilterService.getFlightDetails()
     this.flightListingFilter = new FlightListingFilter(
-      flightDetails.source,
-      flightDetails.destination,
+      flightDetails.sourceName,
+      flightDetails.destinationName,
       flightDetails.startDate.toString(),
       flightDetails.endDate.toString(),
       true, 

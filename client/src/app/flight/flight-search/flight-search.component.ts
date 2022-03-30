@@ -16,11 +16,7 @@ import { filter, map, tap } from 'rxjs/operators';
 export class FlightSearchComponent implements OnInit {
 
   tripInfo: boolean =true;
-  userForm = new FormGroup({
-    no_of_trip: new FormControl(),
-    sourceAirport: new FormControl(),
-    destinationAirport: new FormControl(),
-  });
+  userForm: FormGroup;
 
   sourceAirportCode: string;
   destinationAirportCode: string;
@@ -42,46 +38,39 @@ export class FlightSearchComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    //console.log("here1");
+    this.userForm = new FormGroup({
+      no_of_trip: new FormControl(),
+      sourceAirport: new FormControl(),
+      destinationAirport: new FormControl(),
+    });  
   }
 
   suggestSource() 
   {
-    // this.suggestions = this.countries
-    //   .filter(c => {
-    //     return c.startsWith(this.userForm.get('sourceAirport').value);
-    //     // return c.toUpperCase().startsWith(JSON.stringify(this.userForm.get('sourceAirport').value).toUpperCase());
-    //   })
-    //   .slice(0, 4);
-
     this.flightSearchService.getSuggestions(this.userForm.get('sourceAirport').value).subscribe(
       (response: any ) => {
+        console.log(response);
         this.sourceSuggestions = response;
       }
     );
-
-    // this.sourceSuggestions = this.flightSearchService.getSuggestions(this.userForm.get('sourceAirport').value);
-    // console.log(this.sourceSuggestions);
 
   }
 
   suggestDestination() 
   {
-    this.userForm.get('destinationAirport').setValue("LAX");
     this.flightSearchService.getSuggestions(this.userForm.get('destinationAirport').value).subscribe(
       (response: any) => {
-        console.log("Responsee " +response);
-        this.destinationSuggestions = response[1];
-        console.log(this.destinationSuggestions);
+        this.destinationSuggestions = response;
       });
 
-    // this.destinationSuggestions = this.flightSearchService.getSuggestions(this.userForm.get('destinationAirport').value);
   }
 
   onFormSubmit()
   {
-
-    this.flightSearch = new FlightSearch(this.userForm.get('sourceAirport').value,this.userForm.get('destinationAirport').value,this.dateRange.startDate,this.dateRange.endDate,this.userForm.get('no_of_trip').value);
+    var startDateString = this.dateRange.startDate.day + '/' + this.dateRange.startDate.month + '/'+ this.dateRange.startDate.year;
+    var endDateString =  this.dateRange.endDate ? this.dateRange.endDate.day + '/' + this.dateRange.endDate.month + '/'+ this.dateRange.endDate.year : '';
+    this.flightSearch = new FlightSearch(this.userForm.get('sourceAirport').value,this.userForm.get('destinationAirport').value,startDateString, endDateString, JSON.stringify(this.tripInfo));
+    console.log(this.flightSearch);
     this.flightSearchService.searchFlights(this.flightSearch);   
   }
 

@@ -1,11 +1,11 @@
 import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { DateRange } from './dateRange.model';
 export class FlightSearch {
-    public source: string;
-    public destination: string;
-    public startDate: NgbDate;
-    public endDate: NgbDate;
-    public isRoundTrip: boolean;
+    public sourceName: string;
+    public destinationName: string;
+    public startDate: string;
+    public endDate: string;
+    public isRoundTrip: string;
     public airlineFilter: string;
     public datatype: string;
     public arrivalTimeFilter: string;
@@ -14,15 +14,15 @@ export class FlightSearch {
     public journeyTimeFilter: string;
 
 
-    constructor(sourceString: string, destinationString: string, startDate: NgbDate, endDate: NgbDate, tripType: string, 
+    constructor(sourceString: string, destinationString: string, startDate: string, endDate: string, tripType: string, 
                 airlineFilter: string = "", datatype : string = "", arrivalTimeFilter: string = "", departureTimeFilter: string = "", 
                 priceRangeFilter: string = "", journeyTimeFilter: string = "")
     {
-        this.source = sourceString;
-        this.destination = destinationString;
+        this.sourceName = sourceString;
+        this.destinationName = destinationString;
         this.startDate  = startDate;
         this.endDate = endDate;
-        this.isRoundTrip = tripType == "true";
+        this.isRoundTrip = tripType;
         this.airlineFilter = airlineFilter;
         this.datatype = datatype;
         this.arrivalTimeFilter = arrivalTimeFilter;
@@ -32,14 +32,10 @@ export class FlightSearch {
     }
 
     toString(): string {
-        return this.source
-            .concat(this.destination)
-            .concat(this.startDate.month.toString()).concat('/')
-            .concat(this.startDate.day.toString()).concat('/')
-            .concat(this.startDate.year.toString()).concat('/')
-            .concat(this.endDate.month.toString()).concat('/')
-            .concat(this.endDate.day.toString()).concat('/')
-            .concat(this.endDate.year.toString()).concat('/')
+        return this.sourceName
+            .concat(this.destinationName)
+            .concat(this.startDate)
+            .concat(this.endDate)
             .concat(this.isRoundTrip + "");
     }
 

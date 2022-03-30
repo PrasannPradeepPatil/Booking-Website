@@ -21,8 +21,8 @@ const httpOptions = {
 )
 export class FlightSearchService
 {
-    getSuggestionUrl: string = "/booking/airports";
-    searchFlightUrl: string = "/booking/flight/search";
+    getSuggestionUrl: string = "/booking/SrchArptAPI";
+    searchFlightUrl: string = "/booking/searchFlights";
     getFlightsUrl: string = "/booking/flights";
     getFlightDetailsUrl: string = "/booking/flightDetails";
     flightDetails: FlightDetails;
@@ -40,18 +40,20 @@ export class FlightSearchService
 
     getSuggestions(input: string)
     {
-        return this.http.get<AirportSearch[]>(this.getSuggestionUrl);
+        return this.http.post<AirportSearch[]>(this.getSuggestionUrl, {'ArptSrchString' : input});
     }
 
     searchFlights(input: FlightSearch)
     {
         this.currentFlightSearch = input;
-        //console.log("making post request ");
-        // this.http.post("/booking/airports", FlightSearch, httpOptions).pipe(
-        //     catchError()
-        //   );;
+        this.http.post(this.searchFlightUrl, input, httpOptions).subscribe(
+            response => {
+                console.log("Response for search flights");
+                console.log(response);
+            }
+          );
 
-        this.getFlights(input);
+        // this.getFlights(input);
     }
 
     getCurrentFlightSearch()
