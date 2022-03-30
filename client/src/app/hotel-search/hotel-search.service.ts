@@ -14,10 +14,14 @@ export class HotelSearchService {
   private currentHotelSearch : HotelSearch;
   private messageSource = new BehaviorSubject<HotelSearch[]>(null);
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient) {
+
+   }
 
   searchHotels(input :HotelSearch){
     this.http.get<HotelSearch[]>(this.getHotelsUrl).subscribe((response) => {this.messageSource.next(response)});
+    
+
   }
 
 

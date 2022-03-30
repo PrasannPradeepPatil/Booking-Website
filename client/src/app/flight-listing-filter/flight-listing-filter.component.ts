@@ -42,8 +42,8 @@ export class FlightListingFilterComponent implements OnInit {
     this.flightListingFilter = new FlightListingFilter(
       flightDetails.sourceString,
       flightDetails.destinationString,
-      flightDetails.startDate.toString(),
-      flightDetails.endDate.toString(),
+      flightDetails.Checkin.toString(),
+      flightDetails.Checkout.toString(),
       true, 
       "AirlineFilter: string",
       outBoundArrivalRange.toString(),

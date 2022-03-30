@@ -3,6 +3,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { HotelSearch } from '../model/hotel-search.model';
 import { DateRange } from './../model/dateRange.model';
 import { HotelSearchService } from './hotel-search.service';
+import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+
+/*
+1.fromDate -- checkin , toDate -- checkout
+*/
 
 @Component({
   selector: 'app-hotel-search',
@@ -11,39 +16,56 @@ import { HotelSearchService } from './hotel-search.service';
 })
 export class HotelSearchComponent implements OnInit {
   userForm = new FormGroup({
-    hotelLocation: new FormControl(),
+    City: new FormControl(),
+    State: new FormControl(),
   });
-  hotelLocation : FormControl = new FormControl();
+  City : FormControl = new FormControl();
+  State : FormControl = new FormControl();
   hotelSuggestions: HotelSearch[] = [];
   hotelSearch: HotelSearch;
   dateRange: DateRange;
   hotelSearchService: HotelSearchService;
+  calendar!: NgbCalendar;
+
+  constructor(flightSearchService: HotelSearchService,calender: NgbCalendar) {
+    this.hotelSearchService = flightSearchService;
+    this.dateRange = new DateRange(calender.getToday(), calender.getNext(calender.getToday(), 'd', 10));
 
 
-
-
-  constructor() { }
+   }
 
   ngOnInit(): void {
   }
 
 
   onFormSubmit(){ 
-    this.hotelSearch = new HotelSearch(this.userForm.get('hotelLocation').value,this.dateRange.startDate,this.dateRange.endDate);
-    this.hotelSearchService.searchHotels(this.hotelSearch);   
-  }
-
-  suggestHotelLocation(){
+    this.hotelSearch = new HotelSearch(this.userForm.get('City').value,this.userForm.get('State').value,this.dateRange.Checkin,this.dateRange.Checkout,"","");
+    this.hotelSearchService.searchHotels(this.hotelSearch);  
 
   }
 
-  onHotelLocationSelect(){
+  suggestState(){
 
   }
 
-  getDateRange($event: DateRange)
-  {
+  suggestCity(){
+
+  }
+
+  onStateSelect(){
+
+  }
+  onCitySelect(){
+
+  }
+
+  getDateRange($event: DateRange){
     this.dateRange = $event;
   }
+
+
+
+
+
 
 }

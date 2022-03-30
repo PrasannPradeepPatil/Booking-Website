@@ -1,26 +1,24 @@
 import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { DateRange } from './dateRange.model';
 export class HotelSearch {
-    public hotelLocation: string;
-    public startDate: NgbDate;
-    public endDate: NgbDate;
+    public State: string;
+    public City: string;
+    public Checkin: NgbDate;
+    public Checkout: NgbDate;
+    public Pricefilter: string;
+    public Rangefilter : string;
 
-    constructor(hotelLocation: string, startDate: NgbDate, endDate: NgbDate)
+    constructor(City: string, State: string, Checkin: NgbDate, Checkout: NgbDate, Pricefilter: string, Rangefilter: string)
     {
-        this.hotelLocation = hotelLocation;
-        this.startDate  = startDate;
-        this.endDate = endDate;
+        this.City = City;
+        this.State = State;
+        this.Checkin  = Checkin;
+        this.Checkout = Checkout;
+        this.Pricefilter = Pricefilter;
+        this.Rangefilter = Rangefilter;
     }
 
-    toString(): string {
-        return this.hotelLocation
-            .concat(this.startDate.month.toString()).concat('/')
-            .concat(this.startDate.day.toString()).concat('/')
-            .concat(this.startDate.year.toString()).concat('/')
-            .concat(this.endDate.month.toString()).concat('/')
-            .concat(this.endDate.day.toString()).concat('/')
-            .concat(this.endDate.year.toString()).concat('/')
-    }
+
 
 
 }

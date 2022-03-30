@@ -11,7 +11,7 @@ export class FlightDetailsService {
   constructor(private http: HttpClient) { }
 
   getFlightDetails(){
-    var obj1 = {"sourceString":"a","destinationString":"v","startDate":{"year":2022,"month":2,"day":1},"endDate":{"year":2022,"month":2,"day":11},"tripType":"round-trip"};
+    var obj1 = {"sourceString":"a","destinationString":"v","Checkin":{"year":2022,"month":2,"day":1},"Checkout":{"year":2022,"month":2,"day":11},"tripType":"round-trip"};
     //console.log(this.http.get(this.url));
 
 

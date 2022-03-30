@@ -47,7 +47,12 @@ export class FlightSearchComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    //console.log("here1");
+  }
+
+  onFormSubmit(){
+
+    this.flightSearch = new FlightSearch(this.userForm.get('sourceAirport').value,this.userForm.get('destinationAirport').value,this.dateRange.Checkin,this.dateRange.Checkout,this.userForm.get('no_of_trip').value);
+    this.flightSearchService.searchFlights(this.flightSearch);   
   }
 
   suggestSource() {
@@ -84,21 +89,6 @@ export class FlightSearchComponent implements OnInit {
     // this.destinationSuggestions = this.flightSearchService.getSuggestions(this.userForm.get('destinationAirport').value);
   }
 
-  onFormSubmit(){
-
-    this.flightSearch = new FlightSearch(this.userForm.get('sourceAirport').value,this.userForm.get('destinationAirport').value,this.dateRange.startDate,this.dateRange.endDate,this.userForm.get('no_of_trip').value);
-    this.flightSearchService.searchFlights(this.flightSearch);   
-  }
-
-  changeTrip(event: Event) 
-  {
-    this.tripInfo = (event.target as HTMLInputElement).value;
-  }
-
-  getDateRange($event: DateRange)
-  {
-    this.dateRange = $event;
-  }
 
   onSourceSelect(airportCode: string)
   {
@@ -113,6 +103,17 @@ export class FlightSearchComponent implements OnInit {
     this.destinationSuggestions = [];
     this.destinationAirport.setValue(airportCode);
   }
+
+  changeTrip(event: Event) 
+  {
+    this.tripInfo = (event.target as HTMLInputElement).value;
+  }
+
+  getDateRange($event: DateRange)
+  {
+    this.dateRange = $event;
+  }
+
 }
 
 
