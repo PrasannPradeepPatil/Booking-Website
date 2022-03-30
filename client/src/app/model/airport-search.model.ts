@@ -1,9 +1,9 @@
 export class AirportSearch
 {
-    cityName : string;
-    airportCode : string;
-    airportName : string;
-    countryName : string;
+    cityname : string;
+    airportcode : string;
+    airportname : string;
+    countryname : string;
 
-    constructor(cityName: string, airportCode: string, airportName: string, countryName: string){}
+    constructor(cityname: string, airportcode: string, airportname: string, countryname: string){}
 }

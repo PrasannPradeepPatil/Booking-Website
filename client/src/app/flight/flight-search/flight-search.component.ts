@@ -54,12 +54,9 @@ export class FlightSearchComponent implements OnInit {
     //   })
     //   .slice(0, 4);
 
-    this.flightSearchService.getSuggestions(this.userForm.get('sourceAirport').value).pipe(
-    map(element => element.filter(x => x.airportCode === this.userForm.get('sourceAirport').value))).subscribe(
+    this.flightSearchService.getSuggestions(this.userForm.get('sourceAirport').value).subscribe(
       (response: any ) => {
-        console.log(response);
         this.sourceSuggestions = response;
-        //console.log(this.sourceSuggestions);
       }
     );
 
@@ -98,18 +95,18 @@ export class FlightSearchComponent implements OnInit {
     this.dateRange = $event;
   }
 
-  onSourceSelect(airportCode: string)
+  onSourceSelect(airportcode: string)
   {
-    this.userForm.get('sourceAirport').setValue(airportCode);
+    this.userForm.get('sourceAirport').setValue(airportcode);
     this.sourceSuggestions = [];
-    this.sourceAirport.setValue(airportCode);
+    this.sourceAirport.setValue(airportcode);
   }
 
-  onDestinationSelect(airportCode: string)
+  onDestinationSelect(airportcode: string)
   {
-    this.userForm.get('destinationAirport').setValue(airportCode);
+    this.userForm.get('destinationAirport').setValue(airportcode);
     this.destinationSuggestions = [];
-    this.destinationAirport.setValue(airportCode);
+    this.destinationAirport.setValue(airportcode);
   }
 
   

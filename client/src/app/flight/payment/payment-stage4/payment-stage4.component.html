@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="jumbotron text-left">
+        <h1 class="display-7">Flight confirmed!</h1>
+        <p class="lead">Thank you for letting us help you.</p>
+        <hr>
+        <p><i>Hi {{first_name}} {{last_name}},  </i> <br>
+            Your trip from {{flightDetails.sourceAirportCode}} to {{flightDetails.destinationAirportCode}} is confirmed <br>
+            We will email you the ticket shortly at {{email}}</p>
+
+        <p><b> Your trip id is {{id}}. Please use this id for any further communication</b></p>
+        <p><br></p>
+        <p>Just Booked</p>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="row">
+                    <div  class="col-xs-6">
+                        <img src="../../../../assets/aa.png"  alt="..." width="50" height="50">
+                    </div>
+                    <div  class="col-xs-6">
+                        <p style="padding-left: 20px;">{{flightDetails.flightName}}</p>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div  class="col-xs-6">
+                        <p style="margin-bottom: 0px">{{flightDetails.sourceAirportCode}} <fa-icon [icon] = 'faArrowRightLongIcon'></fa-icon> {{flightDetails.destinationAirportCode}}</p>
+                        <p style="color: gray; font-size: 90%;">{{flightDetails.departureTime | date: 'fullDate'}}</p>
+                    </div>
+                    <div  class="col-xs-6">
+                        <p style="padding-left: 20px; margin-bottom: 0px">{{flightDetails.departureTime | date: 'shortTime'}} <fa-icon [icon]="faMinusIcon"></fa-icon> {{flightDetails.arrivalTime | date: 'shortTime'}}</p>
+                        <p style="padding-left: 20px;color: gray; font-size: 90%;">{{getTimetoDisplay(flightDetails.duration)}} Nonstop</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card text-center" style="border-radius: 8px; border-color: black;">
+                <div class="card-body">
+                    <p class="card-text" style="font-size: 80%; color: gray; margin-bottom: 0%;">Credit Card.</p>
+                    <h5 class="card-title">1569-XXXX-XXXX-2091</h5>
+                    <hr>
+                    <p class="card-text" style="font-size: 80%; color: gray; margin-bottom: 0%;">Total Charge.</p>
+                    <h5 class="card-title">$1500.0</h5>
+                    <hr>
+                    <p class="card-text" style="font-size: 80%; color: gray; margin-bottom: 0%;">Fare Breakup.</p>
+                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">Base fare : $1300.0</h5>
+                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">Taxes : $200.0</h5>
+                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">Total : $1500.0</h5>
+                </div>                
+              </div>
+            </div>
+        </div>
+    
+    </div>
+</div>

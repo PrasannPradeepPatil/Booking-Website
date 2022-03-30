@@ -1,3 +1,4 @@
+import { FlightDetailsService } from './../service/flight-details.service';
 import { FlightDetails } from '../../model/flightDetails.models';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -19,13 +20,15 @@ export class FlightDetailsComponent implements OnInit {
     this.flightSearchService.flightDetailByIDMsg.subscribe((response: FlightDetails)=>
     {
       this.flightDetails = response;
+      this.flightDetailsService.setFlightDetails(response);
     })
     // this.flightDetails =this.flightSearchService.getFlightsById(this.flight_id);
   }
 
   closeResult: string;
 
-  constructor(private modalService: NgbModal, public activeModal: NgbActiveModal, private flightSearchService: FlightSearchService, private router: Router) {}
+  constructor(private modalService: NgbModal, public activeModal: NgbActiveModal, private flightSearchService: FlightSearchService, 
+              private router: Router, private flightDetailsService: FlightDetailsService) {}
 
   getTimetoDisplay(totalMinutes: number)
   {
@@ -39,37 +42,8 @@ export class FlightDetailsComponent implements OnInit {
     this.router.navigate(['/ticketType']);
   }
   
-
-  // openBackDropCustomClass(content: any) {
-  //   this.modalService.open(content, {backdropClass: 'light-blue-backdrop'});
-  // }
-
-  // openWindowCustomClass(content) {
-  //   this.modalService.open(content, { windowClass: 'dark-modal' });
-  // }
-
-  // openSm(content) {
-  //   this.modalService.open(content, { size: 'sm' });
-  // }
-
-  // openLg(content) {
-  //   this.modalService.open(content, { size: 'lg' });
-  // }
-
   openXl(content: any) {
     this.modalService.open(content, { size: 'xl' });
   }
-
-  // openVerticallyCentered(content) {
-  //   this.modalService.open(content, { centered: true });
-  // }
-
-  // openScrollableContent(longContent) {
-  //   this.modalService.open(longContent, { scrollable: true });
-  // }
-
-  // openModalDialogCustomClass(content) {
-  //   this.modalService.open(content, { modalDialogClass: 'dark-modal' });
-  // }
 
 }

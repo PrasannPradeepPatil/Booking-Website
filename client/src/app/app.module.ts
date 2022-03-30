@@ -17,6 +17,8 @@ import { FlightPaymentComponent } from './flight/payment/flight-payment/flight-p
 
 import { FlightListingFilterComponent } from './flight/flight-listing-filter/flight-listing-filter.component';
 import { PaymentStage1Component } from './flight/payment/payment-stage1/payment-stage1.component';
+import { PaymentStage4Component } from './flight/payment/payment-stage4/payment-stage4.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { PaymentStage1Component } from './flight/payment/payment-stage1/payment-
     FlightDetailsComponent,
     FlightPaymentComponent,
     FlightListingFilterComponent,
-    PaymentStage1Component
+    PaymentStage1Component,
+    PaymentStage4Component
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { PaymentStage1Component } from './flight/payment/payment-stage1/payment-
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FontAwesomeModule
 
   ],
   providers: [FlightDetailsService],

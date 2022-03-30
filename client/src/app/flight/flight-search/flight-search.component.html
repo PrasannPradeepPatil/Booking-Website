@@ -30,7 +30,7 @@
             <input type="text" name="sourceAirport" aria-label="source" class="form-control mdb-autocomplete" placeholder="Where from?" [formControl]="sourceAirport" formControlName="sourceAirport" (input)="suggestSource()">
             <div class="suggestions" *ngIf="sourceSuggestions.length">
                 <div *ngFor="let s of sourceSuggestions">
-                    <a style="cursor: pointer;" name="sourceSuggestions" routerlinkactive="active" (click)="onSourceSelect(s.airportCode)">
+                    <a style="cursor: pointer;" name="sourceSuggestions" routerlinkactive="active" (click)="onSourceSelect(s.airportcode)">
                         <span class="pull-left">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewbox="0 0 16 16">
                                 <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
@@ -38,8 +38,8 @@
                             </svg>
                         </span>
                         <div class="pull-right">
-                            <h4 class="list-group-item-heading">{{s.airportCode}}</h4>
-                            <p class="list-group-item-text">{{s.airportName}}</p>
+                            <h4 class="list-group-item-heading">{{s.airportcode}}</h4>
+                            <p class="list-group-item-text">{{s.airportname}}</p>
                         </div>
                     </a>
                 </div>
@@ -49,7 +49,7 @@
             <input type="text" name="destinationAirport" aria-label="destination" class="form-control" placeholder="Where to?" [formControl]="destinationAirport" formcontrolname="destinationAirport" (input)="suggestDestination()">
             <div class="suggestions" *ngIf="destinationSuggestions.length">
                 <div *ngFor="let s of destinationSuggestions">
-                    <a style="cursor: pointer;" name="destinationSuggestions" routerlinkactive="active" (click)="onDestinationSelect(s.airportCode)">
+                    <a style="cursor: pointer;" name="destinationSuggestions" routerlinkactive="active" (click)="onDestinationSelect(s.airportcode)">
                         <span class="pull-left">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewbox="0 0 16 16">
                                 <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
@@ -57,8 +57,8 @@
                             </svg>
                         </span>
                         <div class="pull-right">
-                            <h4 class="list-group-item-heading">{{s.airportCode}}</h4>
-                            <p class="list-group-item-text">{{s.airportName}}</p>
+                            <h4 class="list-group-item-heading">{{s.airportcode}}</h4>
+                            <p class="list-group-item-text">{{s.airportname}}</p>
                         </div>
                     </a>
                 </div>
