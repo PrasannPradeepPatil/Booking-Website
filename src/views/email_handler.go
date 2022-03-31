@@ -23,14 +23,14 @@ func Email(db *gorm.DB) gin.HandlerFunc {
 			return
 		}
 
-		log.Println("dest name : ", req.Email)
+		log.Println("dest name : ", req.EmailAdd)
 
 		rando := EncodeToString(6)
 		mailBody := "Dear Customer,\n\nPlease enter the below OTP for authentication.\n\n" + rando
 
 		from := "bookingprohelpdesk@gmail.com"
 		pass := "bsnumxkhfsemczan"
-		to := req.Email
+		to := req.EmailAdd
 
 		msg := "From: " + from + "\n" +
 			"To: " + to + "\n" +
@@ -47,7 +47,7 @@ func Email(db *gorm.DB) gin.HandlerFunc {
 
 		}
 		if err == nil {
-			json.Code = rando
+			json.OtpCode = rando
 			json.EmailStatus = "success"
 		}
 		log.Print("Gmail sent")

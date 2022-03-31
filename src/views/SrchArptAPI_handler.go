@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
+
 func SrchArptAPI(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
 		var json []models.SrchArptAPI
@@ -17,8 +18,11 @@ func SrchArptAPI(db *gorm.DB) gin.HandlerFunc {
 			log.Println("Error in req parsing")
 		}
 		log.Println(req.ArptSrchString)
+		var qs = req.ArptSrchString + "%"
+		log.Println(qs)
 
-		rows, err := db.Raw("select * from srch_arpt_apis where airport_code = ?", req.ArptSrchString).Rows()
+		rows, err := db.Raw("select cityname,airportcode,airportname,countryname from srch_arpt where airportcode like ? or airportname like ? or cityname like ?", req.ArptSrchString, qs, qs).Rows()
+		log.Println(rows.Columns())
 		defer rows.Close()
 		if err != nil {
 			log.Println("err : ", err)
