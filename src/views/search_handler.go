@@ -1,11 +1,8 @@
 package views
 
 import (
-	"encoding/base64"
-	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
 
 	"github.com/PrasannPradeepPatil/Booking-Website/src/models"
 
@@ -26,24 +23,24 @@ func SearchFlights(db *gorm.DB) gin.HandlerFunc {
 
 		log.Println("dest name : ", req.DestinationName)
 
-		rows, err := db.Raw("select * from searches where source_airport = ? and destination_airport=?", req.SourceName, req.DestinationName).Rows()
+		scity := ""
+		dcity := ""
+		rows, err := db.Raw("select * from searches where sourceairportcode = ? and destinationairportcode=?", req.SourceName, req.DestinationName).Rows()
+		db.Raw("select cityname from srch_arpt where airportcode = ?", req.SourceName).Scan(&scity)
+		db.Raw("select cityname from srch_arpt where airportcode = ?", req.DestinationName).Scan(&dcity)
 		defer rows.Close()
 		if err != nil {
 			log.Println("err : ", err)
 		}
-		path, err := os.Getwd()
-		log.Println("direc : ", path)
-		byte, err := ioutil.ReadFile(path + "\\images\\AA.jpg")
-		if err != nil {
-			log.Println("error in loading image ", err)
-		}
-		var base64encod string
-		base64encod += "data:image/jpg;base64"
-		base64encod += base64.StdEncoding.EncodeToString(byte)
-		log.Println("img ", base64encod)
 
 		for rows.Next() {
 			db.ScanRows(rows, &json)
+
+		}
+
+		for i := 0; i < len(json); i++ {
+			json[i].Sourcecity = scity
+			json[i].Destinationcity = dcity
 
 		}
 
@@ -51,5 +48,6 @@ func SearchFlights(db *gorm.DB) gin.HandlerFunc {
 
 		c.JSON(http.StatusOK, json)
 	}
+
 	return gin.HandlerFunc(fn)
 }
