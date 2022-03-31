@@ -9,7 +9,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func Price(db *gorm.DB) gin.HandlerFunc {
+func priced(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
 		var res models.PriceRes
 		var req models.PriceReq
