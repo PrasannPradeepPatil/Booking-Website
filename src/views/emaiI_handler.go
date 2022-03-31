@@ -42,12 +42,12 @@ func Email(db *gorm.DB) gin.HandlerFunc {
 
 		if req.MailType == "FCONF" {
 			mailBody = "Dear Customer,\n\nPlease find the confirmed booking details of your flight below.\n\n" + "Reference Number : " + req.ReferenceNumber + "\nCustomer Name : " + req.CustomerName + "\nSource : " + req.Source + "\nDestination : " + req.Destination + "\nTravel Date/s : " + req.DateOfBooking + "\n\n"
-			subject = "Flight Booking Confirmation OTP"
+			subject = "Flight Booking Confirmation"
 		}
 
 		if req.MailType == "HCONF" {
 			mailBody = "Dear Customer,\n\nPlease find the confirmed booking details of your hotel below.\n\n" + "Reference Number : " + req.ReferenceNumber + "\nCustomer Name : " + req.CustomerName + "\nHotel Name : " + req.Destination + "\nCity : " + req.BookingCity + "\nBooking Date/s : " + req.DateOfBooking + "\n\n"
-			subject = "Hotel Booking Confirmation OTP"
+			subject = "Hotel Booking Confirmation"
 		}
 
 		from := "bookingprohelpdesk@gmail.com"
@@ -65,7 +65,8 @@ func Email(db *gorm.DB) gin.HandlerFunc {
 
 		if err != nil {
 			log.Printf("smtp error: %s", err)
-			json.EmailStatus = "Failure to send Email" + err.Error()
+			json.EmailStatus = "failure"
+			json.ErrorCode = err.Error()
 
 		}
 		if err == nil {
