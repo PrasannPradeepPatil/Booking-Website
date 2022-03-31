@@ -25,11 +25,12 @@ func Payment(db *gorm.DB) gin.HandlerFunc {
 		}
 
 		log.Println("dest name : ", req.CustomerName)
-		emreq.Email = req.EmailAdd
+		emreq.EmailAdd = req.EmailAdd
+		emreq.MailType = "FOTP"
 		postBody, _ := json.Marshal(emreq)
 		reqBody := bytes.NewBuffer(postBody)
 
-		resp, err := http.Post("http://localhost:8080/email", "application/json", reqBody)
+		resp, err := http.Post("http://localhost:8080/booking/email", "application/json", reqBody)
 		if err != nil {
 			log.Println("An Error Occured calling email api ", err)
 		}
@@ -41,11 +42,10 @@ func Payment(db *gorm.DB) gin.HandlerFunc {
 		if emres.EmailStatus == "success" {
 			res.ErrorCode = ""
 			res.Status = "success"
-			res.OtpCode = emres.Code
+			res.OtpCode = emres.OtpCode
 		} else {
-			res.ErrorCode = ""
+			res.ErrorCode = emres.ErrorCode
 			res.Status = "failure"
-			res.OtpCode = ""
 		}
 
 		c.JSON(http.StatusOK, res)
