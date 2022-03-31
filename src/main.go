@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 
 	m "github.com/PrasannPradeepPatil/Booking-Website/src/models"
 	v "github.com/PrasannPradeepPatil/Booking-Website/src/views"
@@ -16,6 +17,13 @@ func main() {
 	if err != nil {
 		panic("failed to connect to the database ")
 	}
+
+	file, err := os.OpenFile("logs.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.SetOutput(file)
+
 	log.Printf(db.Name())
 
 	db.AutoMigrate(&m.Search{})
@@ -38,6 +46,21 @@ func main() {
 
 	x.POST("/booking/price", v.Price(db))
 	x.GET("/booking/price", v.Price(db))
+
+	x.POST("/booking/flightDetails", v.FlightDetails(db))
+	x.GET("/booking/flightDetails", v.FlightDetails(db))
+
+	x.POST("/booking/citySearch", v.SrchCity(db))
+	x.GET("/booking/citySearch", v.SrchCity(db))
+
+	x.POST("/booking/hotelSearch", v.HotelSearch(db))
+	x.GET("/booking/hotelSearch", v.HotelSearch(db))
+
+	x.POST("/booking/hotelDetails", v.HotelDetails(db))
+	x.GET("/booking/hotelDetails", v.HotelDetails(db))
+	
+	x.POST("/booking/flightConfirm", v.FlightConfirmation(db))
+	x.GET("/booking/flightConfirm", v.FlightConfirmation(db))
 
 	x.Run(":8080")
 }
