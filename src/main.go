@@ -58,6 +58,9 @@ func main() {
 
 	x.POST("/booking/hotelDetails", v.HotelDetails(db))
 	x.GET("/booking/hotelDetails", v.HotelDetails(db))
+	
+	x.POST("/booking/flightConfirm", v.FlightConfirmation(db))
+	x.GET("/booking/flightConfirm", v.FlightConfirmation(db))
 
 	x.Run(":8080")
 }
