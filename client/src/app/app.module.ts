@@ -19,6 +19,8 @@ import { FlightListingFilterComponent } from './flight-listing-filter/flight-lis
 import { PaymentStage1Component } from './payment-stage1/payment-stage1.component';
 import { PaymentStage3Component } from './payment-stage3/payment-stage3.component';
 import { HotelSearchComponent } from './hotel-search/hotel-search.component';
+import { HotelListingComponent } from './hotel-listing/hotel-listing.component';
+import { HotelListingFilterComponent } from './hotel-listing-filter/hotel-listing-filter.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { HotelSearchComponent } from './hotel-search/hotel-search.component';
     FlightListingFilterComponent,
     PaymentStage1Component,
     PaymentStage3Component,
-    HotelSearchComponent
+    HotelSearchComponent,
+    HotelListingComponent,
+    HotelListingFilterComponent
   ],
   imports: [
     BrowserModule,
