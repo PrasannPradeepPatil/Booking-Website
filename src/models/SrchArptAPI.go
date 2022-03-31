@@ -1,8 +1,8 @@
 package models
 
 type SrchArptAPI struct {
-	CityName    string `gorm:"not_null" form:"cityName" json:"cityname"`
-	AirportCode string `gorm:"not_null" form:"airportCode" json:"airportcode"`
-	AirportName string `gorm:"not_null" form:"airportName" json:"airportname"`
-	CountryName string `gorm:"not_null" form:"countryName" json:"countryname"`
+	Cityname    string `gorm:"not_null" form:"cityName" json:"cityname"`
+	Airportcode string `gorm:"not_null" form:"airportCode" json:"airportcode"`
+	Airportname string `gorm:"not_null" form:"airportName" json:"airportname"`
+	Countryname string `gorm:"not_null" form:"countryName" json:"countryname"`
 }

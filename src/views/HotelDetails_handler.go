@@ -21,7 +21,7 @@ func HotelDetails(db *gorm.DB) gin.HandlerFunc {
 		}
 
 		log.Println("ID : ", req.ID)
-		db.Raw("select city,state,Hotelname,rating,Address,Amenities from HotelData where ID = ?", req.ID).Scan(&res)
+		db.Raw("select city,state,Hotelname,rating,StandardPrice,Address,Amenities from HotelData where ID = ?", req.ID).Scan(&res)
 
 		log.Println("response value : ", res.City+" "+res.State+" "+res.HotelName+" "+res.Address+" "+res.Rating+" "+res.Amenities)
 
