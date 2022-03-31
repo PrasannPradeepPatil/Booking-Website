@@ -26,6 +26,8 @@ export class FlightSearchService
     getFlightsUrl: string = "/booking/flights";
     getFlightDetailsUrl: string = "/booking/flightDetails";
     flightDetails: FlightDetails;
+    flightDetailsArray: FlightDetails[];
+
 
     private messageSource = new BehaviorSubject<FlightDetails[]>(null);
     currentMessage = this.messageSource.asObservable();
@@ -46,10 +48,10 @@ export class FlightSearchService
     searchFlights(input: FlightSearch)
     {
         this.currentFlightSearch = input;
-        this.http.post(this.searchFlightUrl, input, httpOptions).subscribe(
+        this.http.post<FlightDetails[]>(this.searchFlightUrl, input, httpOptions).subscribe(
             response => {
-                console.log("Response for search flights");
-                console.log(response);
+                this.flightDetailsArray = response;
+                this.messageSource.next(this.flightDetailsArray);
             }
           );
 

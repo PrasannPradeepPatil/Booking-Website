@@ -25,10 +25,10 @@
                 <div class="row">
                     <div  class="col-xs-6">
                         <p style="margin-bottom: 0px">{{flightDetails.sourceAirportCode}} <fa-icon [icon] = 'faArrowRightLongIcon'></fa-icon> {{flightDetails.destinationAirportCode}}</p>
-                        <p style="color: gray; font-size: 90%;">{{flightDetails.departureTime | date: 'fullDate'}}</p>
+                        <p style="color: gray; font-size: 90%;">{{flightDetails.departuretime | date: 'fullDate'}}</p>
                     </div>
                     <div  class="col-xs-6">
-                        <p style="padding-left: 20px; margin-bottom: 0px">{{flightDetails.departureTime | date: 'shortTime'}} <fa-icon [icon]="faMinusIcon"></fa-icon> {{flightDetails.arrivalTime | date: 'shortTime'}}</p>
+                        <p style="padding-left: 20px; margin-bottom: 0px">{{flightDetails.departuretime | date: 'shortTime'}} <fa-icon [icon]="faMinusIcon"></fa-icon> {{flightDetails.arrivaltime | date: 'shortTime'}}</p>
                         <p style="padding-left: 20px;color: gray; font-size: 90%;">{{getTimetoDisplay(flightDetails.duration)}} Nonstop</p>
                     </div>
                 </div>
