@@ -6,7 +6,6 @@ import { AirportSearch } from '../../model/airport-search.model';
 import { Injectable } from "@angular/core"
 import { HttpClient , HttpResponse } from "@angular/common/http"
 import { HttpHeaders } from '@angular/common/http';
-import {catchError} from 'rxjs/operators'; 
 import { BehaviorSubject } from 'rxjs';
 
 const httpOptions = {

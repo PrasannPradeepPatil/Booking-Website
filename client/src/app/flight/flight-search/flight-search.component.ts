@@ -4,15 +4,17 @@ import { DateRange } from '../../model/dateRange.model';
 import { FlightSearch } from '../../model/flight-search.model';
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
-import { filter, map, tap } from 'rxjs/operators';
-
+import { NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-flight-search',
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css']
+
 })
+
+
+
 export class FlightSearchComponent implements OnInit {
 
   tripInfo: boolean =true;
@@ -100,4 +102,17 @@ export class FlightSearchComponent implements OnInit {
 
   
 
+
 }
+
+
+
+
+
+
+
+
+
+
+
+

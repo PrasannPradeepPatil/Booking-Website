@@ -52,4 +52,13 @@ export class FlightDetailsComponent implements OnInit {
     return this.util.transform(word);
   }
 
+  /*
+  ../booking
+  
+  Frontend --- request to get flights (GET/POST/PUT)
+  
+  
+  
+  */
+
 }
