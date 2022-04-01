@@ -1,5 +1,7 @@
+import { FlightDetails } from './../../../model/flightDetails.models';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FlightDetailsService } from '../../service/flight-details.service';
 
 @Component({
   selector: 'app-payment-stage1',
@@ -8,17 +10,17 @@ import { Router } from '@angular/router';
 })
 export class PaymentStage1Component implements OnInit {
 
-  constructor(private router: Router ) { }
+  flightDetails: FlightDetails = this.flightDetailsService.getFlightDetails();
+
+  constructor(private router: Router, private flightDetailsService: FlightDetailsService ) { }
 
   selectedTicketType: string;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 
   selectTicketType(input: string)
   {
-    console.log(input);
     this.selectedTicketType = input;
   }
 

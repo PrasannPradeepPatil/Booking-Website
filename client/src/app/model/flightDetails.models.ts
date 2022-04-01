@@ -1,8 +1,8 @@
 export class FlightDetails{
 
     id: string;
-    departuretime: string;
-    arrivaltime: string;
+    departureTime: string;
+    arrivalTime: string;
     sourceAirportCode: string;
     sourceAirportName: string;
     destinationAirportCode: string;
@@ -11,8 +11,12 @@ export class FlightDetails{
     duration: number;
     flightName: string;
     logo: string;
-    sourceairport : string;
-    destinationairport : string;
+    sourceAirport : string;
+    destinationAirport : string;
+    sourceCity: string;
+    destinationCity: string;
+    standardPrice: number;
+    flexiblePrice: number;
     
     constructor(public name: string, public amount: number){}
 }

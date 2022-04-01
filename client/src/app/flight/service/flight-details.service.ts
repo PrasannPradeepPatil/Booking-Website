@@ -13,6 +13,8 @@ export class FlightDetailsService {
   flightDetailsArray: FlightDetails[] =[];
   flightDetails: FlightDetails;
   passengerInformation: PassengerInformation;
+  ticketPriceURL: string = "/booking/price";
+
   constructor(private http: HttpClient) { }
 
   private messageSource = new BehaviorSubject<FlightDetails[]>(null);
@@ -24,8 +26,6 @@ export class FlightDetailsService {
   {
     var obj1 = {"sourceString":"a","destinationString":"v","startDate":{"year":2022,"month":2,"day":1},"endDate":{"year":2022,"month":2,"day":11},"tripType":"round-trip"};
     return this.flightDetails;
-
-
   }
 
   setPassengerInformation(passengerInformation : PassengerInformation)
@@ -41,6 +41,17 @@ export class FlightDetailsService {
   setFlightDetails(flightDetails: FlightDetails)
   {
     this.flightDetails = flightDetails;
+    this.populateTicketPrice(this.flightDetails);
+  }
+
+
+  populateTicketPrice(flightDetails: FlightDetails)
+  {
+    this.http.post<FlightDetails>(this.ticketPriceURL, {"ID": flightDetails.id}).subscribe(response => 
+      { 
+        this.flightDetails.standardPrice = response.standardPrice;
+        this.flightDetails.flexiblePrice = response.flexiblePrice;
+      });
   }
 
   

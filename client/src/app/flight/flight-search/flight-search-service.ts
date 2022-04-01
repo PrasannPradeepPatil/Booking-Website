@@ -72,21 +72,10 @@ export class FlightSearchService
     
     getFlightsById(id: string)
     {
-        // console.log("id ");
-        // console.log(id);
-        this.http.get<FlightDetails[]>(this.getFlightDetailsUrl).subscribe((response) => {
-            // console.log("id ");
-            // console.log(id);
-            console.log(response.find(x => x.id === id));
-            this.flightDetailByID.next(response.find(x => x.id === id));
-            // console.log(this.flightDetails);
-            // return this.flightDetails;
+        this.http.post<FlightDetails>(this.getFlightDetailsUrl, { ID : "001"}).subscribe((response) => {
+            this.flightDetails = response;
+            console.log(this.flightDetails);
+            this.flightDetailByID.next(this.flightDetails);
         });
-        // return this.http.get(this.getFlightsUrl);
-        // console.log("id ");
-        // console.log(this.flightDetails);
-        // console.log("flight ");
-        // console.log(this.flightDetails);
-        // return this.flightDetails;
     }
 } 

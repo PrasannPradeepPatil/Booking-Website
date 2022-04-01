@@ -1,3 +1,4 @@
+import { Util } from './../../common/util';
 import { FlightDetailsService } from './../service/flight-details.service';
 import { FlightDetails } from '../../model/flightDetails.models';
 import { Component, Input, OnInit } from '@angular/core';
@@ -28,7 +29,7 @@ export class FlightDetailsComponent implements OnInit {
   closeResult: string;
 
   constructor(private modalService: NgbModal, public activeModal: NgbActiveModal, private flightSearchService: FlightSearchService, 
-              private router: Router, private flightDetailsService: FlightDetailsService) {}
+              private router: Router, private flightDetailsService: FlightDetailsService, private util: Util) {}
 
   getTimetoDisplay(totalMinutes: number)
   {
@@ -44,6 +45,11 @@ export class FlightDetailsComponent implements OnInit {
   
   openXl(content: any) {
     this.modalService.open(content, { size: 'xl' });
+  }
+
+  transform(word: string)
+  {
+    return this.util.transform(word);
   }
 
 }
