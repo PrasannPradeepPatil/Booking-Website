@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core"
 import { HttpClient , HttpResponse } from "@angular/common/http"
 
 
-import { PaymentStage3 } from './../model/payment-stage3.model';
+import { PaymentStage3 } from '../../../model/payment-stage3.model';
 
 
 

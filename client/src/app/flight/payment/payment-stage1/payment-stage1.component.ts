@@ -22,11 +22,7 @@ export class PaymentStage1Component implements OnInit {
   selectTicketType(input: string)
   {
     this.selectedTicketType = input;
-  }
-
-  getTicketType()
-  {
-    return this.selectTicketType;
+    this.flightDetailsService.setTicketType(input);
   }
 
   next()

@@ -54,5 +54,8 @@ export class FlightDetailsService {
       });
   }
 
-  
+  setTicketType(ticketType: string)
+  {
+    this.flightDetails.ticketType = ticketType;
+  }
 }

@@ -19,7 +19,7 @@ import { FlightListingFilterComponent } from './flight/flight-listing-filter/fli
 import { PaymentStage1Component } from './flight/payment/payment-stage1/payment-stage1.component';
 import { PaymentStage4Component } from './flight/payment/payment-stage4/payment-stage4.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
-import { PaymentStage3Component } from './payment-stage3/payment-stage3.component';
+import { PaymentStage3Component } from './flight/payment/payment-stage3/payment-stage3.component';
 
 
 @NgModule({

@@ -6,6 +6,7 @@ import { FlightListingComponent } from './flight/flight-listing/flight-listing.c
 import { FlightDetailsComponent } from './flight/flight-details/flight-details.component';
 import { PaymentStage1Component } from './flight/payment/payment-stage1/payment-stage1.component';
 import { PaymentStage4Component } from './flight/payment/payment-stage4/payment-stage4.component';
+import { PaymentStage3Component } from './flight/payment/payment-stage3/payment-stage3.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,9 @@ const routes: Routes = [
   {path: 'details', component: FlightDetailsComponent},
   {path: 'payment', component: FlightPaymentComponent},
   {path: 'ticketType', component: PaymentStage1Component},
-  {path: 'paymentConfirmation', component: PaymentStage4Component}
+  {path: 'paymentConfirmation', component: PaymentStage4Component},
+  {path: 'paymentInput', component: PaymentStage3Component}
+
   
 ];
 

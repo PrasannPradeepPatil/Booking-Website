@@ -1,8 +1,10 @@
+import { Util } from 'src/app/common/util';
 import { Router } from '@angular/router';
 import { FlightDetailsService } from './../../service/flight-details.service';
 import { PassengerInformation } from '../../../model/passenger-info';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FlightDetails } from 'src/app/model/flightDetails.models';
 
 @Component({
   selector: 'app-flight-payment',
@@ -11,11 +13,14 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class FlightPaymentComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private flightDetailsService: FlightDetailsService, private router: Router) { }
+  constructor(private fb: FormBuilder, private flightDetailsService: FlightDetailsService, 
+              private router: Router, private util: Util) { }
 
   userForm :FormGroup;
   passengerInfo : PassengerInformation;
   submitted = false;
+  price: number;
+  flightDetails: FlightDetails = this.flightDetailsService.getFlightDetails();
   check: FormControl = new FormControl('',Validators.required);
 
   ngOnInit(): void {
@@ -28,15 +33,7 @@ export class FlightPaymentComponent implements OnInit {
       gender: '',
       check: '',
     });
-
-    // this.userForm = new FormGroup({
-    //   email: new FormControl(),
-    //   contact: new FormControl(),
-    //   first_name: new FormControl('Pranali'),
-    //   last_name: new FormControl(),
-    //   gender: new FormControl(),
-    //   check: new FormControl('', Validators.required),
-    // });
+    this.price = this.flightDetails.ticketType === 'economy' ? this.flightDetails.standardPrice : this.flightDetails.flexiblePrice;
   }
 
   onFormSubmit(form: FormGroup)
@@ -56,7 +53,22 @@ export class FlightPaymentComponent implements OnInit {
     console.log(this.passengerInfo);
     // this.flightDetailsService.passengerInfoSubject.next(this.passengerInfo);
     this.flightDetailsService.setPassengerInformation(this.passengerInfo);
-    this.router.navigate(['/paymentConfirmation']);
+    this.router.navigate(['/paymentInput']);
     // this.flightSearchService.searchFlights(this.flightSearch);   
+  }
+
+  getTaxes(price: number)
+  {
+    return this.util.getTaxes(price);
+  }
+
+  getTotal(price: number)
+  {
+    return this.util.getTotalFare(price);
+  }
+
+  getAirlineFees(price: number)
+  {
+    return this.util.getAirlineFees(price);
   }
 }

@@ -3,6 +3,7 @@ import { FlightDetails } from './../../../model/flightDetails.models';
 import { FlightDetailsService } from './../../service/flight-details.service';
 import { Component, OnInit } from '@angular/core';
 import {faArrowRightLong, faMinus} from '@fortawesome/free-solid-svg-icons';
+import { Util } from 'src/app/common/util';
 
 
 @Component({
@@ -20,10 +21,11 @@ export class PaymentStage4Component implements OnInit {
   first_name: string;
   last_name: string;
   gender: string;
+  price: number;
   flightDetails: FlightDetails = this.flightDetailsService.getFlightDetails();
   data = this.flightDetailsService.getPassengerInformation()
 
-  constructor(private flightDetailsService : FlightDetailsService) 
+  constructor(private flightDetailsService : FlightDetailsService, private util: Util) 
   { 
 
   }
@@ -35,6 +37,7 @@ export class PaymentStage4Component implements OnInit {
     this.first_name = this.data.first_name;
     this.last_name = this.data.last_name;
     this.gender = this.data.gender;
+    this.price = this.flightDetails.ticketType === 'economy' ? this.flightDetails.standardPrice : this.flightDetails.flexiblePrice;
     console.log(this.id);
    }
 
@@ -43,6 +46,21 @@ export class PaymentStage4Component implements OnInit {
     var hours = Math.floor(totalMinutes / 60);          
     var minutes = totalMinutes % 60;
     return hours+ "h : " + minutes + "m";
+  }
+
+  getTaxes(price: number)
+  {
+    return this.util.getTaxes(price);
+  }
+
+  getTotal(price: number)
+  {
+    return this.util.getTotalFare(price);
+  }
+
+  getAirlineFees(price: number)
+  {
+    return this.util.getAirlineFees(price);
   }
 
 }

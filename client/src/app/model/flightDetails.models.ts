@@ -17,6 +17,7 @@ export class FlightDetails{
     destinationCity: string;
     standardPrice: number;
     flexiblePrice: number;
+    ticketType: string;
     
     constructor(public name: string, public amount: number){}
 }

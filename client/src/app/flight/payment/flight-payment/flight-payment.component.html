@@ -1,56 +1,70 @@
-<div class="col-8">
-    <p class="card-text fw-bolder">Who's Flying?</p>
-    <div class="card" >
-        <div class="card-body">
-            <form [formGroup]="userForm" (ngSubmit)="onFormSubmit(userForm)">
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-md-4 mb-3">
-                      <input type="text" class="form-control-plaintext" id="staticEmail" formControlName="email">
+<div class="row">
+    <div class="col-sm-8">
+        <p class="card-text fw-bolder">Who's Flying?</p>
+        <div class="card">
+            <div class="card-body">
+                <form [formGroup]="userForm" (ngSubmit)="onFormSubmit(userForm)">
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-md-4 mb-3">
+                            <input type="text" class="form-control-plaintext" id="staticEmail" formControlName="email">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Contact Number</label>
-                    <div class="col-md-4 mb-3">
-                      <input type="text" class="form-control" formControlName="contact" id="inputContact" placeholder="Contact Number">
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Contact Number</label>
+                        <div class="col-md-4 mb-3">
+                            <input type="text" class="form-control" formControlName="contact" id="inputContact" placeholder="Contact Number">
+                        </div>
                     </div>
-                </div>
-                <div class="form-row">
-                  <div class="col-md-4 mb-3">
-                    <label for="validationDefault01">First name</label>
-                    <input type="text" class="form-control" formControlName="first_name" id="validationDefault01" placeholder="First name"  required>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <label for="validationDefault02">Last name</label>
-                    <input type="text" class="form-control" formControlName="last_name" id="validationDefault02" placeholder="Last name" required>
-                  </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputState">Gender</label>
-                        <select id="inputState" class="form-control" formControlName="gender">
-                          <option selected>Choose...</option>
-                          <option value="female">Female</option>
-                          <option value="male">Male</option>
-                        </select>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="validationDefault01">First name</label>
+                            <input type="text" class="form-control" formControlName="first_name" id="validationDefault01" placeholder="First name" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationDefault02">Last name</label>
+                            <input type="text" class="form-control" formControlName="last_name" id="validationDefault02" placeholder="Last name" required>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="form-group">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="true" id="invalidCheck2" formControlName="check" required>
-                    <label class="form-check-label" for="invalidCheck2">
-                      Agree to terms and conditions
-                    </label>
-                    <div *ngIf="submitted && userForm.controls['check'].invalid" class="invalid-feedback">Accept Ts & Cs is required</div>
-                  </div>
-                </div>
-                <button class="btn btn-primary" type="submit">Next</button>
-              </form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Gender</label>
+                            <select id="inputState" class="form-control" formControlName="gender">
+                                <option selected>Choose...</option>
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="true" id="invalidCheck2" formControlName="check" required>
+                            <label class="form-check-label" for="invalidCheck2">
+                                Agree to terms and conditions
+                            </label>
+                            <div *ngIf="submitted && userForm.controls['check'].invalid" class="invalid-feedback">Accept Ts & Cs is required</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Next</button>
+                </form>
+            </div>
         </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="container">
+        <h4>Total Cost
+          <span class="price" style="color:black">
+            <i class="fa fa-shopping-cart"></i>
+       
+          </span>
+        </h4>
+        <p>Base fare <span class="price">${{price}}</span></p>
+        <p>Taxes <span class="price">${{getTaxes(price)}}</span></p>
+        <p>Airline fees <span class="price">${{getAirlineFees(price)}}</span></p>
+        <hr>
+        <p>Total <span class="price" style="color:black"><b>${{getTotal(price)}}</b></span></p>
       </div>
+    </div>
 </div>
-
-
-
-

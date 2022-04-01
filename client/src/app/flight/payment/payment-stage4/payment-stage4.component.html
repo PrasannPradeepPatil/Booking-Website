@@ -40,12 +40,13 @@
                     <h5 class="card-title">1569-XXXX-XXXX-2091</h5>
                     <hr>
                     <p class="card-text" style="font-size: 80%; color: gray; margin-bottom: 0%;">Total Charge.</p>
-                    <h5 class="card-title">$1500.0</h5>
+                    <h5 class="card-title">${{getTotal(price)}}</h5>
                     <hr>
                     <p class="card-text" style="font-size: 80%; color: gray; margin-bottom: 0%;">Fare Breakup.</p>
-                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">Base fare : $1300.0</h5>
-                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">Taxes : $200.0</h5>
-                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">Total : $1500.0</h5>
+                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">Base fare : ${{price}}</h5>
+                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">Taxes : ${{getTaxes(price)}}</h5>
+                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">Airline Fees : ${{getAirlineFees(price)}}</h5>
+                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">Total : ${{getTotal(price)}}</h5>
                 </div>                
               </div>
             </div>
