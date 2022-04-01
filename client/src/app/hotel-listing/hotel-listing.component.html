@@ -1,73 +1,70 @@
 <div class="container" width="100%">
 
   <div class="card text-center">
-      <!-- SELECTION BUTTONS -->
-      <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="true" href="#">Cheapest</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Ratings</a>
-          </li>
-        </ul>
-      </div>
+    <!-- SELECTION BUTTONS -->
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="true" href="#">Cheapest</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Ratings</a>
+        </li>
+      </ul>
+    </div>
 
 
-      <!-- BODY -->
-      <div class="row">
-        <div class="col-4">
-          <div class="card">
-            <div class="card-body">
-              <app-hotel-listing-filter></app-hotel-listing-filter>
-            </div>
+    <!-- BODY -->
+    <div class="row">
+      <div class="col-4">
+        <div class="card">
+          <div class="card-body">
+            <app-hotel-listing-filter></app-hotel-listing-filter>
           </div>
-
         </div>
-        <div class="col-8">
-          <div class="card">
-            <div class="card-body">
-              <ul class="list-group">
-                <div class="list-group-item" style="cursor: pointer;" *ngFor = 'let hotelList of hotelListing'>
-                  <div class="card-body">     
-                    <div class="card-group">
-                        <div class="card">
-                          <div class="card-body">
-                            <h5 class="card-title d-flex justify-content-start">Hotel Details</h5>
-                            <div class = "d-flex justify-content-between">
-                                <img src="../assets/hotels.png"  alt="..." width="200" height="150">
-                                <!-- <p>	{{hotelList.Checkin }}<br>{{hotelList.Checkin}}</p> -->
-                                <!-- <p>{{getTimetoDisplay(flightDetail.duration)}}</p> -->
-                                <!-- <p>{{hotelList.arrivalTime | date:'short'}}<br>{{hotelList.destinationAirportCode}}</p> -->
-                            </div>
-                            
-          
-                          </div>
+
+      </div>
+      <div class="col-8">
+        <div class="card">
+          <div class="card-body">
+            <ul class="list-group">
+              <div class="list-group-item" style="cursor: pointer;" *ngFor='let hotelList of hotelListing'>
+                <div class="card-body">
+                  <div class="card-group">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                          <img src="../assets/hotels.png" alt="..." width="200" height="150">
                         </div>
-                        <div class="card">
-                          <div class="card-body">
-                            <!-- <h5 class="card-title">${{flightDetail.price}} </h5> -->
-                            <p class="card-text">Price for all travellers<br>Include carry-on Bag, personal item</p>
-                            <!-- <a class="btn btn-primary" name="seeFlight" (click)="openXl(flightDetail.Id)">See Flight details</a> -->
-                          </div>
-                        </div>
-              
+
+
+                      </div>
                     </div>
+                    <div class="card ">
+                      <div class="card-body ">
+                        <div class="ea9bf183d3 d14b211b4f febf9d5862 af9697be6b d7ff3c30ad e278108e40 e04c8ab03a ea9bf183d3 d9c681337c e278108e40 dd023375f5 a4225678b2 ">
+                            <a href = ""><h2><div data-testid="title" class="fcab3ed991 a23c043802"> Hotel &amp; Casino</div></h2></a>
+                        </div>
+                        <div class="a51f4b5adb">
+                        
+                          {{hotelList.State}} • {{hotelList.City}} </div>
+                        <div class="a51f4b5adb">Checkin:{{hotelList.Checkin.month}}/{{hotelList.Checkin.day}}/{{hotelList.Checkin.year}}</div>
+                        <div class="a51f4b5adb">Checkout:{{hotelList.Checkout.month}}/{{hotelList.Checkout.day}}/{{hotelList.Checkout.year}}</div>
+                        <br>
+                        <a class="btn btn-primary" name="seeHotel" >See Hotel details</a>
+
+                      </div>
+
+                    </div>
+
+                  </div>
                 </div>
-                </div>
-              </ul>
-            </div>
+              </div>
+            </ul>
           </div>
         </div>
       </div>
+    </div>
 
-  </div> 
+  </div>
 </div>
-
-
-
-
-
-  
-  
-  
