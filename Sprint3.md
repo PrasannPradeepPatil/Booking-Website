@@ -24,6 +24,7 @@ https://github.com/PrasannPradeepPatil/Booking-Website/projects/1?card_filter_qu
 
 
 ### Completed Features: -
+
 1. Payment-stage-3 component: This is the third stage of the payment's page that we implemented. This will take the user information and based on the information entered in input which will be sent to backend. The bacend will send the required response and will make the appropriate payment 
 ![Payment-Stage-3 Component](/Images/flight-listing-filter.PNG)
 
@@ -46,7 +47,7 @@ npm install
 ng serve
 This will start the webserver.
 
-#### Backend API's: -
+### Backend API's: -
 
 #### Payment API
 
@@ -110,6 +111,110 @@ Sample response Format:
 
 #### Hotel Search API
 
+Functionality: Returns the hotels available in the city and the state provided in the 
+search bar along with additional data regarding the hotels.
+
+Calling Conditions:
+1. When the customer clicks on search button after entering the required 
+information, the API is triggered and all the available hotels in the given city, 
+state on the checkin, checkout dates are returned. The filter fields are null in 
+this case.
+2. This API is also triggered when the customer hits apply filters button after 
+selecting the filters available. This sorts the search data in the requested 
+criteria.
+3. The response is a list of jsons with hotel data matching the search criteria.
+
+Development URI: http://localhost:8080/booking/hotelSearch
+
+Input fields:
+1. City
+    a. datatype: String
+    b. Mandatory field status: mandatory field in the input request.
+    c. Mandatory field value: mandatory value
+2. State
+    a. datatype: String
+    b. Mandatory field status: mandatory field in the input request.
+    c. Mandatory field value: mandatory value
+3. Checkin
+    a. datatype: String
+    b. Mandatory field status: mandatory field in the input request.
+    c. Mandatory field value: not a mandatory value
+4. Checkout
+    a. datatype: String
+    b. Mandatory field status: mandatory field in the input request.
+    c. Mandatory field value: not a mandatory value
+5. Pricefilter
+    a. datatype: String
+    b. Mandatory field status: mandatory field in the input request.
+    c. Mandatory field value: not a mandatory value
+6. Ratingfilter
+    a. datatype: String
+    b. Mandatory field status: mandatory field in the input request.
+    c. Mandatory field value: not a mandatory value
+
+Output fields: The output is a json having the following fields.
+1. City
+    a. datatype: String
+    b. Mandatory field status: Mandatory field in the response
+    c. Mandatory field value: mandatory value
+2. State
+    a. datatype: String or numeric
+    b. Mandatory field status: Mandatory field in the response
+    c. Mandatory field value: Mandatory Value
+3. Hotelname
+    a. datatype: String
+    b. Mandatory field status: Mandatory field in the response
+    c. Mandatory field value: Mandatory value.
+4. Rating
+    a. datatype: String
+    b. Mandatory field status: Mandatory field in the response
+    c. Mandatory field value: Mandatory value.
+5. Standardprice
+    a. datatype: String
+    b. Mandatory field status: Mandatory field in the response
+    c. Mandatory field value: Mandatory value.
+6. ID
+    a. datatype: String
+    b. Mandatory field status: Mandatory field in the response
+    c. Mandatory field value: Mandatory value (unique ID of a hotel)
+
+Sample Request Format:
+{
+ "City":"Gainesville",
+ "State":"Florida",
+ "Checkin":"3/27/2022",
+ "Checkout":"3/31/2022",
+ "Pricefilter":"",
+ "Ratingfilter":""
+}
+
+Sample response Format:
+[
+ {
+ "City": "Gainesville",
+ "State": "Florida",
+ "Hotelname": "Red Roof",
+ "Rating": "3.9",
+ "Standardprice": "",
+ "ID": "001"
+ },
+ {
+ "City": "Gainesville",
+ "State": "Florida",
+ "Hotelname": "Drury Inn & Suites",
+ "Rating": "4.8",
+ "Standardprice": "",
+ "ID": "002"
+ },
+ {
+ "City": "Gainesville",
+ "State": "Florida",
+ "Hotelname": "Double Tree",
+ "Rating": "4.1",
+ "Standardprice": "",
+ "ID": "003"
+ }
+]
 
 ### How to run the backend application: -
 go build
