@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HotelListingFilterComponent implements OnInit {
 
   constructor() { }
+  outboundClicked:boolean = true;
 
   ngOnInit(): void {
   }

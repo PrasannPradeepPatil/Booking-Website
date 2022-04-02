@@ -3,19 +3,19 @@ import { DateRange } from './dateRange.model';
 export class HotelListing {
     public State: string;
     public City: string;
-    public Checkin: NgbDate;
-    public Checkout: NgbDate;
-    public Pricefilter: string;
-    public Rangefilter : string;
+    public Hotelname: string;
+    public Rating: string;
+    public Standardprice: string;
+    public ID : string;
 
-    constructor(City: string, State: string, Checkin: NgbDate, Checkout: NgbDate, Pricefilter: string, Rangefilter: string)
+    constructor(City: string, State: string, Hotelname: string, Rating: string, Standardprice: string, ID: string)
     {
         this.City = City;
         this.State = State;
-        this.Checkin  = Checkin;
-        this.Checkout = Checkout;
-        this.Pricefilter = Pricefilter;
-        this.Rangefilter = Rangefilter;
+        this.Hotelname  = Hotelname;
+        this.Rating = Rating;
+        this.Standardprice = Standardprice;
+        this.ID = ID;
     }
 
 

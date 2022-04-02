@@ -4,10 +4,10 @@
         <p class="lead">Thank you for letting us help you.</p>
         <hr>
         <p><i>Hi {{first_name}} {{last_name}},  </i> <br>
-            Your trip from {{flightDetails.sourceAirportCode}} to {{flightDetails.destinationAirportCode}} is confirmed <br>
+            Your trip from {{transform(flightDetails.sourceCity)}} to {{transform(flightDetails.destinationCity)}} is confirmed <br>
             We will email you the ticket shortly at {{email}}</p>
 
-        <p><b> Your trip id is {{id}}. Please use this id for any further communication</b></p>
+        <p><b> Your trip id is {{flightDetails.id}}. Please use this id for any further communication</b></p>
         <p><br></p>
         <p>Just Booked</p>
 

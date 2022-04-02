@@ -1,3 +1,4 @@
+import { HotelSearchService } from './../hotel-search/hotel-search.service';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -10,20 +11,19 @@ import {NgbDate} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./hotel-listing.component.css']
 })
 export class HotelListingComponent implements OnInit {
-  hotelListing: HotelListing[] =[];
-  constructor() { }
+  hotelListing: HotelListing[] = this.hotelSearchService.getHotelsArray();
+  constructor(private hotelSearchService: HotelSearchService) { }
 
   ngOnInit(): void {
     var date1 =  new NgbDate(2020,19,22);
     var date2 = new NgbDate(2020,19,23);
-    var obj1 = new HotelListing("San mateo","California",date1,date2,"",""); 
-    var obj2 = new HotelListing("San Jose","California",date1,date2,"",""); 
-    var obj3 = new HotelListing("San Francisco","California",date1,date2,"",""); 
-
-    this.hotelListing.push(obj1);
-    this.hotelListing.push(obj2);
-    this.hotelListing.push(obj3);
-
+    this.hotelSearchService.currentMessage.subscribe(response =>
+      {
+        this.hotelListing = response;
+        console.log("Hotel Listing");
+    console.log(this.hotelListing);
+      })
+    
     
 
 

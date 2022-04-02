@@ -1,1 +1,153 @@
-<p>hotel-listing-filter works!</p>
+<form >
+
+    <div class="card-body">
+      <div class="card-group">
+        <!-- LEFT SIDE -->
+        <div class="col">
+          <!-- DURATION -->
+
+  
+          <!-- FLIGHT TIME -->
+          <div class="card">
+
+            <div class="card body">
+              <div *ngIf="outboundClicked">
+                <div>
+                  <b>Rating</b>
+                  <div class="form-check">
+                    <ul>
+                      <li style="text-align:left;">
+                        <input type="checkbox" formControlName="outBoundDepartureDuration1" class="form-check-input"
+                          value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">5+</label>
+                      </li>
+                      <li style="text-align:left;">
+                        <input type="checkbox" formControlName="outBoundDepartureDuration2" class="form-check-input"
+                          value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">4+</label>
+                      </li>
+                      <li style="text-align:left;">
+                        <input type="checkbox" formControlName="outBoundDepartureDuration3" class="form-check-input"
+                          value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">3+</label>
+                      </li>
+                      <li style="text-align:left;">
+                        <input type="checkbox" formControlName="outBoundDepartureDuration4" class="form-check-input"
+                          value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">2+</label>
+                      </li>
+  
+                    </ul>
+  
+                  </div>
+                </div>
+  
+                <div>
+                  <b>Popular Filters</b>
+                  <div class="form-check">
+                    <ul>
+                      <li style="text-align:left;">
+                        <input type="checkbox" formControlName="outBoundArrivalDuration1" class="form-check-input"
+                          id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">Resorts</label>
+                      </li>
+                      <li style="text-align:left;">
+                        <input type="checkbox" formControlName="outBoundArrivalDuration2" class="form-check-input"
+                          id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">Hotels</label>
+                      </li>
+                      <li style="text-align:left;">
+                        <input type="checkbox" formControlName="outBoundArrivalDuration3" class="form-check-input"
+                          id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">Resort Villages</label>
+                      </li>
+                      <li style="text-align:left;">
+                        <input type="checkbox" formControlName="outBoundArrivalDuration4" class="form-check-input"
+                          id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">Private jaccuzi</label>
+                      </li>
+  
+                    </ul>
+  
+                  </div>
+                </div>
+              </div>
+  
+              <div *ngIf="!outboundClicked">
+                InboundClicked
+                <div>
+                  <b>Departure From Orlando</b>
+                  <div class="form-check">
+                    <ul>
+                      <li>
+                        <input type="checkbox" formControlName="outBoundDepartureDuration1" class="form-check-input"
+                          value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">12:00 AM-05:59 AM</label>
+                      </li>
+                      <li>
+                        <input type="checkbox" formControlName="outBoundDepartureDuration2" class="form-check-input"
+                          value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">06:00 AM-11:59 AM</label>
+                      </li>
+                      <li>
+                        <input type="checkbox" formControlName="outBoundDepartureDuration3" class="form-check-input"
+                          value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">12:00 PM-05:59 PM</label>
+                      </li>
+                      <li>
+                        <input type="checkbox" formControlName="outBoundDepartureDuration4" class="form-check-input"
+                          value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">06:00 PM-11:59 PM</label>
+                      </li>
+  
+                    </ul>
+  
+                  </div>
+                </div>
+  
+                <div>
+                  <b>Arrival to Orlando</b>
+                  <div class="form-check">
+                    <ul>
+                      <li>
+                        <input type="checkbox" formControlName="outBoundArrivalDuration1" class="form-check-input"
+                          id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">12:00 AM-05:59 AM</label>
+                      </li>
+                      <li>
+                        <input type="checkbox" formControlName="outBoundArrivalDuration2" class="form-check-input"
+                          id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">06:00 AM-11:59 AM</label>
+                      </li>
+                      <li>
+                        <input type="checkbox" formControlName="outBoundArrivalDuration3" class="form-check-input"
+                          id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">12:00 PM-05:59 PM</label>
+                      </li>
+                      <li>
+                        <input type="checkbox" formControlName="outBoundArrivalDuration4" class="form-check-input"
+                          id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">06:00 PM-11:59 PM</label>
+                      </li>
+  
+                    </ul>
+  
+                  </div>
+                </div>
+              </div>
+  
+  
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+  
+  
+          
+  
+  
+  
+  
+        </div>
+  
+      </div>
+    </div>

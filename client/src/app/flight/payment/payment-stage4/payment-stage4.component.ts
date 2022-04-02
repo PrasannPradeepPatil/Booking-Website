@@ -63,4 +63,9 @@ export class PaymentStage4Component implements OnInit {
     return this.util.getAirlineFees(price);
   }
 
+  transform(input: string)
+  {
+    return this.util.transform(input);
+  }
+
 }

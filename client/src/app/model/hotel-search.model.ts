@@ -3,12 +3,12 @@ import { DateRange } from './dateRange.model';
 export class HotelSearch {
     public State: string;
     public City: string;
-    public Checkin: NgbDate;
-    public Checkout: NgbDate;
+    public Checkin: string;
+    public Checkout: string;
     public Pricefilter: string;
     public Rangefilter : string;
 
-    constructor(City: string, State: string, Checkin: NgbDate, Checkout: NgbDate, Pricefilter: string, Rangefilter: string)
+    constructor(City: string, State: string, Checkin: string, Checkout: string, Pricefilter: string, Rangefilter: string)
     {
         this.City = City;
         this.State = State;
