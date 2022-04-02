@@ -20,6 +20,7 @@ import { PaymentStage1Component } from './flight/payment/payment-stage1/payment-
 import { PaymentStage4Component } from './flight/payment/payment-stage4/payment-stage4.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { PaymentStage3Component } from './flight/payment/payment-stage3/payment-stage3.component';
+import { HotelSearchComponent } from './hotel-search/hotel-search.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { PaymentStage3Component } from './flight/payment/payment-stage3/payment-
     FlightListingFilterComponent,
     PaymentStage1Component,
     PaymentStage4Component,
-    PaymentStage3Component
+    PaymentStage3Component,
+    HotelSearchComponent
   ],
   imports: [
     BrowserModule,
