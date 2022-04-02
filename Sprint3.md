@@ -25,19 +25,24 @@ https://github.com/PrasannPradeepPatil/Booking-Website/projects/1?card_filter_qu
 
 ### Completed Features: -
 
-1. Payment-stage-3 component: This is the third stage of the payment's page that we implemented. This will take the user information and based on the information entered in input which will be sent to backend. The bacend will send the required response and will make the appropriate payment 
-![Payment-Stage-3 Component](/Images/flight-listing-filter.PNG)
+1. Payment-stage3 component: This is the third stage of the payment's page that we implemented. This will take the user information and based on the information entered in input which will be sent to backend. The bacend will send the required response and will make the appropriate payment 
 
-2. Hotels-search : We have implemented the hotel-search component with input fields like hotel location, start date and end date. The user will hit the seqarch button which will return a list of hotels at the input location and available within th input date range.
+![Payment-Stage-3 Component](/Images/Payment-stage3.PNG)
 
-![Hotel-Search Component](/Images/flight-listing-filter.PNG)
+2. Payment-stage4 component: This is the confirmation page after payment is done. This page displays the user payment details and price details along with payment confirmation prompt.
 
-3. Hotels-listing component: This component displays the list of the hotels that were returned by the backend based on the 
+![Payment-Stage-4 Component](/Images/Payment-stage4.PNG)
+
+3. Hotels-search : We have implemented the hotel-search component with input fields like hotel location, start date and end date. The user will hit the seqarch button which will return a list of hotels at the input location and available within th input date range.
+
+![Hotel-Search Component](/Images/Hotel-search.PNG)
+
+4. Hotels-listing component: This component displays the list of the hotels that were returned by the backend based on the 
 hotel-search inputs. The lists display the hotel image along with some hotel details returned by the backend.
 
-![Hotel-Search Component](/Images/flight-listing-filter.PNG)
+![Hotel-Search Component](/Images/hotel-listing.PNG)
 
-4. Hotel-filter component : We have started the implementation of hotel filter component. This component sends some filter details to the backend which will return the hotel lists satisfying the filter criteria.
+5. Hotel-filter component : We have started the implementation of hotel filter component. This component sends some filter details to the backend which will return the hotel lists satisfying the filter criteria.
 
 
 ### How to run the frontend application: -
@@ -215,6 +220,70 @@ Sample response Format:
  "ID": "003"
  }
 ]
+
+
+#### Hotel details API
+
+Functionality: Returns the details regarding the hotel selected by the customer from 
+the search options when hotel details button is selected.
+
+Calling Conditions:
+1. When the customer clicks on hotel details button on any one of the options 
+provided on the search page, this API is triggered with an unique ID of that 
+hotel option as an input and returns the details regarding it from the 
+database.
+2. The response is a json field with the values given below.
+
+Development URI: http://localhost:8080/booking/hotelDetails
+
+Input fields:
+1. ID
+    a. datatype: String
+    b. Mandatory field status: mandatory field in the input request.
+    c. Mandatory field value: mandatory value (Unique ID of the Hotel)
+
+Output fields: The output is a json having the following fields.
+1. City
+    a. datatype: String
+    b. Mandatory field status: Mandatory field in the response
+    c. Mandatory field value: mandatory value 
+2. State
+    a. datatype: String or numeric
+    b. Mandatory field status: Mandatory field in the response
+    c. Mandatory field value: mandatory value
+3. Hotelname
+    a. datatype: String
+    b. Mandatory field status: Mandatory field in the response
+    c. Mandatory field value: mandatory value.
+4. Rating
+    a. datatype: String
+    b. Mandatory field status: Mandatory field in the response
+    c. Mandatory field value: mandatory value.
+5. Address
+    a. datatype: String
+    b. Mandatory field status: Mandatory field in the response
+    c. Mandatory field value: mandatory value.
+6. Amenities
+    a. datatype: String
+    b. Mandatory field status: Mandatory field in the response
+    c. Mandatory field value: mandatory value.
+
+Sample Request Format:
+{
+ "ID":"001"
+}
+
+Sample response Format:
+{
+ "City": "Gainesville",
+ "State": "Florida",
+ "Hotelname": "Red Roof",
+ "Rating": "3.9",
+ "StandardPrice": "83",
+ "Address": "3500 SW 42nd St, Gainesville, FL 32608",
+ "Amenities": "Wifi, Swimming Pool, Parking, AC"
+}
+
 
 ### How to run the backend application: -
 go build
