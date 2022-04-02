@@ -13,8 +13,8 @@
 
 ### Sprint 3 overview
 
-In the third sprint, we have modified the "Flights" pafe to handle certaing edge case and made beautification of the page.
-We also started the "hotels" page.We implemented the hotel-search , hotel-listing and started with the hotels-filter components. 
+In the third sprint, we have modified the "Flights" page to handle certain edge cases and made beautification of the page.
+We also started the "hotels" page. We implemented the hotel search, and hotel-listing and started with the hotels-filter components. 
 
  
 
@@ -25,7 +25,7 @@ https://github.com/PrasannPradeepPatil/Booking-Website/projects/1?card_filter_qu
 
 ### Completed Features: -
 
-1. Payment-stage3 component: This is the third stage of the payment's page that we implemented. This will take the user information and based on the information entered in input which will be sent to backend. The bacend will send the required response and will make the appropriate payment 
+1. Payment-stage3 component: This is the third stage of the payment page that we implemented. This will take the user information and based on the information entered in input which will be sent to the backend. The backend will send the required response and will make the appropriate payment 
 
 ![Payment-Stage-3 Component](/Images/Payment-stage3.PNG)
 
@@ -33,7 +33,7 @@ https://github.com/PrasannPradeepPatil/Booking-Website/projects/1?card_filter_qu
 
 ![Payment-Stage-4 Component](/Images/Payment-stage4.PNG)
 
-3. Hotels-search : We have implemented the hotel-search component with input fields like hotel location, start date and end date. The user will hit the seqarch button which will return a list of hotels at the input location and available within th input date range.
+3. Hotels-search: We have implemented the hotel-search component with input fields like hotel location, start date, and end date. The user will hit the search button which will return a list of hotels at the input location and available within the input date range.
 
 ![Hotel-Search Component](/Images/Hotel-search.PNG)
 
