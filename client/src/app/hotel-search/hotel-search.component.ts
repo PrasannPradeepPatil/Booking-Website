@@ -46,7 +46,6 @@ export class HotelSearchComponent implements OnInit {
   }
 
   suggestState(){
-
   }
 
   suggestCity(){
@@ -55,8 +54,12 @@ export class HotelSearchComponent implements OnInit {
 
   onStateSelect(){
 
+
   }
   onCitySelect(){
+    // this.userForm.get('City').setValue(airportCode);
+    // this.destinationSuggestions = [];
+    // this.destinationAirport.setValue(airportCode);  
 
   }
 
