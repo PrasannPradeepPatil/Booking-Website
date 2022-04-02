@@ -46,8 +46,10 @@ npm install
 ng serve
 This will start the webserver.
 
-Backend API's: -
-Payment API
+#### Backend API's: -
+
+#### Payment API
+
 Functionality: 
 Returns the payment status, and otp code by triggering an email API 
 used for authenticating customer. The OTP is used at front end for authorization.
@@ -104,6 +106,11 @@ Sample response Format:
  "OtpCode": "160901",
  "ErrorCode": ""
 }
+
+
+#### Hotel Search API
+
+
 ### How to run the backend application: -
 go build
 -- This will build all the existing go files in the src folder.
