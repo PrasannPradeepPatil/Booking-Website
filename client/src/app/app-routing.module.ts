@@ -1,3 +1,4 @@
+import { HotelSearchComponent } from './hotel-search/hotel-search.component';
 import { FlightPaymentComponent } from './flight/payment/flight-payment/flight-payment.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'payment', component: FlightPaymentComponent},
   {path: 'ticketType', component: PaymentStage1Component},
   {path: 'paymentConfirmation', component: PaymentStage4Component},
-  {path: 'paymentInput', component: PaymentStage3Component}
+  {path: 'paymentInput', component: PaymentStage3Component},
+  {path: 'hotels', component: HotelSearchComponent}
 
   
 ];

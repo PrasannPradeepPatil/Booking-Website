@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -10,7 +11,7 @@ export class HeaderComponent implements OnInit {
   loginButtonChoice = "login"
 
   @Output() messageEvent = new EventEmitter<string>();
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     
@@ -18,6 +19,16 @@ export class HeaderComponent implements OnInit {
 
   sendMessage() {
     this.messageEvent.emit(this.navButtonChoice)
+  }
+
+  navigateFlight()
+  {
+    this.router.navigate(['/flights']);
+  }
+
+  navigatehotel()
+  {
+    this.router.navigate(['/hotels']);
   }
 
   

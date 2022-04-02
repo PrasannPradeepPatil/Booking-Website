@@ -2,12 +2,13 @@ import { NgbDate } from "@ng-bootstrap/ng-bootstrap";
 
 export class DateRange
 {
-    Checkin : NgbDate;
-    Checkout : NgbDate;
+    startDate : NgbDate;
+    endDate : NgbDate;
 
-    constructor(Checkin: NgbDate, Checkout: NgbDate)
+
+    constructor(startDate: NgbDate, endDate : NgbDate)
     {
-        this.Checkin = Checkin;
-        this.Checkout = Checkout;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 }

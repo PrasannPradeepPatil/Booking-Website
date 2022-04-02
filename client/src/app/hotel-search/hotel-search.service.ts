@@ -9,7 +9,7 @@ import { HotelSearch } from './../model/hotel-search.model';
 })
 export class HotelSearchService {
 
-  getHotelsUrl: string = "/booking/hotels";
+  getHotelsUrl: string = "/booking/hotelSearch";
 
   private currentHotelSearch : HotelSearch;
   private messageSource = new BehaviorSubject<HotelSearch[]>(null);
@@ -19,7 +19,7 @@ export class HotelSearchService {
    }
 
   searchHotels(input :HotelSearch){
-    this.http.get<HotelSearch[]>(this.getHotelsUrl).subscribe((response) => {this.messageSource.next(response)});
+    this.http.post<HotelSearch[]>(this.getHotelsUrl, input).subscribe((response) => {this.messageSource.next(response)});
     
 
   }

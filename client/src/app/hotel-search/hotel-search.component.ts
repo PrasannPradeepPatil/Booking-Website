@@ -39,7 +39,8 @@ export class HotelSearchComponent implements OnInit {
 
 
   onFormSubmit(){ 
-    this.hotelSearch = new HotelSearch(this.userForm.get('City').value,this.userForm.get('State').value,this.dateRange.Checkin,this.dateRange.Checkout,"","");
+    this.hotelSearch = new HotelSearch(this.userForm.get('City').value,this.userForm.get('State').value,this.dateRange.startDate,this.dateRange.endDate,"","");
+    console.log(this.hotelSearch);
     this.hotelSearchService.searchHotels(this.hotelSearch);  
 
   }
