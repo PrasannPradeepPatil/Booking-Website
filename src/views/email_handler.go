@@ -12,6 +12,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
+
 func Email(db *gorm.DB) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
 		var json models.EmailRes
@@ -23,10 +24,31 @@ func Email(db *gorm.DB) gin.HandlerFunc {
 			return
 		}
 
-		log.Println("dest name : ", req.EmailAdd)
-
+		log.Println("emailAddress: ", req.EmailAdd)
+		log.Println("mail Type: ", req.MailType)
+		mailBody := ""
+		subject := ""
 		rando := EncodeToString(6)
-		mailBody := "Dear Customer,\n\nPlease enter the below OTP for authentication.\n\n" + rando
+
+		if req.MailType == "FOTP" {
+			mailBody = "Dear Customer,\n\nPlease enter the below OTP for authentication to finish booking your flight .\n\n" + rando
+			subject = "Flight Booking OTP"
+		}
+
+		if req.MailType == "HOTP" {
+			mailBody = "Dear Customer,\n\nPlease enter the below OTP for authentication to finish booking your hotel .\n\n" + rando
+			subject = "Hotel Booking OTP"
+		}
+
+		if req.MailType == "FCONF" {
+			mailBody = "Dear Customer,\n\nPlease find the confirmed booking details of your flight below.\n\n" + "Reference Number : " + req.ReferenceNumber + "\nCustomer Name : " + req.CustomerName + "\nSource : " + req.Source + "\nDestination : " + req.Destination + "\nTravel Date/s : " + req.DateOfBooking + "\n\n"
+			subject = "Flight Booking Confirmation"
+		}
+
+		if req.MailType == "HCONF" {
+			mailBody = "Dear Customer,\n\nPlease find the confirmed booking details of your hotel below.\n\n" + "Reference Number : " + req.ReferenceNumber + "\nCustomer Name : " + req.CustomerName + "\nHotel Name : " + req.Destination + "\nCity : " + req.BookingCity + "\nBooking Date/s : " + req.DateOfBooking + "\n\n"
+			subject = "Hotel Booking Confirmation"
+		}
 
 		from := "bookingprohelpdesk@gmail.com"
 		pass := "bsnumxkhfsemczan"
@@ -34,7 +56,7 @@ func Email(db *gorm.DB) gin.HandlerFunc {
 
 		msg := "From: " + from + "\n" +
 			"To: " + to + "\n" +
-			"Subject: OTP\n\n" +
+			"subject: " + subject + "\n\n" +
 			mailBody
 
 		err := smtp.SendMail("smtp.gmail.com:587",
@@ -43,12 +65,18 @@ func Email(db *gorm.DB) gin.HandlerFunc {
 
 		if err != nil {
 			log.Printf("smtp error: %s", err)
-			json.EmailStatus = "Failure to send Email" + err.Error()
+			json.EmailStatus = "failure"
+			json.ErrorCode = err.Error()
 
 		}
 		if err == nil {
-			json.OtpCode = rando
-			json.EmailStatus = "success"
+			if req.MailType[len(req.MailType)-3:] == "OTP" {
+				json.OtpCode = rando
+				json.EmailStatus = "success"
+			}
+			if req.MailType[len(req.MailType)-4:] == "CONF" {
+				json.EmailStatus = "success"
+			}
 		}
 		log.Print("Gmail sent")
 
