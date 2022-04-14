@@ -25,13 +25,8 @@ export class HotelSearchService {
   searchHotels(input :HotelSearch){
     this.http.post<HotelListing[]>(this.getHotelsUrl, input).subscribe((response) => {
       
-      console.log(input)
-      console.log(response)
       this.hotelsListingArray = response
       this.messageSource.next(this.hotelsListingArray );
-
-      console.log(this.hotelsListingArray)
-  
     });
   }
 

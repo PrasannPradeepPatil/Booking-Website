@@ -23,6 +23,7 @@ import { PaymentStage3Component } from './flight/payment/payment-stage3/payment-
 import { HotelSearchComponent } from './hotel-search/hotel-search.component';
 import { HotelListingComponent } from './hotel-listing/hotel-listing.component';
 import { HotelListingFilterComponent } from './hotel-listing-filter/hotel-listing-filter.component';
+import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { HotelListingFilterComponent } from './hotel-listing-filter/hotel-listin
     PaymentStage3Component,
     HotelSearchComponent,
     HotelListingComponent,
-    HotelListingFilterComponent
+    HotelListingFilterComponent,
+    HotelDetailsComponent
   ],
   imports: [
     BrowserModule,
