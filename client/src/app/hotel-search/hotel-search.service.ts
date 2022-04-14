@@ -16,7 +16,7 @@ export class HotelSearchService {
   private messageSource = new BehaviorSubject<HotelListing[]>(null);
   currentMessage = this.messageSource.asObservable();
 
-  hotelsArray : HotelListing[];
+  hotelsListingArray : HotelListing[];
 
   constructor(public http: HttpClient) {
 
@@ -24,15 +24,20 @@ export class HotelSearchService {
 
   searchHotels(input :HotelSearch){
     this.http.post<HotelListing[]>(this.getHotelsUrl, input).subscribe((response) => {
-      console.log(response);
-      this.messageSource.next(response);
-      this.hotelsArray = response
+      
+      console.log(input)
+      console.log(response)
+      this.hotelsListingArray = response
+      this.messageSource.next(this.hotelsListingArray );
+
+      console.log(this.hotelsListingArray)
+  
     });
   }
 
   getHotelsArray()
   {
-    return this.hotelsArray;
+    return this.hotelsListingArray;
   }
 
 

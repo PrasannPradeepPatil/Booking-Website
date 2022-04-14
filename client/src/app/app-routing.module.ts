@@ -14,7 +14,7 @@ import { HotelListingComponent } from './hotel-listing/hotel-listing.component';
 const routes: Routes = [
   {path: '', redirectTo: '/flights', pathMatch: 'full'},
   {path:'flights', component: FlightSearchComponent, children:[
-    {path: 'listing', component: FlightListingComponent}]},
+  {path: 'listing', component: FlightListingComponent}]},
   {path: 'details', component: FlightDetailsComponent},
   {path: 'payment', component: FlightPaymentComponent},
   {path: 'ticketType', component: PaymentStage1Component},
@@ -22,7 +22,6 @@ const routes: Routes = [
   {path: 'paymentInput', component: PaymentStage3Component},
   {path: 'hotels', component: HotelSearchComponent},
   {path: 'hotelListing', component: HotelListingComponent}
-  
 ];
 
 @NgModule({

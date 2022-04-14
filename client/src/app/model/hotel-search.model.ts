@@ -6,16 +6,16 @@ export class HotelSearch {
     public Checkin: string;
     public Checkout: string;
     public Pricefilter: string;
-    public Rangefilter : string;
+    public Ratingfilter : string;
 
-    constructor(City: string, State: string, Checkin: string, Checkout: string, Pricefilter: string, Rangefilter: string)
+    constructor(City: string, State: string, Checkin: string, Checkout: string, Pricefilter: string, Ratingfilter: string)
     {
         this.City = City;
         this.State = State;
         this.Checkin  = Checkin;
         this.Checkout = Checkout;
         this.Pricefilter = Pricefilter;
-        this.Rangefilter = Rangefilter;
+        this.Ratingfilter = Ratingfilter;
     }
 
 
