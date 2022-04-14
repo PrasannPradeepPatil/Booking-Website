@@ -21,7 +21,7 @@ var router *gin.Engine
 
 func setupDB() *gorm.DB {
 
-	db, err := gorm.Open(sqlite.Open("flights.db"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("db_test.db"), &gorm.Config{})
 	if err != nil {
 		panic("Failed to connect database!")
 	}
@@ -42,8 +42,6 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	x.POST("/booking/hotelSearch", v.HotelSearch(db))
 
 	x.POST("/booking/hotelDetails", v.HotelDetails(db))
-
-	x.POST("/booking/flightConfirm", v.FlightConfirmation(db))
 
 	x.POST("/booking/hotelConfirm", v.HotelConfirmation(db))
 
@@ -73,10 +71,12 @@ func TestMain(m *testing.M) {
 
 }
 
-func TestSearchCityPass(t *testing.T) {
+func TestSample(t *testing.T) {
+	fmt.Println("Sample test case")
+}
 
-	fmt.Println("inside search city test Pass")
-
+func TestCitySearchPass(t *testing.T) {
+	fmt.Println("Inside search city pass")
 	w := httptest.NewRecorder()
 	req := m.CitySearchReq{
 		SrchStr: "F",
@@ -84,9 +84,7 @@ func TestSearchCityPass(t *testing.T) {
 	payload, _ := json.Marshal(req)
 	req1, _ := http.NewRequest("POST", "/booking/citySearch", strings.NewReader(string(payload)))
 	req1.Header.Set("Content-Type", "application/json")
-
 	router.ServeHTTP(w, req1)
-	fmt.Print("Res body: ", w.Body)
 	assert.Equal(t, 200, w.Code, "Expected Response status is OK")
 	assert.Equal(t, "[{\"City\":\"Florida City\",\"State\":\"Florida\"},{\"City\":\"Fort Lauderdale\",\"State\":\"Florida\"}]", w.Body.String(), "Response should be as expected")
 
@@ -148,4 +146,120 @@ func TestHotelSearchFail(t *testing.T) {
 	router.ServeHTTP(w, req1)
 	assert.Equal(t, 200, w.Code, "Expected Response status is OK")
 	assert.Equal(t, "\"No hotel data available for this city\"", w.Body.String(), "No data response message should be returned")
+}
+
+func TestHotelDetailsPass(t *testing.T) {
+
+	fmt.Println("inside Hotel details API testcase: Pass ")
+
+	w := httptest.NewRecorder()
+	req := m.DetailsReq{
+		ID: "001",
+	}
+	payload, _ := json.Marshal(req)
+	req1, _ := http.NewRequest("POST", "/booking/hotelDetails", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+	router.ServeHTTP(w, req1)
+	assert.Equal(t, 200, w.Code, "Expected Response status is OK")
+	assert.Equal(t, "{\"City\":\"Gainesville\",\"State\":\"Florida\",\"Hotelname\":\"Red Roof\",\"Rating\":\"3.9\",\"Standardprice\":\"83\",\"Address\":\"3500 SW 42nd St, Gainesville, FL 32608\",\"Amenities\":\"Wifi, Swimming Pool, Parking, AC\",\"ID\":\"001\"}", w.Body.String(), "Response should be like expected")
+}
+
+func TestHotelDetailsFail(t *testing.T) {
+
+	fmt.Println("inside hotel details test Fail ")
+
+	w := httptest.NewRecorder()
+	req := m.DetailsReq{
+		ID: "125478",
+	}
+	payload, _ := json.Marshal(req)
+	req1, _ := http.NewRequest("POST", "/booking/hotelDetails", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+	router.ServeHTTP(w, req1)
+	assert.Equal(t, 200, w.Code, "Expected Response status is OK")
+	assert.Equal(t, "\"No hotel details available for this ID\"", w.Body.String(), "No data response message should be returned")
+}
+
+func TestHotelPaymentPass(t *testing.T) {
+
+	fmt.Println("inside Hotel payment API testcase: Pass ")
+
+	w := httptest.NewRecorder()
+	req := m.HotelPayReq{
+		CustomerName: "Ahamad Shaik",
+		MobileNumber: "3527093318",
+		EmailAdd:     "ahamadshaik333@gmail.com",
+	}
+	payload, _ := json.Marshal(req)
+	req1, _ := http.NewRequest("POST", "/booking/hotelPayment", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+	router.ServeHTTP(w, req1)
+	assert.Equal(t, 200, w.Code, "Expected Response status is OK")
+	// assert.Equal(t, "{\"City\":\"Gainesville\",\"State\":\"Florida\",\"Hotelname\":\"Red Roof\",\"Rating\":\"3.9\",\"Standardprice\":\"83\",\"Address\":\"3500 SW 42nd St, Gainesville, FL 32608\",\"Amenities\":\"Wifi, Swimming Pool, Parking, AC\",\"ID\":\"001\"}", w.Body.String(), "Response should be like expected")
+}
+
+func TestHotelPaymentFail(t *testing.T) {
+
+	fmt.Println("inside hotel payment test Fail ")
+
+	w := httptest.NewRecorder()
+	req := m.HotelPayReq{
+		CustomerName: "Ahamad Shaik",
+		MobileNumber: "3527093318",
+		EmailAdd:     "257896548",
+	}
+	payload, _ := json.Marshal(req)
+	req1, _ := http.NewRequest("POST", "/booking/hotelPayment", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+	router.ServeHTTP(w, req1)
+	assert.Equal(t, 200, w.Code, "Expected Response status is OK")
+	assert.Equal(t, "{\"Status\":\"failure\",\"OtpCode\":\"\",\"ErrorCode\":\"\"}", w.Body.String(), "failure status should be returned")
+}
+
+func TestHotelConfPass(t *testing.T) {
+
+	fmt.Println("inside Hotel payment API testcase: Pass ")
+
+	w := httptest.NewRecorder()
+	req := m.HotelConfirmationReq{
+		CodeStatus:   "Success",
+		BookingDates: "3/28/2022 - 3/31/2022",
+		CustomerName: "Ahamad Shaik",
+		EmailAdd:     "ahamadshaik333@gmail.com",
+		MobileNumber: "3527093318",
+		HotelName:    "Drury Inn",
+		City:         "Gainesville",
+		State:        "Florida",
+		ID:           "001",
+	}
+	payload, _ := json.Marshal(req)
+	req1, _ := http.NewRequest("POST", "/booking/hotelConfirm", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+	router.ServeHTTP(w, req1)
+	assert.Equal(t, 200, w.Code, "Expected Response status is OK")
+	assert.Equal(t, "{\"Emailstatus\":\"success\",\"Apistatus\":\"success\",\"Errorcode\":\"\"}", w.Body.String(), "Response should be like expected")
+}
+
+func TestHotelConfFail(t *testing.T) {
+
+	fmt.Println("inside hotel payment test Fail ")
+
+	w := httptest.NewRecorder()
+	req := m.HotelConfirmationReq{
+		CodeStatus:   "Success",
+		BookingDates: "3/28/2022 - 3/31/2022",
+		CustomerName: "Ahamad Shaik",
+		EmailAdd:     "",
+		MobileNumber: "3527093318",
+		HotelName:    "Drury Inn",
+		City:         "Gainesville",
+		State:        "Florida",
+		ID:           "001",
+	}
+	payload, _ := json.Marshal(req)
+	req1, _ := http.NewRequest("POST", "/booking/hotelConfirm", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+	router.ServeHTTP(w, req1)
+	assert.Equal(t, 200, w.Code, "Expected Response status is OK")
+	// assert.Equal(t, "{\"Status\":\"failure\",\"OtpCode\":\"\",\"ErrorCode\":\"\"}", w.Body.String(), "failure status should be returned")
 }
