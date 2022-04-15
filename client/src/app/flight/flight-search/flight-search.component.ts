@@ -52,7 +52,6 @@ export class FlightSearchComponent implements OnInit {
   {
     this.flightSearchService.getSuggestions(this.userForm.get('sourceAirport').value).subscribe(
       (response: any ) => {
-        console.log(response);
         this.sourceSuggestions = response;
       }
     );

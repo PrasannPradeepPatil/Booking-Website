@@ -1,14 +1,12 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { HotelSearch } from '../model/hotel-search.model';
 import { DateRange } from './../model/dateRange.model';
 import { HotelSearchService } from './hotel-search.service';
 import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 
-/*
-1.fromDate -- checkin , toDate -- checkout
-*/
+
 
 @Component({
   selector: 'app-hotel-search',
