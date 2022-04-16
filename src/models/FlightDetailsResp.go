@@ -14,7 +14,5 @@ type FlightDetailsResp struct {
 	Duration               string `gorm:"not_null" form:"Duration" json:"duration"`
 	Flightname             string `gorm:"not_null" form:"Flightname" json:"flightName"`
 	Boardingtime           string `gorm:"not_null" form:"Boardingtime" json:"boardingTime"`
-	Checkinluggage         string `gorm:"not_null" form:"Checkinluggage" json:"checkinLuggage"`
-	Cabin                  string `gorm:"not_null" form:"Cabin" json:"cabin"`
-	Cancellation           string `gorm:"not_null" form:"Cancellation" json:"cancellation"`
+	ID                     string `gorm:"not_null" form:"ID" json:"id"`
 }
