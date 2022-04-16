@@ -12,8 +12,9 @@ import { HotelListingService } from './hotel-listing.service';
 })
 export class HotelListingComponent implements OnInit {
   hotelListing: HotelListing[] = this.hotelSearchService.getHotelsArray();
-  hotelListingService:HotelListingService
-  constructor(private hotelSearchService: HotelSearchService,hotelListingService:HotelListingService) { }
+  constructor(private hotelSearchService: HotelSearchService,private hotelListingService:HotelListingService) {
+
+   }
 
   ngOnInit(): void {
     this.hotelSearchService.currentMessage.subscribe(response =>

@@ -16,11 +16,11 @@ export class HotelListingService {
   }
 
   getHotelDetails(id : String){
-    this.http.post<HotelDetails>(this.hotelDetailssUrl,id).subscribe(
+    this.http.post<HotelDetails>(this.hotelDetailssUrl, {"ID": id}).subscribe(
       (response) =>{
         this.hotelDetails = response
         console.log("HOTEL DETAILS")
-        console.log( this.hotelDetails)
+        console.log(this.hotelDetails)
       }
     )
   }
