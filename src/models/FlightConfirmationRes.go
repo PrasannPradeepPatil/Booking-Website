@@ -1,7 +1,7 @@
 package models
 
 type FlightConfirmationRes struct {
-	Emailstatus string `gorm:"not_null" form:"Emailstatus" json:"Emailstatus"`
-	Apistatus   string `gorm:"not_null" form:"Apistatus" json:"Apistatus"`
-	Errorcode   string `gorm:"not_null" form:"Errorcode" json:"Errorcode"`
+	Emailstatus string `gorm:"not_null" form:"Emailstatus" json:"emailStatus"`
+	Apistatus   string `gorm:"not_null" form:"Apistatus" json:"apiStatus"`
+	Errorcode   string `gorm:"not_null" form:"Errorcode" json:"errorCode"`
 }
