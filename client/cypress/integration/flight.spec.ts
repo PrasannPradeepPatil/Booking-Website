@@ -8,9 +8,10 @@ describe("Flight page", () => {
 describe("Flight page", () => {
   it.only("Search Flights", () => {
     cy.visit("/");
-    cy.get("input[name='sourceAirport']").type("GNV")
+    cy.get("input[name='sourceAirport']").type("MCO")
     cy.get("a[name='sourceSuggestions']").eq(0).click();
-    cy.get("input[name='destinationAirport']").type("LAX")
+    cy.get("input[name='destinationAirport']").type("MIA")
+    cy.get("a[name='destinationSuggestions']").eq(0).click();
     cy.get('button[id="flightSearch"]').click();
   });
 
