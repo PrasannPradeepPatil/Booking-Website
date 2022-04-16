@@ -3,6 +3,7 @@ package views
 import (
 	"log"
 	"net/http"
+	"strings"
 
 	"github.com/PrasannPradeepPatil/Booking-Website/src/models"
 
@@ -23,7 +24,30 @@ func HotelSearch(db *gorm.DB) gin.HandlerFunc {
 
 		log.Println("Hotel Search request : ", req.City+" ", req.State+" "+req.Checkin+" "+req.Checkout+" "+req.Pricefilter+" "+req.Ratingfilter)
 
-		rows, err := db.Raw("select city,state,Hotelname,rating,standardprice,id from HotelData where city = ? and state=?", req.City, req.State).Rows()
+		var query string
+		//base query
+		query = "select city,state,Hotelname,rating,standardprice,id from HotelData where city = \"" + req.City + "\" and state = \"" + req.State + "\""
+		log.Println("Base query: " + query)
+
+		//filtering conditions
+		if req.Pricefilter != "" || req.Ratingfilter != "" {
+			query = query + " order by"
+			if req.Pricefilter == "A" {
+				query = query + " Standardprice,"
+			} else if req.Pricefilter == "D" {
+				query = query + " standardprice desc,"
+			}
+			if req.Ratingfilter == "A" {
+				query = query + " rating,"
+			} else if req.Ratingfilter == "D" {
+				query = query + " rating desc,"
+			}
+			query = strings.TrimSuffix(query, ",")
+		}
+
+		log.Println("Final query after filter checks :" + query)
+
+		rows, err := db.Raw(query).Rows()
 		defer rows.Close()
 		if err != nil {
 			log.Println("err : ", err)
@@ -34,8 +58,11 @@ func HotelSearch(db *gorm.DB) gin.HandlerFunc {
 		}
 
 		log.Println(res)
-
-		c.JSON(http.StatusOK, res)
+		if len(res) == 0 {
+			c.JSON(http.StatusOK, "No hotel data available for this city")
+		} else {
+			c.JSON(http.StatusOK, res)
+		}
 	}
 
 	return gin.HandlerFunc(fn)
