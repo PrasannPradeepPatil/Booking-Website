@@ -1,5 +1,6 @@
 package models
 
 type DetailsReq struct {
-	ID string
+	ID        string
+	Startdate string
 }
