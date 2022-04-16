@@ -1,8 +1,8 @@
 package models
 
 type PayRes struct {
-	Status    string `gorm:"not_null" form:"Status" json:"Status"`
-	OtpCode   string `gorm:"not_null" form:"OtpCode" json:"OtpCode"`
-	ErrorCode string `gorm:"not_null" form:"ErrorCode" json:"ErrorCode"`
+	Status    string `gorm:"not_null" form:"Status" json:"status"`
+	OtpCode   string `gorm:"not_null" form:"OtpCode" json:"otpCode"`
+	ErrorCode string `gorm:"not_null" form:"ErrorCode" json:"errorCode"`
 	
 }

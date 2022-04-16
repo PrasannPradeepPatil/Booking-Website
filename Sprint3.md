@@ -52,6 +52,9 @@ npm install
 ng serve
 This will start the webserver.
 
+End to end testing of Flights Feature:-
+![Cypress Testing for Flights](/Images/Cypress_Flights.gif)
+
 ### Backend API's: -
 
 #### Payment API
