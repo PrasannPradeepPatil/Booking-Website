@@ -1,7 +1,6 @@
 package main
 
 import (
-	m "Booking-Website/src/models"
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
@@ -9,36 +8,40 @@ import (
 	"strings"
 	"testing"
 
+	m "github.com/PrasannPradeepPatil/Booking-Website/src/models"
+	"github.com/stretchr/testify/assert"
+
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
 
-var dbName string = "test.db"
-var storeName string = "testsecret"
-var sessionName string = "testsession"
-var CitySearch []m.CitySearch
-var HotelSearch []m.HotelSearch
-var HotelDetails []m.HotelDetails
+var dbname string = "test.db"
+var storename string = "testsecret"
+var sessionname string = "testsession"
+var CitySearch []m.CitySearchRes
+var HotelSearch []m.HotelSearchRes
+var HotelDetails []m.HotelDetailsRes
+
 var router *gin.Engine
 
-func setupTestDb(dbName string) *gorm.DB {
+func setup_TestDb(dbName string) *gorm.DB {
 
 	db, err := gorm.Open(sqlite.Open(dbName), &gorm.Config{})
 	if err != nil {
 		panic("Failed to connect database!")
 	}
 
-	db.Migrator().DropTable(&m.CitySearch{})
-	db.Migrator().DropTable(&m.HotelSearch{})
+	db.Migrator().DropTable(&m.CitySearchRes{})
+	db.Migrator().DropTable(&m.HotelSearchRes{})
 
-	db.AutoMigrate(&m.CitySearch{}, &m.HotelSearch{})
+	db.AutoMigrate(&m.CitySearchReq{}, &m.HotelSearchRes{})
 
 	return db
 }
 
-func initData(db *gorm.DB) {
-	CitySearch = []m.CitySearch{
+func init_Data(db *gorm.DB) {
+	CitySearch = []m.CitySearchRes{
 		{
 			City:  "Gainesville",
 			State: "Florida",
@@ -75,7 +78,7 @@ func initData(db *gorm.DB) {
 
 	db.Create(&CitySearch)
 
-	HotelSearch = []m.HotelSearch{
+	HotelSearch = []m.HotelSearchRes{
 		{
 			City:          "Gainesville",
 			State:         "Florida",
@@ -135,7 +138,7 @@ func initData(db *gorm.DB) {
 	}
 	db.Create(&HotelSearch)
 
-	HotelDetails = []m.HotelDetails{
+	HotelDetails = []m.HotelDetailsRes{
 		{
 			City:          "Gaineville",
 			State:         "Florida",
@@ -176,21 +179,19 @@ func initData(db *gorm.DB) {
 	db.Create(&HotelDetails)
 }
 
-func TestMain(m *testing.M) {
-	db := setupTestDb(dbName)
+func Testmain(m *testing.M) {
+	db := setup_TestDb(dbname)
 
-	initData(db)
-
-	router = SetupRouter(db, storeName, sessionName)
-
+	init_Data(db)
+	router = setUpRouter(db)
 	code := m.Run()
 
 	os.Exit(code)
 }
 
-func SearchHotelsPassCase(t *testing.T) {
-	HotelSearch := m.HotelSearch{
-		CityName: "Gainesville",
+func TestSearchHotelsPassCase(t *testing.T) {
+	HotelSearch := m.HotelSearchRes{
+		City: "Gainesville",
 	}
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest("GET", "/allhotels", nil)
@@ -204,9 +205,9 @@ func SearchHotelsPassCase(t *testing.T) {
 
 }
 
-func SearchAirportResPassCase(t *testing.T) {
-	HotelSearch := m.HotelSearch{
-		CityName: "Gainesville",
+func TestSearchHotelPassCase(t *testing.T) {
+	HotelSearch := m.HotelSearchRes{
+		City: "Gainesville",
 	}
 	payload, _ := json.Marshal(HotelSearch)
 	nr := httptest.NewRecorder()
@@ -216,7 +217,7 @@ func SearchAirportResPassCase(t *testing.T) {
 	router.ServeHTTP(nr, req1)
 	cookieValue := nr.Result().Header.Get("Set-Cookie")
 	if nr.Code == 200 {
-		HotelSearch := m.HotelSearch{
+		HotelSearch := m.HotelSearchRes{
 			City:          "Gainesville",
 			State:         "Florida",
 			HotelName:     "Super 8",
@@ -235,9 +236,9 @@ func SearchAirportResPassCase(t *testing.T) {
 	}
 }
 
-func hotelSearchPassCase(t *testing.T) {
-	HotelSearch := m.HotelSearch{
-		CityName: "Miami",
+func TesthotelSearchPassCase(t *testing.T) {
+	HotelSearch := m.HotelSearchRes{
+		City: "Miami",
 	}
 	payload, _ := json.Marshal(HotelSearch)
 	nr := httptest.NewRecorder()
@@ -247,7 +248,7 @@ func hotelSearchPassCase(t *testing.T) {
 	router.ServeHTTP(nr, req1)
 	cookieValue := nr.Result().Header.Get("Set-Cookie")
 	if nr.Code == 200 {
-		HotelSearch := m.HotelSearch{
+		HotelSearch := m.HotelSearchRes{
 			City:          "Miami",
 			State:         "Florida",
 			HotelName:     "MMM",
@@ -266,9 +267,9 @@ func hotelSearchPassCase(t *testing.T) {
 	}
 }
 
-func SerchhotelFailCase(t *testing.T) {
-	HotelSearch := m.HotelSearch{
-		CityName: "Miami",
+func TestSerchhotelFailCase(t *testing.T) {
+	HotelSearch := m.HotelSearchRes{
+		City: "Miami",
 	}
 	payload, _ := json.Marshal(HotelSearch)
 	nr := httptest.NewRecorder()
@@ -277,7 +278,7 @@ func SerchhotelFailCase(t *testing.T) {
 	req1.Header.Set("credentials", "include")
 	router.ServeHTTP(nr, req1)
 	if nr.Code == 200 {
-		HotelSearch := m.HotelSearch{
+		HotelSearch := m.HotelSearchRes{
 			City:          "Miami",
 			State:         "Florida",
 			HotelName:     "MMM",
@@ -296,9 +297,9 @@ func SerchhotelFailCase(t *testing.T) {
 	}
 }
 
-func HotelDetailsPassCase(t *testing.T) {
-	HotelDetails := m.HotelDetails{
-		HotelID: "007",
+func TestHotelDetailsPassCase(t *testing.T) {
+	HotelDetails := m.HotelDetailsRes{
+		ID: "007",
 	}
 	payload, _ := json.Marshal(HotelDetails)
 	nr := httptest.NewRecorder()
@@ -307,7 +308,7 @@ func HotelDetailsPassCase(t *testing.T) {
 	req1.Header.Set("credentials", "include")
 	router.ServeHTTP(nr, req1)
 	if nr.Code == 200 {
-		HotelDetails := m.HotelDetails{
+		HotelDetails := m.HotelDetailsRes{
 			City:          "Seattle",
 			State:         "Washington",
 			HotelName:     "Super 8",
@@ -327,9 +328,9 @@ func HotelDetailsPassCase(t *testing.T) {
 	}
 }
 
-func HotelDetailsFailCase(t *testing.T) {
-	HotelDetails := m.HotelDetails{
-		HotelID: "009",
+func TestHotelDetailsFailCase(t *testing.T) {
+	HotelDetails := m.HotelDetailsRes{
+		ID: "009",
 	}
 	payload, _ := json.Marshal(HotelDetails)
 	nr := httptest.NewRecorder()
