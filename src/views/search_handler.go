@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/PrasannPradeepPatil/Booking-Website/src/models"
 
@@ -30,9 +31,9 @@ func SearchFlights(db *gorm.DB) gin.HandlerFunc {
 		//condition checks ---------------------
 		//roundtrip check
 		if req.IsRoundTrip == "T" {
-			query = "select flightnumber,departuretime,arrivaltime,sourceairport,destinationairport,rtprice as price,duration,id from searches where sourceairportcode = \"" + req.SourceName + "\" and destinationairportcode=\"" + req.DestinationName + "\""
+			query = "select flightnumber,flightname,departuretime,arrivaltime,sourceairport,sourceairportcode,destinationairport,destinationairportcode,rtprice as price,duration,id,sourcecity,destinationcity from searches where sourceairportcode = \"" + req.SourceName + "\" and destinationairportcode=\"" + req.DestinationName + "\""
 		} else {
-			query = "select flightnumber,departuretime,arrivaltime,sourceairport,destinationairport,price,duration,id from searches where sourceairportcode = \"" + req.SourceName + "\" and destinationairportcode=\"" + req.DestinationName + "\""
+			query = "select flightnumber,flightname,departuretime,arrivaltime,sourceairport,sourceairportcode,destinationairport,destinationairportcode,price,duration,id,sourcecity,destinationcity from searches where sourceairportcode = \"" + req.SourceName + "\" and destinationairportcode=\"" + req.DestinationName + "\""
 		}
 		log.Println("Base Query after roundtrip filter:" + query)
 
@@ -90,6 +91,23 @@ func SearchFlights(db *gorm.DB) gin.HandlerFunc {
 		}
 
 		for i := 0; i < len(json); i++ {
+			json[i].Departuretime = req.StartDate + json[i].Departuretime
+
+			if strings.Contains(json[i].Arrivaltime, "(+1)") {
+				t := req.StartDate
+
+				date, err := time.Parse("2006-01-02", t)
+				if err != nil {
+					log.Println("err in string to date conversion: ", err)
+				}
+				date = date.AddDate(0, 0, 1)
+				log.Println("incremented date : ", date)
+				json[i].Arrivaltime = strings.Split(date.String(), " ")[0] + strings.Split(json[i].Arrivaltime, " ")[0]
+			} else {
+				json[i].Arrivaltime = req.StartDate + json[i].Arrivaltime
+			}
+			log.Println("arrival time : " + json[i].Arrivaltime)
+
 			json[i].Sourcecity = scity
 			json[i].Destinationcity = dcity
 

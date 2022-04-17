@@ -35,6 +35,9 @@ func main() {
 	x.POST("/booking/searchFlights", v.SearchFlights(db))
 	x.GET("/booking/searchFlights", v.SearchFlights(db))
 
+	x.POST("/booking/searchRTFlights", v.RoundTripSearchFlights(db))
+	x.GET("/booking/searchRTFlights", v.RoundTripSearchFlights(db))
+
 	x.POST("/booking/SrchArptAPI", v.SrchArptAPI(db))
 	x.GET("/booking/SrchArptAPI", v.SrchArptAPI(db))
 
