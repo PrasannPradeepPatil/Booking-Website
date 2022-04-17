@@ -18,6 +18,20 @@ export class FlightDetails{
     standardPrice: number;
     flexiblePrice: number;
     ticketType: string;
+    reId: string;
+    reDepartureTime: string;
+    reArrivalTime: string;
+    reSourceAirportCode: string;
+    reSourceAirportName: string;
+    reDestinationAirportCode: string;
+    reDestinationAirportName: string;
+    rePrice: number;
+    reDuration: number;
+    reFlightName: string;
+    reSourceAirport : string;
+    reDestinationAirport : string;
+    reSourceCity: string;
+    reDestinationCity: string;
     
     constructor(public name: string, public amount: number){}
 }

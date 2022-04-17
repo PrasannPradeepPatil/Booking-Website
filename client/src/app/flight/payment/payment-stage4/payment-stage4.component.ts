@@ -23,6 +23,7 @@ export class PaymentStage4Component implements OnInit {
   gender: string;
   price: number;
   flightDetails: FlightDetails = this.flightDetailsService.getFlightDetails();
+  returnFlightDetails: FlightDetails = this.flightDetailsService.getReturnFlightDetails();
   data = this.flightDetailsService.getPassengerInformation()
 
   constructor(private flightDetailsService : FlightDetailsService, private util: Util) 

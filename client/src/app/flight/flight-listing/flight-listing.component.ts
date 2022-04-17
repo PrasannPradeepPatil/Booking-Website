@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FlightDetails } from '../../model/flightDetails.models';
 import { FlightDetailsComponent } from '../flight-details/flight-details.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FlightSearch } from 'src/app/model/flight-search.model';
 
 
 @Component({
@@ -14,6 +15,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class FlightListingComponent implements OnInit {
 
   flightDetails: FlightDetails[] =[];
+  private currentFlightSearch: FlightSearch;
+  sortType: string = '';
   constructor(private flightSearchService: FlightSearchService, private modalService: NgbModal) { 
 
   }
@@ -34,9 +37,35 @@ export class FlightListingComponent implements OnInit {
     return hours+ "h : " + minutes + "m";
   }
 
-  openXl(flightId: string) {
+  openXl(flightId: string, startDate: string, returnFlightId?: string, returnStartDate?: string) {
     const modalRef = this.modalService.open(FlightDetailsComponent, { size: 'xl' });
     modalRef.componentInstance.flight_id = flightId;
+    modalRef.componentInstance.start_date = startDate;
+    if(returnFlightId)
+    {
+      modalRef.componentInstance.return_flight_id = returnFlightId;
+      modalRef.componentInstance.return_start_date = returnStartDate;
+    }
+  }
+
+  onSort(type: string)
+  {
+    this.sortType = type;
+
+    if(type== 'price')
+    {
+      this.currentFlightSearch = this.flightSearchService.getCurrentFlightSearch();
+      this.currentFlightSearch.priceRangeFilter = 'A';
+      this.currentFlightSearch.journeyTimeFilter = 'D';
+      this.flightSearchService.updateFlightSearch(this.currentFlightSearch);
+    }
+    else
+    {
+      this.currentFlightSearch = this.flightSearchService.getCurrentFlightSearch();
+      this.currentFlightSearch.journeyTimeFilter = 'A';
+      this.currentFlightSearch.priceRangeFilter = 'D';
+      this.flightSearchService.updateFlightSearch(this.currentFlightSearch);
+    }
   }
 
 

@@ -21,7 +21,8 @@ const httpOptions = {
 export class FlightSearchService
 {
     getSuggestionUrl: string = "/booking/SrchArptAPI";
-    searchFlightUrl: string = "/booking/searchFlights";
+    searchOneTimeFlightUrl: string = "/booking/searchFlights";
+    searchRoundTripFlightUrl: string = "/booking/searchRTFlights";
     getFlightsUrl: string = "/booking/flights";
     getFlightDetailsUrl: string = "/booking/flightDetails";
     flightDetails: FlightDetails;
@@ -32,7 +33,11 @@ export class FlightSearchService
     currentMessage = this.messageSource.asObservable();
 
     private flightDetailByID = new BehaviorSubject<FlightDetails>(null);
-    flightDetailByIDMsg = this.flightDetailByID.asObservable();
+    flightDetailByIDObservable = this.flightDetailByID.asObservable();
+
+    private returnFlightDetailByID = new BehaviorSubject<FlightDetails>(null);
+    returnFlightDetailByIDObservable = this.returnFlightDetailByID.asObservable();
+
     private currentFlightSearch: FlightSearch;
 
 
@@ -47,12 +52,26 @@ export class FlightSearchService
     searchFlights(input: FlightSearch)
     {
         this.currentFlightSearch = input;
-        this.http.post<FlightDetails[]>(this.searchFlightUrl, input, httpOptions).subscribe(
-            response => {
-                this.flightDetailsArray = response;
-                this.messageSource.next(this.flightDetailsArray);
-            }
-          );
+        console.log(this.currentFlightSearch.isRoundTrip );
+        if(this.currentFlightSearch.isRoundTrip == 'true')
+        {
+            this.http.post<FlightDetails[]>(this.searchRoundTripFlightUrl, input, httpOptions).subscribe(
+                response => {
+                    this.flightDetailsArray = response;
+                    this.messageSource.next(this.flightDetailsArray);
+                }
+              );
+        }
+        else
+        {
+            this.http.post<FlightDetails[]>(this.searchOneTimeFlightUrl, input, httpOptions).subscribe(
+                response => {
+                    this.flightDetailsArray = response;
+                    this.messageSource.next(this.flightDetailsArray);
+                }
+              );
+        }
+
 
         // this.getFlights(input);
     }
@@ -62,6 +81,30 @@ export class FlightSearchService
         return this.currentFlightSearch;
     }
 
+    updateFlightSearch(input: FlightSearch)
+    {
+        this.currentFlightSearch = input;
+        if(this.currentFlightSearch.isRoundTrip == 'round-trip')
+        {
+            this.http.post<FlightDetails[]>(this.searchRoundTripFlightUrl, input, httpOptions).subscribe(
+                response => {
+                    this.flightDetailsArray = response;
+                    this.messageSource.next(this.flightDetailsArray);
+                }
+              );
+        }
+        else
+        {
+            this.http.post<FlightDetails[]>(this.searchOneTimeFlightUrl, input, httpOptions).subscribe(
+                response => {
+                    this.flightDetailsArray = response;
+                    this.messageSource.next(this.flightDetailsArray);
+                }
+              );
+        }
+
+    }
+
 
     getFlights(input: FlightSearch)
     {
@@ -69,12 +112,34 @@ export class FlightSearchService
         return this.http.get(this.getFlightsUrl);
     }
     
-    getFlightsById(id: string)
+    getFlightsById(id: string, start_date: string, return_id?: string, return_start_date?: string)
     {
-        this.http.post<FlightDetails>(this.getFlightDetailsUrl, { ID : "001"}).subscribe((response) => {
-            this.flightDetails = response;
-            console.log(this.flightDetails);
-            this.flightDetailByID.next(this.flightDetails);
-        });
+        if(return_id)
+        {
+            this.http.post<FlightDetails>(this.getFlightDetailsUrl, { ID : id, Startdate: start_date}).subscribe((response) => {
+                this.flightDetails = response;
+                this.flightDetails.departureTime = start_date;
+                this.flightDetailByID.next(this.flightDetails);
+            });
+
+            this.http.post<FlightDetails>(this.getFlightDetailsUrl, { ID : return_id, Startdate: return_start_date}).subscribe((response) => {
+                this.flightDetails = response;
+                this.flightDetails.departureTime = return_start_date;
+                console.log("return iddd")
+                console.log(this.flightDetails);
+                this.returnFlightDetailByID.next(this.flightDetails);
+            });
+        }
+        else
+        {
+            this.http.post<FlightDetails>(this.getFlightDetailsUrl, { ID : id, Startdate: start_date}).subscribe((response) => {
+                this.flightDetails = response;
+                this.flightDetails.departureTime = start_date;
+                console.log("iddd")
+                console.log(this.flightDetails);
+                this.flightDetailByID.next(this.flightDetails);
+            });
+        }
+        
     }
 } 

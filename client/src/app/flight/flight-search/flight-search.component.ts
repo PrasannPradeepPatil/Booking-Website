@@ -5,6 +5,7 @@ import { FlightSearch } from '../../model/flight-search.model';
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-flight-search',
@@ -34,7 +35,7 @@ export class FlightSearchComponent implements OnInit {
   listingDisplay: boolean = false;;
 
 
-  constructor(flightSearchService: FlightSearchService, calender: NgbCalendar) 
+  constructor(flightSearchService: FlightSearchService, calender: NgbCalendar, public datepipe: DatePipe) 
   {
     this.dateRange = new DateRange(calender.getToday(), calender.getNext(calender.getToday(), 'd', 10));
     this.flightSearchService = flightSearchService;
@@ -70,8 +71,8 @@ export class FlightSearchComponent implements OnInit {
 
   onFormSubmit()
   {
-    var startDateString = this.dateRange.startDate.day + '/' + this.dateRange.startDate.month + '/'+ this.dateRange.startDate.year;
-    var endDateString =  this.dateRange.endDate ? this.dateRange.endDate.day + '/' + this.dateRange.endDate.month + '/'+ this.dateRange.endDate.year : '';
+    var startDateString = this.datepipe.transform(new Date(this.dateRange.startDate.year, this.dateRange.startDate.month - 1, this.dateRange.startDate.day), 'yyyy-MM-dd');
+    var endDateString =  this.dateRange.endDate ? this.datepipe.transform(new Date(this.dateRange.endDate.year, this.dateRange.endDate.month -1, this.dateRange.endDate.day), 'yyyy-MM-dd'): '';
     this.flightSearch = new FlightSearch(this.userForm.get('sourceAirport').value,this.userForm.get('destinationAirport').value,startDateString, endDateString, JSON.stringify(this.tripInfo));
     console.log(this.flightSearch);
     this.flightSearchService.searchFlights(this.flightSearch);

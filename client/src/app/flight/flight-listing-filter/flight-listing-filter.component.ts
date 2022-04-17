@@ -1,3 +1,5 @@
+import { FlightSearch } from './../../model/flight-search.model';
+import { FlightSearchService } from './../flight-search/flight-search-service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FlightListingFilterService } from './flight-listing-filter.service';
@@ -22,10 +24,14 @@ export class FlightListingFilterComponent implements OnInit {
   outboundClicked:boolean = true
   flightListingFilterService: FlightListingFilterService;
   flightListingFilter: FlightListingFilter;
+  selectedDuration: number = 10;
+  flightSearchService: FlightSearchService;
+  currentFlightSearch: FlightSearch; 
 
 
-  constructor(flightListingFilterService: FlightListingFilterService) { 
-    this.flightListingFilterService = flightListingFilterService
+  constructor(flightListingFilterService: FlightListingFilterService, flightSearchService: FlightSearchService) { 
+    this.flightListingFilterService = flightListingFilterService;
+    this.flightSearchService = flightSearchService;
   }
 
   
@@ -101,6 +107,16 @@ export class FlightListingFilterComponent implements OnInit {
     return outBoundArrivalRange
 
 
+  }
+
+  setMaxDuration(maxDuration: string)
+  {
+    this.selectedDuration = Number(maxDuration);
+    this.currentFlightSearch = this.flightSearchService.getCurrentFlightSearch();
+    this.currentFlightSearch.maxDurationLimit = maxDuration
+    console.log("Searchhhhhh");
+    console.log(this.currentFlightSearch);
+    this.flightSearchService.updateFlightSearch(this.currentFlightSearch);
   }
 
 

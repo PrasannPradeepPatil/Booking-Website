@@ -23,6 +23,7 @@ import { PaymentStage3Component } from './flight/payment/payment-stage3/payment-
 import { HotelSearchComponent } from './hotel-search/hotel-search.component';
 import { HotelListingComponent } from './hotel-listing/hotel-listing.component';
 import { HotelListingFilterComponent } from './hotel-listing-filter/hotel-listing-filter.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -53,7 +54,7 @@ import { HotelListingFilterComponent } from './hotel-listing-filter/hotel-listin
     FontAwesomeModule
 
   ],
-  providers: [FlightDetailsService],
+  providers: [FlightDetailsService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

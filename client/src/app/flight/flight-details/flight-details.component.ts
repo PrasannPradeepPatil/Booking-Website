@@ -14,15 +14,26 @@ import { Router } from '@angular/router';
 export class FlightDetailsComponent implements OnInit {
 
   @Input() flight_id: string;
+  @Input() start_date: string;
+  @Input() return_flight_id: string;
+  @Input() return_start_date: string;
+
   flightDetails: FlightDetails;
+  returnFlightDetails: FlightDetails;
 
   ngOnInit(): void {
-    this.flightSearchService.getFlightsById(this.flight_id);
-    this.flightSearchService.flightDetailByIDMsg.subscribe((response: FlightDetails)=>
+    this.flightSearchService.getFlightsById(this.flight_id, this.start_date, this.return_flight_id, this.return_start_date);
+    this.flightSearchService.flightDetailByIDObservable.subscribe((response: FlightDetails)=>
     {
       this.flightDetails = response;
       this.flightDetailsService.setFlightDetails(response);
-    })
+    });
+
+    this.flightSearchService.returnFlightDetailByIDObservable.subscribe((response: FlightDetails)=>
+    {
+      this.returnFlightDetails = response;
+      this.flightDetailsService.setReturnFlightDetails(response);
+    });
     // this.flightDetails =this.flightSearchService.getFlightsById(this.flight_id);
   }
 

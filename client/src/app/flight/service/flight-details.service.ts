@@ -12,6 +12,8 @@ export class FlightDetailsService {
   url: string = "https://jsonplaceholder.typicode.com/todos/1"
   flightDetailsArray: FlightDetails[] =[];
   flightDetails: FlightDetails;
+  returnFlightDetails: FlightDetails;
+
   passengerInformation: PassengerInformation;
   ticketPriceURL: string = "/booking/price";
 
@@ -24,8 +26,14 @@ export class FlightDetailsService {
 
   getFlightDetails()
   {
-    var obj1 = {"sourceString":"a","destinationString":"v","startDate":{"year":2022,"month":2,"day":1},"endDate":{"year":2022,"month":2,"day":11},"tripType":"round-trip"};
     return this.flightDetails;
+  }
+
+  getReturnFlightDetails()
+  {
+    console.log("get");
+    console.log(this.returnFlightDetails);
+    return this.returnFlightDetails;
   }
 
   setPassengerInformation(passengerInformation : PassengerInformation)
@@ -47,10 +55,28 @@ export class FlightDetailsService {
 
   populateTicketPrice(flightDetails: FlightDetails)
   {
-    this.http.post<FlightDetails>(this.ticketPriceURL, {"ID": flightDetails.id}).subscribe(response => 
+    this.http.post<FlightDetails>(this.ticketPriceURL, {ID: flightDetails.id}).subscribe(response => 
       { 
         this.flightDetails.standardPrice = response.standardPrice;
         this.flightDetails.flexiblePrice = response.flexiblePrice;
+        console.log("Im here now");
+        console.log(this.flightDetails);
+      });
+  }
+
+  setReturnFlightDetails(flightDetails: FlightDetails)
+  {
+    this.returnFlightDetails = flightDetails;
+    this.populateTicketPrice(this.returnFlightDetails);
+  }
+
+
+  populateReturnTicketPrice(flightDetails: FlightDetails)
+  {
+    this.http.post<FlightDetails>(this.ticketPriceURL, {ID: flightDetails.id}).subscribe(response => 
+      { 
+        this.returnFlightDetails.standardPrice = response.standardPrice;
+        this.returnFlightDetails.flexiblePrice = response.flexiblePrice;
       });
   }
 

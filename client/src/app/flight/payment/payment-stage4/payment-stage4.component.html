@@ -32,6 +32,17 @@
                         <p style="padding-left: 20px;color: gray; font-size: 90%;">{{getTimetoDisplay(flightDetails.duration)}} Nonstop</p>
                     </div>
                 </div>
+                <hr *ngIf="returnFlightDetails">
+                <div class="row" *ngIf="returnFlightDetails">
+                    <div  class="col-xs-6">
+                        <p style="margin-bottom: 0px">{{returnFlightDetails.sourceAirportCode}} <fa-icon [icon] = 'faArrowRightLongIcon'></fa-icon> {{returnFlightDetails.destinationAirportCode}}</p>
+                        <p style="color: gray; font-size: 90%;">{{returnFlightDetails.departureTime | date: 'fullDate'}}</p>
+                    </div>
+                    <div  class="col-xs-6">
+                        <p style="padding-left: 20px; margin-bottom: 0px">{{returnFlightDetails.departureTime | date: 'shortTime'}} <fa-icon [icon]="faMinusIcon"></fa-icon> {{returnFlightDetails.arrivalTime | date: 'shortTime'}}</p>
+                        <p style="padding-left: 20px;color: gray; font-size: 90%;">{{getTimetoDisplay(returnFlightDetails.duration)}} Nonstop</p>
+                    </div>
+                </div>
             </div>
             <div class="col-sm-6">
               <div class="card text-center" style="border-radius: 8px; border-color: black;">

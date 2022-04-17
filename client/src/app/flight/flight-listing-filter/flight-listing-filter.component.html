@@ -10,8 +10,8 @@
             <b>Duration</b>
           </div>
           <div class="card body">
-            <label for="customRange1" class="form-label">Max Travel Time</label>
-            <input type="range" class="form-range" id="customRange1">
+            <label for="customRange1" class="form-label">Max Travel Time {{selectedDuration}}</label>
+            <input type="range" class="form-range" id="customRange1" ng-model="model.range" min="1" max="50" value="10" #maxDuration  (input)="setMaxDuration(maxDuration.value)">
           </div>
 
         </div>

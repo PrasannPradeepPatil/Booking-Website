@@ -12,11 +12,12 @@ export class FlightSearch {
     public departureTimeFilter: string;
     public priceRangeFilter: string;
     public journeyTimeFilter: string;
+    public maxDurationLimit: string;
 
 
     constructor(sourceString: string, destinationString: string, startDate: string, endDate: string, tripType: string, 
                 airlineFilter: string = "", datatype : string = "", arrivalTimeFilter: string = "", departureTimeFilter: string = "", 
-                priceRangeFilter: string = "", journeyTimeFilter: string = "")
+                priceRangeFilter: string = "", journeyTimeFilter: string = "", maxDurationLimit: string = "")
     {
         this.sourceName = sourceString;
         this.destinationName = destinationString;
@@ -29,6 +30,7 @@ export class FlightSearch {
         this.departureTimeFilter = departureTimeFilter;
         this.priceRangeFilter = priceRangeFilter;
         this.journeyTimeFilter = journeyTimeFilter;
+        this.maxDurationLimit = maxDurationLimit;
     }
 
     toString(): string {
