@@ -21,6 +21,7 @@ export class HotelPaymentStage1Component implements OnInit {
   
   userForm :FormGroup;
   hotelDetails:HotelDetails;
+  hotelPaymentStage1:HotelPaymentStage1;
   submitted = false;
   constructor(private hotelListingService: HotelListingService,private hotelPaymentStage1Service:HotelPaymentStage1Service,
                 private fb: FormBuilder, private router: Router) { }
@@ -41,8 +42,10 @@ export class HotelPaymentStage1Component implements OnInit {
 
   }
 
-  onFormSubmit(){
-
+  onFormSubmit(form: FormGroup){
+    this.hotelPaymentStage1 = new HotelPaymentStage1(this.userForm.get('first_name').value,this.userForm.get('contact').value,this.userForm.get("email").value)
+    this.hotelPaymentStage1Service.getUserDetails(this.hotelPaymentStage1);
+    
   }
   calculatePrice(StandardPrice: string){
     var price = Number(StandardPrice)
