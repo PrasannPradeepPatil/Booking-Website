@@ -27,29 +27,20 @@ export class HotelDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.hotelListingService.hotelListingObservable.subscribe((response:HotelDetails)=>{
       this.hotelDetails = response;
-      console.log("HOTEL DETAILS RESPONSE");
-
-      console.log(this.hotelDetails);
     })
- 
 
-
-    
   }
 
   close() {
     this.activeModal.close();
-    //this.router.navigate(['/ticketType']);
+    this.router.navigate(['/hotelType']);
   }
   
   openXl(content: any) {
     this.modalService.open(content, { size: 'xl' });
   }
 
-  transform(word: string)
-  {
-    return this.util.transform(word);
-  }
+
 
 
 

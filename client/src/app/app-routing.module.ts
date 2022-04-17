@@ -9,6 +9,7 @@ import { PaymentStage1Component } from './flight/payment/payment-stage1/payment-
 import { PaymentStage4Component } from './flight/payment/payment-stage4/payment-stage4.component';
 import { PaymentStage3Component } from './flight/payment/payment-stage3/payment-stage3.component';
 import { HotelListingComponent } from './hotel-listing/hotel-listing.component';
+import { HotelPaymentStage1Component } from './hotel-payment-stage1/hotel-payment-stage1.component';
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'paymentConfirmation', component: PaymentStage4Component},
   {path: 'paymentInput', component: PaymentStage3Component},
   {path: 'hotels', component: HotelSearchComponent},
-  {path: 'hotelListing', component: HotelListingComponent}
+  {path: 'hotelListing', component: HotelListingComponent},
+  {path: 'hotelType', component: HotelPaymentStage1Component}
 ];
 
 @NgModule({
