@@ -23,7 +23,6 @@ export class FlightDetailsComponent implements OnInit {
       this.flightDetails = response;
       this.flightDetailsService.setFlightDetails(response);
     })
-    // this.flightDetails =this.flightSearchService.getFlightsById(this.flight_id);
   }
 
   closeResult: string;
@@ -52,13 +51,5 @@ export class FlightDetailsComponent implements OnInit {
     return this.util.transform(word);
   }
 
-  /*
-  ../booking
-  
-  Frontend --- request to get flights (GET/POST/PUT)
-  
-  
-  
-  */
 
 }

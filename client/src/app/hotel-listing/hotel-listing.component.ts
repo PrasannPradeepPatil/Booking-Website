@@ -1,9 +1,11 @@
 import { HotelSearchService } from './../hotel-search/hotel-search.service';
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { HotelListing } from '../model/hotel-listing.model';
 import { HotelListingService } from './hotel-listing.service';
+import { HotelDetailsComponent } from '../hotel-details/hotel-details.component';
 
 @Component({
   selector: 'app-hotel-listing',
@@ -12,7 +14,7 @@ import { HotelListingService } from './hotel-listing.service';
 })
 export class HotelListingComponent implements OnInit {
   hotelListing: HotelListing[] = this.hotelSearchService.getHotelsArray();
-  constructor(private hotelSearchService: HotelSearchService,private hotelListingService:HotelListingService) {
+  constructor(private hotelSearchService: HotelSearchService,private hotelListingService:HotelListingService,private modalService: NgbModal) {
 
    }
 
@@ -25,7 +27,10 @@ export class HotelListingComponent implements OnInit {
 
 
 
-  getHotelDetails(hotelId:String){
+  openXl(hotelId:String){
+    const modalRef = this.modalService.open(HotelDetailsComponent, { size: 'xl' });
+    modalRef.componentInstance.hotel_id = hotelId;+
+
     this.hotelListingService.getHotelDetails(hotelId)
   }
 
