@@ -194,7 +194,7 @@ func TestSampleTest(t *testing.T) {
 	fmt.Println("sample test")
 }
 
-func TestSrchArptFail(t *testing.T) {
+func TestSrchArptPass(t *testing.T) {
 	w := httptest.NewRecorder()
 	req := m.SrchArptReq{
 		ArptSrchString: "M",
@@ -239,6 +239,24 @@ func TestSearchAirportbyCityPassCase(t *testing.T) {
 
 }
 
+func TestSearchAirportFailCase(t *testing.T) {
+
+	fmt.Println("Inside search airport test Fail")
+
+	w := httptest.NewRecorder()
+	req := m.SrchArptReq{
+		ArptSrchString: "Z",
+	}
+	payload, _ := json.Marshal(req)
+	req1, _ := http.NewRequest("POST", "/booking/SrchArptAPI", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+
+	router.ServeHTTP(w, req1)
+	fmt.Print("Res body: ", w.Body)
+	assert.Equal(t, 200, w.Code, "Expected Response status is OK")
+
+}
+
 func TestSrchReqPassCase(t *testing.T) {
 
 	fmt.Println("Inside search request test pass")
@@ -258,22 +276,23 @@ func TestSrchReqPassCase(t *testing.T) {
 	assert.Equal(t, 200, w.Code, "Expected Response status is OK")
 }
 
-func TestSearchAirportFailCase(t *testing.T) {
+func TestSrchReqOneWayPassCase(t *testing.T) {
 
-	fmt.Println("Inside search airport test Fail")
-
+	fmt.Println("Inside search request test pass")
 	w := httptest.NewRecorder()
-	req := m.SrchArptReq{
-		ArptSrchString: "Z",
+	req := m.SearchReq{
+		SourceName:      "MCO",
+		DestinationName: "MIA",
+		StartDate:       "2022-04-05",
+		EndDate:         "",
 	}
 	payload, _ := json.Marshal(req)
-	req1, _ := http.NewRequest("POST", "/booking/SrchArptAPI", strings.NewReader(string(payload)))
+	req1, _ := http.NewRequest("POST", "/booking/searchFlights", strings.NewReader(string(payload)))
 	req1.Header.Set("Content-Type", "application/json")
 
 	router.ServeHTTP(w, req1)
 	fmt.Print("Res body: ", w.Body)
 	assert.Equal(t, 200, w.Code, "Expected Response status is OK")
-
 }
 
 func TestSrchReqFailCase(t *testing.T) {
@@ -284,6 +303,25 @@ func TestSrchReqFailCase(t *testing.T) {
 		DestinationName: "MIM",
 		StartDate:       "2022-04-05",
 		EndDate:         "2022-04-25",
+	}
+	payload, _ := json.Marshal(req)
+	req1, _ := http.NewRequest("POST", "/booking/searchFlights", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+
+	router.ServeHTTP(w, req1)
+	fmt.Print("Res body: ", w.Body)
+	assert.Equal(t, 200, w.Code, "Expected Response status is OK")
+
+}
+
+func TestSrchReqNoDestFailCase(t *testing.T) {
+	fmt.Println("Inside search request test pass")
+	w := httptest.NewRecorder()
+	req := m.SearchReq{
+		SourceName:      "MPO",
+		DestinationName: "",
+		StartDate:       "2022-04-05",
+		EndDate:         "",
 	}
 	payload, _ := json.Marshal(req)
 	req1, _ := http.NewRequest("POST", "/booking/searchFlights", strings.NewReader(string(payload)))
@@ -316,6 +354,22 @@ func TestFlightPriceFailCase(t *testing.T) {
 	w := httptest.NewRecorder()
 	req := m.PriceReq{
 		ID: "050",
+	}
+	payload, _ := json.Marshal(req)
+	req1, _ := http.NewRequest("POST", "/booking/price", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+
+	router.ServeHTTP(w, req1)
+	fmt.Print("Res body: ", w.Body)
+	assert.Equal(t, 200, w.Code, "Expected Response status is OK")
+
+}
+
+func TestFlightPriceNoIDFailCase(t *testing.T) {
+	fmt.Println("Inside search request test pass")
+	w := httptest.NewRecorder()
+	req := m.PriceReq{
+		ID: "",
 	}
 	payload, _ := json.Marshal(req)
 	req1, _ := http.NewRequest("POST", "/booking/price", strings.NewReader(string(payload)))
@@ -379,6 +433,23 @@ func TestFlightDetailsPassCase(t *testing.T) {
 
 }
 
+func TestFlightDetailsbyIDPassCase(t *testing.T) {
+	fmt.Println("Inside search request test pass")
+	w := httptest.NewRecorder()
+	req := m.DetailsReq{
+		ID:        "0034",
+		Startdate: "",
+	}
+	payload, _ := json.Marshal(req)
+	req1, _ := http.NewRequest("POST", "/booking/flightDetails", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+
+	router.ServeHTTP(w, req1)
+	fmt.Print("Res body: ", w.Body)
+	assert.Equal(t, 200, w.Code, "Expected Response status is OK")
+
+}
+
 func TestFlightDetailsFailCase(t *testing.T) {
 	fmt.Println("Inside search request test pass")
 	w := httptest.NewRecorder()
@@ -423,7 +494,7 @@ func TestFlightConfirmationFailCase(t *testing.T) {
 	fmt.Println("Inside search request test pass")
 	w := httptest.NewRecorder()
 	req := m.FlightConfirmationReq{
-		CodeStatus:   "202",
+		CodeStatus:   "failure",
 		BookingDates: "2022-04-17",
 		CustomerName: "Manish",
 		EmailAdd:     "",
