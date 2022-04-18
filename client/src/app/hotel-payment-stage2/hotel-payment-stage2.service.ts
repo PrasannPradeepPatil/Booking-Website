@@ -8,16 +8,17 @@ import { HotelPayment } from '../model/hotel-payment.model';
   providedIn: 'root'
 })
 export class HotelPaymentStage2Service {
-
+  paymentUrl: string = "/booking/hotelPayment";
   constructor(public http: HttpClient) { }
 
   sendUserDetails(input:HotelPayment){
-    //post this ip to backend
-    //receive the response from BE
-    //then in this metod route to new method 
-    
-    console.log("HOTEL PAYMENT STAGE1 DETAILS");
-    console.log(input);
+    this.http.post<{"Status": "","OtpCode": "","ErrorCode": ""}>(this.paymentUrl,input).subscribe(
+      (response) =>{
+        console.log("PAYMENT RESPONSE RECEIVED.....")
+        console.log(response)
+      }
+    )
+
 
   }
 }

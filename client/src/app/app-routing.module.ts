@@ -11,6 +11,7 @@ import { PaymentStage3Component } from './flight/payment/payment-stage3/payment-
 import { HotelListingComponent } from './hotel-listing/hotel-listing.component';
 import { HotelPaymentStage1Component } from './hotel-payment-stage1/hotel-payment-stage1.component';
 import { HotelPaymentStage2Component } from './hotel-payment-stage2/hotel-payment-stage2.component';
+import { HotelPaymentStage3Component } from './hotel-payment-stage3/hotel-payment-stage3.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/flights', pathMatch: 'full'},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'hotelListing', component: HotelListingComponent},
   {path: 'hotelType', component: HotelPaymentStage1Component},
   {path: 'hotelPaymentStage2', component: HotelPaymentStage2Component},
+  {path: 'hotelPaymentStage3', component: HotelPaymentStage3Component},
 ];
 
 @NgModule({

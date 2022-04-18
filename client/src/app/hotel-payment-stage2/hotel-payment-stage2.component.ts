@@ -32,6 +32,7 @@ export class HotelPaymentStage2Component implements OnInit {
 
   sendUserDetails(){
     this.hotelPaymentStage2Service.sendUserDetails(this.hotelPayment);
+    this.router.navigate(['/hotelPaymentStage3']);
 
   }
 
