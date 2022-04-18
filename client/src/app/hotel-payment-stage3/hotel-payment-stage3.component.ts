@@ -33,22 +33,14 @@ export class HotelPaymentStage3Component implements OnInit {
       this.hotelDetails = response;
     });
 
-    // console.log("HOTEL DETAILS");
-    // console.log(this.hotelDetails);
-    // console.log("HOTEL PAYMENT");
-    // console.log(this.hotelPayment);
-
 
   }
 
-  /*
-  CLIENT NAME : 
+  calculatePrice(StandardPrice: string){
+    var price = Number(StandardPrice)
+    var totalPrice = price*0.1 + price*0.05 + price;
+    return "" + totalPrice;
+  }
 
-  CLIENT EMAIL ADRESS PE BHEJ DIYA
-
-  HOTEL NAME:
-
-  HOTEL ADRESS:
-  */
 
 }
