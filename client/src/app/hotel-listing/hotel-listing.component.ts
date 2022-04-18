@@ -1,3 +1,4 @@
+import { HotelSearch } from './../model/hotel-search.model';
 import { HotelSearchService } from './../hotel-search/hotel-search.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,6 +13,9 @@ import {NgbDate} from '@ng-bootstrap/ng-bootstrap';
 })
 export class HotelListingComponent implements OnInit {
   hotelListing: HotelListing[] = this.hotelSearchService.getHotelsArray();
+  sortType: string = '';
+  hotelSearch: HotelSearch;
+
   constructor(private hotelSearchService: HotelSearchService) { }
 
   ngOnInit(): void {
@@ -23,11 +27,26 @@ export class HotelListingComponent implements OnInit {
         console.log("Hotel Listing");
     console.log(this.hotelListing);
       })
-    
-    
+    }
 
+    onSort(sortType: string)
+    {
+      this.sortType = sortType;
 
-
-  }
+      if(sortType== 'price')
+      {
+        this.hotelSearch = this.hotelSearchService.getCurrentHotelSearch();
+        this.hotelSearch.Pricefilter = 'A';
+        this.hotelSearch.Ratingfilter = '';
+        this.hotelSearchService.updateHotelSearch(this.hotelSearch);
+      }
+      else
+      {
+        this.hotelSearch = this.hotelSearchService.getCurrentHotelSearch();
+        this.hotelSearch.Ratingfilter = 'D';
+        this.hotelSearch.Pricefilter = '';
+        this.hotelSearchService.updateHotelSearch(this.hotelSearch);
+      }
+    }
 
 }

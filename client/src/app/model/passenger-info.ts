@@ -6,6 +6,7 @@ export class PassengerInformation{
     first_name: string;
     last_name: string;
     gender: string;
+    CustomerName: string;
     
     constructor(email: string, contact: string, first_name: string, last_name: string, gender: string)
     {
@@ -14,5 +15,6 @@ export class PassengerInformation{
         this.first_name = first_name;
         this.last_name = last_name;
         this.gender = gender;
+        this.CustomerName = this.first_name + " " + this.last_name;
     }
 }

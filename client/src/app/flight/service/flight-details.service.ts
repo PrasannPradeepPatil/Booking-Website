@@ -16,6 +16,8 @@ export class FlightDetailsService {
 
   passengerInformation: PassengerInformation;
   ticketPriceURL: string = "/booking/price";
+  verifyOTPURL: string = "/booking/payment";
+
 
   constructor(private http: HttpClient) { }
 
@@ -57,8 +59,8 @@ export class FlightDetailsService {
   {
     this.http.post<FlightDetails>(this.ticketPriceURL, {ID: flightDetails.id}).subscribe(response => 
       { 
-        this.flightDetails.standardPrice = response.standardPrice;
-        this.flightDetails.flexiblePrice = response.flexiblePrice;
+        this.flightDetails.standardPrice = Number(response.standardPrice);
+        this.flightDetails.flexiblePrice = Number(response.flexiblePrice);
         console.log("Im here now");
         console.log(this.flightDetails);
       });
@@ -67,7 +69,7 @@ export class FlightDetailsService {
   setReturnFlightDetails(flightDetails: FlightDetails)
   {
     this.returnFlightDetails = flightDetails;
-    this.populateTicketPrice(this.returnFlightDetails);
+    this.populateReturnTicketPrice(this.returnFlightDetails);
   }
 
 
@@ -75,13 +77,21 @@ export class FlightDetailsService {
   {
     this.http.post<FlightDetails>(this.ticketPriceURL, {ID: flightDetails.id}).subscribe(response => 
       { 
-        this.returnFlightDetails.standardPrice = response.standardPrice;
-        this.returnFlightDetails.flexiblePrice = response.flexiblePrice;
+        this.returnFlightDetails.standardPrice = Number(response.standardPrice);
+        this.returnFlightDetails.flexiblePrice = Number(response.flexiblePrice);
       });
   }
 
   setTicketType(ticketType: string)
   {
     this.flightDetails.ticketType = ticketType;
+  }
+
+  verifyOTP()
+  {
+    return this.http.post<any>(this.verifyOTPURL, 
+                          {CustomerName: this.passengerInformation.first_name + " " + this.passengerInformation.last_name,
+                           MobileNumber: this.passengerInformation.contact,
+                           EmailAdd: this.passengerInformation.email });
   }
 }

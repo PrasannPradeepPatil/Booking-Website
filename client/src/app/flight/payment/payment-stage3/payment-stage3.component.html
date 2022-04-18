@@ -55,7 +55,7 @@
                 </div>
       
               </div>
-              <input type="submit" id= "paynow" value="Pay now" class="btn" (click)="confirmPayment()">
+              <input type="submit" id= "paynow" value="Pay now" class="btn" (click)="confirmPayment(content)">
             </form>
           </div>
         </div>
@@ -79,3 +79,17 @@
     
 
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:6}"></ng-otp-input>
+    <h6 *ngIf="showError" style="color: red;">Wrong Code!</h6>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="verify()">Verify</button>
+  </div>
+</ng-template>

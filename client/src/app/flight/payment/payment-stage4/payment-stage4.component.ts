@@ -39,6 +39,13 @@ export class PaymentStage4Component implements OnInit {
     this.last_name = this.data.last_name;
     this.gender = this.data.gender;
     this.price = this.flightDetails.ticketType === 'economy' ? this.flightDetails.standardPrice : this.flightDetails.flexiblePrice;
+
+    if(this.returnFlightDetails)
+    {
+      this.price = this.flightDetails.ticketType === 'economy' ? this.flightDetails.standardPrice + this.returnFlightDetails.standardPrice
+                                                               : this.flightDetails.flexiblePrice + this.returnFlightDetails.flexiblePrice;
+    }
+    
     console.log(this.id);
    }
 

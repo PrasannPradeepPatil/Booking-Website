@@ -51,7 +51,8 @@
                 <div class="card col-md-4">
                   <div class="card" style="border: none;">
                     <div class="card-body">
-                      <h5 class="card-title">${{flightDetail.price}} </h5>
+                      <h5 *ngIf="!flightDetail.reId" class="card-title">${{flightDetail.price}} </h5>
+                      <h5 *ngIf="flightDetail.reId" class="card-title">${{flightDetail.price + flightDetail.rePrice}} </h5>
                       <p class="card-text">Price for all travellers<br>Include carry-on Bag, personal item</p>
                       <a class="btn btn-primary" name="seeFlight" (click)="openXl(flightDetail.id, flightDetail.departureTime, flightDetail.reId, flightDetail.reDepartureTime)">See Flight details</a>
                     </div>

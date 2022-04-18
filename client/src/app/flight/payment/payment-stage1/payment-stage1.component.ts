@@ -1,7 +1,7 @@
+import { FlightDetailsService } from './../../service/flight-details.service';
 import { FlightDetails } from './../../../model/flightDetails.models';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FlightDetailsService } from '../../service/flight-details.service';
 
 @Component({
   selector: 'app-payment-stage1',
@@ -11,6 +11,7 @@ import { FlightDetailsService } from '../../service/flight-details.service';
 export class PaymentStage1Component implements OnInit {
 
   flightDetails: FlightDetails = this.flightDetailsService.getFlightDetails();
+  returnFlightDetails: FlightDetails = this.flightDetailsService.getReturnFlightDetails();
 
   constructor(private router: Router, private flightDetailsService: FlightDetailsService ) { }
 

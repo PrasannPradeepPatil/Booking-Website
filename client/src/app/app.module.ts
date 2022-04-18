@@ -24,6 +24,7 @@ import { HotelSearchComponent } from './hotel-search/hotel-search.component';
 import { HotelListingComponent } from './hotel-listing/hotel-listing.component';
 import { HotelListingFilterComponent } from './hotel-listing-filter/hotel-listing-filter.component';
 import { DatePipe } from '@angular/common';
+import { NgOtpInputModule } from 'ng-otp-input';
 
 
 @NgModule({
@@ -51,8 +52,8 @@ import { DatePipe } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FontAwesomeModule
-
+    FontAwesomeModule,
+    NgOtpInputModule
   ],
   providers: [FlightDetailsService, DatePipe],
   bootstrap: [AppComponent]

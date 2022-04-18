@@ -5,10 +5,10 @@
      <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="true" href="#">Nearest</a>
+          <a class="nav-link" [ngClass]="{'active' : sortType=='rating'}" aria-current="sortType=='rating'" (click) = "onSort('rating')">Most Rated</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Cheapest</a>
+          <a class="nav-link" [ngClass]="{'active' : sortType=='price'}" aria-current="sortType=='price'" (click) = "onSort('price')">Cheapest</a>
         </li>
       </ul>
     </div>
@@ -41,11 +41,11 @@
                     <div class="card ">
                       <div class="card-body ">
                         <div class="ea9bf183d3 d14b211b4f febf9d5862 af9697be6b d7ff3c30ad e278108e40 e04c8ab03a ea9bf183d3 d9c681337c e278108e40 dd023375f5 a4225678b2 ">
-                            <a href = ""><h2><div data-testid="title" class="fcab3ed991 a23c043802"> {{hotelList.Hotelname}}</div></h2></a>
+                            <a href = ""><h2><div data-testid="title" class="fcab3ed991 a23c043802"> {{hotelList.hotelName}}</div></h2></a>
                         </div>
                         <div class="a51f4b5adb">
                         
-                          {{hotelList.State}} • {{hotelList.City}} </div>
+                          {{hotelList.state}} • {{hotelList.city}} </div>
                         <br>
                         <a class="btn btn-primary" name="seeHotel" >See Hotel details</a>
 

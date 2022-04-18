@@ -52,7 +52,6 @@ export class FlightSearchService
     searchFlights(input: FlightSearch)
     {
         this.currentFlightSearch = input;
-        console.log(this.currentFlightSearch.isRoundTrip );
         if(this.currentFlightSearch.isRoundTrip == 'true')
         {
             this.http.post<FlightDetails[]>(this.searchRoundTripFlightUrl, input, httpOptions).subscribe(
@@ -71,9 +70,6 @@ export class FlightSearchService
                 }
               );
         }
-
-
-        // this.getFlights(input);
     }
 
     getCurrentFlightSearch()
@@ -84,7 +80,7 @@ export class FlightSearchService
     updateFlightSearch(input: FlightSearch)
     {
         this.currentFlightSearch = input;
-        if(this.currentFlightSearch.isRoundTrip == 'round-trip')
+        if(this.currentFlightSearch.isRoundTrip == 'true')
         {
             this.http.post<FlightDetails[]>(this.searchRoundTripFlightUrl, input, httpOptions).subscribe(
                 response => {
@@ -125,8 +121,6 @@ export class FlightSearchService
             this.http.post<FlightDetails>(this.getFlightDetailsUrl, { ID : return_id, Startdate: return_start_date}).subscribe((response) => {
                 this.flightDetails = response;
                 this.flightDetails.departureTime = return_start_date;
-                console.log("return iddd")
-                console.log(this.flightDetails);
                 this.returnFlightDetailByID.next(this.flightDetails);
             });
         }
@@ -135,8 +129,6 @@ export class FlightSearchService
             this.http.post<FlightDetails>(this.getFlightDetailsUrl, { ID : id, Startdate: start_date}).subscribe((response) => {
                 this.flightDetails = response;
                 this.flightDetails.departureTime = start_date;
-                console.log("iddd")
-                console.log(this.flightDetails);
                 this.flightDetailByID.next(this.flightDetails);
             });
         }

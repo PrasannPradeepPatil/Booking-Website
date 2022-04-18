@@ -21,6 +21,8 @@ export class FlightPaymentComponent implements OnInit {
   submitted = false;
   price: number;
   flightDetails: FlightDetails = this.flightDetailsService.getFlightDetails();
+  returnFlightDetails: FlightDetails = this.flightDetailsService.getReturnFlightDetails();
+
   check: FormControl = new FormControl('',Validators.required);
 
   ngOnInit(): void {
@@ -34,6 +36,12 @@ export class FlightPaymentComponent implements OnInit {
       check: '',
     });
     this.price = this.flightDetails.ticketType === 'economy' ? this.flightDetails.standardPrice : this.flightDetails.flexiblePrice;
+
+    if(this.returnFlightDetails)
+    {
+      this.price = this.flightDetails.ticketType === 'economy' ? this.flightDetails.standardPrice + this.returnFlightDetails.standardPrice
+                                                               : this.flightDetails.flexiblePrice + this.returnFlightDetails.flexiblePrice;
+    }
   }
 
   onFormSubmit(form: FormGroup)

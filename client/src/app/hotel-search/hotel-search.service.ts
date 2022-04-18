@@ -17,12 +17,14 @@ export class HotelSearchService {
   currentMessage = this.messageSource.asObservable();
 
   hotelsArray : HotelListing[];
+  hotelSearch: HotelSearch;
 
   constructor(public http: HttpClient) {
 
    }
 
   searchHotels(input :HotelSearch){
+    this.hotelSearch = input;
     this.http.post<HotelListing[]>(this.getHotelsUrl, input).subscribe((response) => {
       console.log(response);
       this.messageSource.next(response);
@@ -33,6 +35,23 @@ export class HotelSearchService {
   getHotelsArray()
   {
     return this.hotelsArray;
+  }
+
+  getCurrentHotelSearch()
+  {
+    return this.hotelSearch;
+  }
+
+  updateHotelSearch(input: HotelSearch)
+  {
+      this.hotelSearch = input;
+
+      this.http.post<HotelListing[]>(this.getHotelsUrl, input).subscribe((response) => {
+        console.log(response);
+        this.messageSource.next(response);
+        this.hotelsArray = response
+      });
+
   }
 
 

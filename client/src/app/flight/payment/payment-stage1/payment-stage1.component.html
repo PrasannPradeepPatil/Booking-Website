@@ -27,7 +27,9 @@
 
                     <hr>
 
-                    <p>Total fair:  <b>${{flightDetails.standardPrice}}</b></p>
+                    <p *ngIf="returnFlightDetails">Total fair:  <b>${{flightDetails.standardPrice + returnFlightDetails.standardPrice}}</b></p>
+                    <p *ngIf="!returnFlightDetails">Total fair:  <b>${{flightDetails.standardPrice}}</b></p>
+
             </div>
         </div>
         
@@ -51,8 +53,9 @@
                     </p>
 
                     <hr>
+                    <p *ngIf="returnFlightDetails">Total fair:  <b>${{flightDetails.flexiblePrice + returnFlightDetails.flexiblePrice}}</b></p>
+                    <p *ngIf="!returnFlightDetails">Total fair:  <b>${{flightDetails.flexiblePrice}}</b></p>
 
-                    <p>Total fair:  <b>${{flightDetails.flexiblePrice}}</b></p>
             </div>
         </div>
 
