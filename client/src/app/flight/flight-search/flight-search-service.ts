@@ -73,7 +73,6 @@ export class FlightSearchService
     {
         this.http.post<FlightDetails>(this.getFlightDetailsUrl, { ID : "001"}).subscribe((response) => {
             this.flightDetails = response;
-            console.log(this.flightDetails);
             this.flightDetailByID.next(this.flightDetails);
         });
     }

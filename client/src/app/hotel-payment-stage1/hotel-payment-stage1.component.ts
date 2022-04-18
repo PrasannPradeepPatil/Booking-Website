@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 
 import { HotelDetails} from '../model/hotel-details.model';
-import { HotelPaymentStage1 } from '../model/hotel-paymentStage1.model';
+import { HotelPayment } from '../model/hotel-payment.model';
 
 import { HotelListingService } from '../hotel-listing/hotel-listing.service';
 import { HotelDetailsService } from '../hotel-details/hotel-details.service';
@@ -21,7 +21,7 @@ export class HotelPaymentStage1Component implements OnInit {
   
   userForm :FormGroup;
   hotelDetails:HotelDetails;
-  hotelPaymentStage1:HotelPaymentStage1;
+  hotelPayment:HotelPayment;
   submitted = false;
   constructor(private hotelListingService: HotelListingService,private hotelPaymentStage1Service:HotelPaymentStage1Service,
                 private fb: FormBuilder, private router: Router) { }
@@ -38,20 +38,21 @@ export class HotelPaymentStage1Component implements OnInit {
 
     this.hotelListingService.hotelListingObservable.subscribe((response:HotelDetails)=>{
       this.hotelDetails = response;
-    })
+    });
 
   }
 
   onFormSubmit(form: FormGroup){
-    this.hotelPaymentStage1 = new HotelPaymentStage1(this.userForm.get('first_name').value,this.userForm.get('contact').value,this.userForm.get("email").value)
-    this.hotelPaymentStage1Service.getUserDetails(this.hotelPaymentStage1);
+    this.hotelPayment = new HotelPayment(this.userForm.get('first_name').value,this.userForm.get('contact').value,this.userForm.get("email").value);
     
+    this.hotelPaymentStage1Service.sendUserDetails(this.hotelPayment);
+    this.router.navigate(['/hotelPaymentStage2']);
+
   }
   calculatePrice(StandardPrice: string){
     var price = Number(StandardPrice)
-    var totalPricre = price*0.1 + price*0.05 + price;
-    return "" + totalPricre
-
+    var totalPrice = price*0.1 + price*0.05 + price;
+    return "" + totalPrice;
   }
 
 }

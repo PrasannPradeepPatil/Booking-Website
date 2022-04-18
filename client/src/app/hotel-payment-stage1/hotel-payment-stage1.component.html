@@ -2,11 +2,11 @@
     <div class="col-sm-8">
         <div class="card">
             <div class="card-body">
-                <form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+                <form [formGroup]="userForm" (ngSubmit)="onFormSubmit(userForm)">
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-md-4 mb-3">
-                            <input type="text" class="form-control" formControlName="contact" id="inputContact" placeholder="Email Adress">
+                            <input type="text" class="form-control" formControlName="email" id="inputContact" placeholder="Email Adress">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -59,7 +59,7 @@
        
           </span>
         </h4>
-        <p>Base Price <span class="price">${{hotelDetails.StandardPrice}}</span></p>
+        <p>Base Price: <span class="price">${{hotelDetails.StandardPrice}}</span></p>
         <p>Fedral Tax: <span class="price">10%</span></p>
         <p>State Tax:<span class="price">05%</span></p>
         <hr>

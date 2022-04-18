@@ -72,7 +72,6 @@ export class FlightSearchComponent implements OnInit {
     var startDateString = this.dateRange.startDate.day + '/' + this.dateRange.startDate.month + '/'+ this.dateRange.startDate.year;
     var endDateString =  this.dateRange.endDate ? this.dateRange.endDate.day + '/' + this.dateRange.endDate.month + '/'+ this.dateRange.endDate.year : '';
     this.flightSearch = new FlightSearch(this.userForm.get('sourceAirport').value,this.userForm.get('destinationAirport').value,startDateString, endDateString, JSON.stringify(this.tripInfo));
-    console.log(this.flightSearch);
     this.flightSearchService.searchFlights(this.flightSearch);
     this.listingDisplay = true;   
   }
