@@ -8,7 +8,7 @@ import {User} from "../user.model";
 export class UserService {
     private userSubject : BehaviorSubject < User >;
     public user : Observable < User >;
-    registerUserURL = "/booking/user/register";
+    registerUserURL = "/booking/userRegistration";
 
     constructor(private http : HttpClient, private router : Router) {
         this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));

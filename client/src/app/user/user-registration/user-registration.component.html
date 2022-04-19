@@ -47,6 +47,8 @@
                     </button>
                     <a routerLink="../userLogin" class="btn btn-link">Cancel</a>
                 </div>
+                <p *ngIf="submitted && isSuccess" style="color: rgb(76, 184, 76);">{{displayMessage}}</p>
+                <p *ngIf="submitted && !isSuccess" style="color: rgb(226, 43, 43);">{{errorMessage}}</p>
             </form>
         </div>
     </div>

@@ -15,6 +15,9 @@ export class UserRegistrationComponent implements OnInit {
   loading = false;
   submitted = false;
   user: User ;
+  displayMessage: string;
+  errorMessage: string;
+  isSuccess = false;
 
   constructor(
       private formBuilder: FormBuilder,
@@ -28,7 +31,7 @@ export class UserRegistrationComponent implements OnInit {
           firstName: ['', Validators.required],
           lastName: ['', Validators.required],
           contact: ['', Validators.required],
-          email: ['', Validators.required, Validators.email],
+          email: ['', [Validators.required, Validators.email]],
           password: ['', [Validators.required, Validators.minLength(6)]]
       });
   }
@@ -37,14 +40,27 @@ export class UserRegistrationComponent implements OnInit {
   get f() { return this.form.controls; }
 
   onSubmit() {
+    this.submitted = true;
 
+    if (this.form.invalid) {
+          return;
+      }
     this.user = new User(this.form.get('email').value, this.form.get('contact').value, this.form.get('firstName').value, 
                          this.form.get('lastName').value, this.form.get('password').value);
+    console.log(this.user);
 
     this.userService.registerUser(this.user).subscribe(
       (response) =>
       {
-
+        if(response.status === 'success')
+        {
+          this.isSuccess = true;
+          this.displayMessage ="User Registered Sucessfully!"
+        }
+        else if(response.status === 'failure' && response.error ==='Email Already exists')
+        {
+          this.errorMessage ="User already exists with same email!"
+        }
       }
     );
       // this.submitted = true;
