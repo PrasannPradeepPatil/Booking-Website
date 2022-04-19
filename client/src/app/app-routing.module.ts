@@ -9,6 +9,8 @@ import { PaymentStage1Component } from './flight/payment/payment-stage1/payment-
 import { PaymentStage4Component } from './flight/payment/payment-stage4/payment-stage4.component';
 import { PaymentStage3Component } from './flight/payment/payment-stage3/payment-stage3.component';
 import { HotelListingComponent } from './hotel-listing/hotel-listing.component';
+import { UserRegistrationComponent } from './user/user-registration/user-registration.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
 
 
 const routes: Routes = [
@@ -21,7 +23,10 @@ const routes: Routes = [
   {path: 'paymentConfirmation', component: PaymentStage4Component},
   {path: 'paymentInput', component: PaymentStage3Component},
   {path: 'hotels', component: HotelSearchComponent},
-  {path: 'hotelListing', component: HotelListingComponent}
+  {path: 'hotelListing', component: HotelListingComponent},
+  {path: 'userRegistration', component: UserRegistrationComponent},
+  {path: 'userLogin', component: UserLoginComponent}
+
   
 ];
 

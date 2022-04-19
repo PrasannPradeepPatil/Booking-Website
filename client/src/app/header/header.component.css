@@ -1,0 +1,12 @@
+div.navbar-conatiner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #343a40;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+div.sign-in-button {
+    margin-right: 24px;
+}

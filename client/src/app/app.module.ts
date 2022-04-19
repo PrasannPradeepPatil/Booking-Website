@@ -25,6 +25,9 @@ import { HotelListingComponent } from './hotel-listing/hotel-listing.component';
 import { HotelListingFilterComponent } from './hotel-listing-filter/hotel-listing-filter.component';
 import { DatePipe } from '@angular/common';
 import { NgOtpInputModule } from 'ng-otp-input';
+import { UserRegistrationComponent } from './user/user-registration/user-registration.component';
+import { UserService } from './user/service/user.service';
+import { UserLoginComponent } from './user/user-login/user-login.component';
 
 
 @NgModule({
@@ -43,7 +46,9 @@ import { NgOtpInputModule } from 'ng-otp-input';
     PaymentStage3Component,
     HotelSearchComponent,
     HotelListingComponent,
-    HotelListingFilterComponent
+    HotelListingFilterComponent,
+    UserRegistrationComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,7 @@ import { NgOtpInputModule } from 'ng-otp-input';
     FontAwesomeModule,
     NgOtpInputModule
   ],
-  providers: [FlightDetailsService, DatePipe],
+  providers: [FlightDetailsService, DatePipe, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
