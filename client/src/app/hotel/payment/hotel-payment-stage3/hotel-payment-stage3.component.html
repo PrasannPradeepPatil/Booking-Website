@@ -4,7 +4,7 @@
         <p class="lead">Thank you for letting us help you.</p>
         <hr>
         <p><i>Hi hotelPayment.CustomerName </i> <br>
-            Your hotel Booking for {{hotelDetails.Hotelname}} is confirmed <br>
+            Your hotel Booking for {{hotelDetails.hotelName}} is confirmed <br>
             We will email you the ticket shortly at {{hotelPayment.EmailAdd}}</p>
 
         <p><b> Your hotel id is 178-234-888. Please use this id for any further communication</b></p>
@@ -16,9 +16,9 @@
                         <img src="../../../../assets/hotels.png"  alt="..." width="200" height="200">
                     </div>
                     <div  class="col-xs-6">
-                        <p style="padding-left: 20px;"> <b>Name: {{hotelDetails.Hotelname}}</b></p>
-                        <p style="padding-left: 20px;"> <b>State: {{hotelDetails.State}}</b></p>
-                        <p style="padding-left: 20px;"> <b>City: {{hotelDetails.City}}</b></p>
+                        <p style="padding-left: 20px;"> <b>Name: {{hotelDetails.hotelName}}</b></p>
+                        <p style="padding-left: 20px;"> <b>State: {{hotelDetails.state}}</b></p>
+                        <p style="padding-left: 20px;"> <b>City: {{hotelDetails.city}}</b></p>
                         <!-- <p style="padding-left: 20px;"> Adress: {{hotelDetails.Address}}</p> -->
                     </div>
                 </div>
@@ -33,13 +33,13 @@
                     <h5 class="card-title">1569-XXXX-XXXX-2091</h5>
                     <hr>
                     <p class="card-text" style="font-size: 80%; color: gray; margin-bottom: 0%;">Total Charge.</p>
-                    <h5 class="card-title">Total Price: ${{calculatePrice(hotelDetails.StandardPrice)}}</h5>
+                    <h5 class="card-title">Total Price: ${{calculatePrice(hotelDetails.standardPrice)}}</h5>
                     <hr>
                     <p class="card-text" style="font-size: 80%; color: gray; margin-bottom: 0%;">Fare Breakup.</p>
-                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">Base fare : {{hotelDetails.StandardPrice}}</h5>
-                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">Federal Tax : 10%</h5>
-                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">State Tax : 05%</h5>
-                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">Total Price: ${{calculatePrice(hotelDetails.StandardPrice)}}</h5>
+                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">Base fare : {{hotelDetails.standardPrice}}</h5>
+                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">Federal Tax : ${{getTaxes(hotelDetails.standardPrice)}}</h5>
+                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">State Tax : ${{getAirlineFees(hotelDetails.standardPrice)}}</h5>
+                    <h5 class="card-title" style="font-size: 80%; margin-bottom: 0%;">Total Price: ${{calculatePrice(hotelDetails.standardPrice)}}</h5>
                 </div>                
               </div>
             </div>

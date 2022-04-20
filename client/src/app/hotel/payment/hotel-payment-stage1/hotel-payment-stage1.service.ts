@@ -17,7 +17,13 @@ export class HotelPaymentStage1Service {
   constructor(public http: HttpClient) { }
 
   sendUserDetails(input : HotelPayment){
+    this.hotelPayment = input;
     this.hotelPaymentStage1Emmiter.next(input);
+  }
+
+  getUserDetails()
+  {
+    return this.hotelPayment;
   }
 
 }

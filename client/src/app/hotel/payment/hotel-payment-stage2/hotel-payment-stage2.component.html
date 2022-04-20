@@ -55,7 +55,7 @@
                 </div>
       
               </div>
-              <input type="submit" value="Pay now" class="btn" (click)="sendUserDetails()">
+              <input type="submit" value="Pay now" class="btn" (click)="sendUserDetails(content)">
             </form>
           </div>
         </div>
@@ -68,15 +68,29 @@
            
               </span>
             </h4>
-            <p>Base Price <span class="price">${{hotelDetails.StandardPrice}}</span></p>
-            <p>Fedral Tax: <span class="price">10%</span></p>
-            <p>State Tax:<span class="price">05%</span></p>
+            <p>Base Price <span class="price">${{hotelDetails.standardPrice}}</span></p>
+            <p>Fedral Tax: <span class="price">${{getTaxes(hotelDetails.standardPrice)}}</span></p>
+            <p>State Tax:<span class="price">${{getAirlineFees(hotelDetails.standardPrice)}}</span></p>
             <hr>
-            <p>Total <span class="price" style="color:black"><b>${{calculatePrice(hotelDetails.StandardPrice)}}</b></span></p>
+            <p>Total <span class="price" style="color:black"><b>${{calculatePrice(hotelDetails.standardPrice)}}</b></span></p>
           </div>
         </div>
     </div>
     
 
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:6}"></ng-otp-input>
+    <h6 *ngIf="showError" style="color: red;">Wrong Code!</h6>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="verify()">Verify</button>
+  </div>
+</ng-template>
 

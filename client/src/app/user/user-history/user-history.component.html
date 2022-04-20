@@ -48,14 +48,16 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let country of userFlightBookings; index as i">
+    <tr *ngFor="let userHotelBooking of userHotelBookings; index as i">
       <th scope="row">{{ i + 1 }}</th>
-      <!-- <td>
-        <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="me-2" style="width: 20px">
-        {{ country.name }}
+      <td>
+        {{ userHotelBooking.Referencenumber }}
       </td>
-      <td>{{ country.area | number }}</td>
-      <td>{{ country.population | number }}</td> -->
+      <td>{{ userHotelBooking.hotelName }}</td>
+      <td>{{ userHotelBooking.city }}</td>
+      <td>{{ userHotelBooking.state }}</td>
+      <td>{{ userHotelBooking.bookingdates }}</td>
+      <td>{{ userHotelBooking.price }}</td>
     </tr>
     </tbody>
   </table>

@@ -1,3 +1,4 @@
+import { Util } from './../../../common/util';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -24,7 +25,7 @@ export class HotelPaymentStage1Component implements OnInit {
   hotelPayment:HotelPayment;
   submitted = false;
   constructor(private hotelListingService: HotelListingService,private hotelPaymentStage1Service:HotelPaymentStage1Service,
-                private fb: FormBuilder, private router: Router) { }
+                private fb: FormBuilder, private router: Router, private util: Util) { }
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
@@ -53,6 +54,16 @@ export class HotelPaymentStage1Component implements OnInit {
     var price = Number(StandardPrice)
     var totalPrice = price*0.1 + price*0.05 + price;
     return "" + totalPrice;
+  }
+
+  getTaxes(price: string)
+  {
+    return this.util.getTaxes(Number(price));
+  }
+
+  getAirlineFees(price: string)
+  {
+    return this.util.getAirlineFees(Number(price));
   }
 
 }
