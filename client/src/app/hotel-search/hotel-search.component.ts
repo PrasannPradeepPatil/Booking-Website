@@ -1,14 +1,12 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { HotelSearch } from '../model/hotel-search.model';
 import { DateRange } from './../model/dateRange.model';
 import { HotelSearchService } from './hotel-search.service';
 import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 
-/*
-1.fromDate -- checkin , toDate -- checkout
-*/
+
 
 @Component({
   selector: 'app-hotel-search',
@@ -43,9 +41,7 @@ export class HotelSearchComponent implements OnInit {
     var startDateString = this.dateRange.startDate.month + '/' + this.dateRange.startDate.day + '/'+ this.dateRange.startDate.year;
     var endDateString =  this.dateRange.endDate ? this.dateRange.endDate.month + '/' + this.dateRange.endDate.day + '/'+ this.dateRange.endDate.year : '';
     this.hotelSearch = new HotelSearch(this.userForm.get('City').value,this.userForm.get('State').value,startDateString,endDateString,"","");
-    console.log(this.hotelSearch);
     this.hotelSearchService.searchHotels(this.hotelSearch);  
-    // this.router.navigate(['/hotelListing']);
   }
 
   suggestState(){

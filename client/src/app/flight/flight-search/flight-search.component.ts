@@ -53,7 +53,6 @@ export class FlightSearchComponent implements OnInit {
   {
     this.flightSearchService.getSuggestions(this.userForm.get('sourceAirport').value).subscribe(
       (response: any ) => {
-        console.log(response);
         this.sourceSuggestions = response;
       }
     );
@@ -74,7 +73,6 @@ export class FlightSearchComponent implements OnInit {
     var startDateString = this.datepipe.transform(new Date(this.dateRange.startDate.year, this.dateRange.startDate.month - 1, this.dateRange.startDate.day), 'yyyy-MM-dd');
     var endDateString =  this.dateRange.endDate ? this.datepipe.transform(new Date(this.dateRange.endDate.year, this.dateRange.endDate.month -1, this.dateRange.endDate.day), 'yyyy-MM-dd'): '';
     this.flightSearch = new FlightSearch(this.userForm.get('sourceAirport').value,this.userForm.get('destinationAirport').value,startDateString, endDateString, JSON.stringify(this.tripInfo));
-    console.log(this.flightSearch);
     this.flightSearchService.searchFlights(this.flightSearch);
     this.listingDisplay = true;   
   }

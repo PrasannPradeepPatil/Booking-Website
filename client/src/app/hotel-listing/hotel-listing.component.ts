@@ -1,10 +1,12 @@
 import { HotelSearch } from './../model/hotel-search.model';
 import { HotelSearchService } from './../hotel-search/hotel-search.service';
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { HotelListing } from '../model/hotel-listing.model';
-import {NgbDate} from '@ng-bootstrap/ng-bootstrap';
+import { HotelListingService } from './hotel-listing.service';
+import { HotelDetailsComponent } from '../hotel-details/hotel-details.component';
 
 @Component({
   selector: 'app-hotel-listing',
@@ -16,16 +18,14 @@ export class HotelListingComponent implements OnInit {
   sortType: string = '';
   hotelSearch: HotelSearch;
 
-  constructor(private hotelSearchService: HotelSearchService) { }
+  constructor(private hotelSearchService: HotelSearchService,private hotelListingService:HotelListingService,private modalService: NgbModal) {
+
+   }
 
   ngOnInit(): void {
-    var date1 =  new NgbDate(2020,19,22);
-    var date2 = new NgbDate(2020,19,23);
     this.hotelSearchService.currentMessage.subscribe(response =>
       {
         this.hotelListing = response;
-        console.log("Hotel Listing");
-    console.log(this.hotelListing);
       })
     }
 
@@ -48,5 +48,13 @@ export class HotelListingComponent implements OnInit {
         this.hotelSearchService.updateHotelSearch(this.hotelSearch);
       }
     }
+    
+  openXl(hotelId:String){
+    const modalRef = this.modalService.open(HotelDetailsComponent, { size: 'xl' });
+    modalRef.componentInstance.hotel_id = hotelId;+
+
+    this.hotelListingService.getHotelDetails(hotelId)
+  }
+
 
 }

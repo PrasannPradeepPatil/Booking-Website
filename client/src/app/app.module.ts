@@ -30,6 +30,10 @@ import { UserService } from './user/service/user.service';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserHistoryComponent } from './user-history/user-history.component';
 import { JwtInterceptor } from './common/jwt.interceptor';
+import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
+import { HotelPaymentStage1Component } from './hotel-payment-stage1/hotel-payment-stage1.component';
+import { HotelPaymentStage2Component } from './hotel-payment-stage2/hotel-payment-stage2.component';
+import { HotelPaymentStage3Component } from './hotel-payment-stage3/hotel-payment-stage3.component';
 
 
 @NgModule({
@@ -51,7 +55,11 @@ import { JwtInterceptor } from './common/jwt.interceptor';
     HotelListingFilterComponent,
     UserRegistrationComponent,
     UserLoginComponent,
-    UserHistoryComponent
+    UserHistoryComponent,
+    HotelDetailsComponent,
+    HotelPaymentStage1Component,
+    HotelPaymentStage2Component,
+    HotelPaymentStage3Component
   ],
   imports: [
     BrowserModule,

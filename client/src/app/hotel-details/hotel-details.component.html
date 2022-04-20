@@ -1,0 +1,50 @@
+<!-- 
+<p> HotelName: {{hotelDetails.Hotelname}}</p>    
+<p> HotelState: {{hotelDetails.State}}</p>
+<p> HotelCity: {{hotelDetails.City}}</p>
+<p> HotelRating: {{hotelDetails.Rating}}</p>
+<p> HotelStandardPrice{{hotelDetails.StandardPrice}}</p>
+<p> HotelAdress: {{hotelDetails.Address}}</p>
+<p> HotelAmenities: {{hotelDetails.Amenities}}</p>
+ -->
+
+
+<div class="modal-header">
+    <h4 class="modal-title">Booking Details For {{hotelDetails.Hotelname}}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-8">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text fw-normal">Name: {{hotelDetails.Hotelname}}</p>
+          <p class="card-text fw-normal">State: {{hotelDetails.State}}</p>
+          <p class="card-text fw-normal">City: {{hotelDetails.City}}</p>
+          <p class="card-text fw-normal">Adress: {{hotelDetails.Address}}</p>
+          <p class="card-text fw-normal">Amenities:{{hotelDetails.Amenities}}</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-4">
+    <div class="card" style="width: 18rem;">
+
+      <div class="card flex-row"><img class="card-img-left example-card-img-responsive" src="../assets/hotels.png" width="100" />
+        <div class="card-body">
+            <p>1 night, 2 adults</p>
+            <p>Price: <b>${{hotelDetails.StandardPrice}}</b></p>
+            <p>Rating: <b>{{hotelDetails.Rating}}</b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" name="selectFlight" (click)="close()">Select</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

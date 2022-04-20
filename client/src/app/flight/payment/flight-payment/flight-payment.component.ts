@@ -47,18 +47,13 @@ export class FlightPaymentComponent implements OnInit {
   onFormSubmit(form: FormGroup)
   {
     this.submitted = true;
-    console.log(this.userForm.get('check').touched);
-
-    console.log(this.userForm.get('check').invalid);
 
         // stop here if form is invalid
         // if (this.userForm.invalid) {
         //     return;
         // }
 
-    console.log(form);
     this.passengerInfo = new PassengerInformation(this.userForm.get('email').value,this.userForm.get('contact').value,this.userForm.get('first_name').value, this.userForm.get('last_name').value, this.userForm.get('gender').value);
-    console.log(this.passengerInfo);
     // this.flightDetailsService.passengerInfoSubject.next(this.passengerInfo);
     this.flightDetailsService.setPassengerInformation(this.passengerInfo);
     this.router.navigate(['/paymentInput']);
