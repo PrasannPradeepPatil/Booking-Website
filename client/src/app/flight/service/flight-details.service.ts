@@ -4,6 +4,7 @@ import { FlightDetails } from '../../model/flightDetails.models';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Subject } from 'rxjs';
 import { PassengerInformation } from 'src/app/model/passenger-info';
+import { FlightConfirmation } from 'src/app/model/flight-confirmation.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class FlightDetailsService {
   passengerInformation: PassengerInformation;
   ticketPriceURL: string = "/booking/price";
   verifyOTPURL: string = "/booking/payment";
+  flightConfirmationURL: string ='/booking/flightConfirm';
 
 
   constructor(private http: HttpClient) { }
@@ -93,5 +95,13 @@ export class FlightDetailsService {
                           {CustomerName: this.passengerInformation.first_name + " " + this.passengerInformation.last_name,
                            MobileNumber: this.passengerInformation.contact,
                            EmailAdd: this.passengerInformation.email });
+  }
+
+  saveConfirmation(flightConfirmation: FlightConfirmation)
+  {
+    console.log("Flight confirm");
+    console.log(flightConfirmation);
+    this.http.post<any>(this.flightConfirmationURL, flightConfirmation).subscribe(response =>
+      {});
   }
 }

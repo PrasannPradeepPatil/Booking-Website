@@ -1,0 +1,61 @@
+<p>Bookings</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active' : navButtonChoice=='flight'}" (click)="selectFlightBooking()" >Flights</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [ngClass]="{'active' : navButtonChoice=='hotel'}" (click)="selectHotelBooking()" >Hotels</a>
+    </li>
+</ul>
+
+<table *ngIf="navButtonChoice=='flight'" class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Reference Booking ID</th>
+    <th scope="col">Source</th>
+    <th scope="col">Destination</th>
+    <th scope="col">Departure Date</th>
+    <th scope="col">Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let userFlightBooking of userFlightBookings; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>
+      {{ userFlightBooking.referenceNumber }}
+    </td>
+    <td>{{ userFlightBooking.source}}</td>
+    <td>{{ userFlightBooking.destination}}</td>
+    <td>{{ userFlightBooking.bookingDates}}</td>
+    <td>{{ userFlightBooking.price}}</td>
+  </tr>
+  </tbody>
+</table>
+
+
+<table *ngIf="navButtonChoice=='hotel'" class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Reference Booking ID</th>
+      <th scope="col">Hotel Name</th>
+      <th scope="col">City</th>
+      <th scope="col">State</th>
+      <th scope="col">Booking date</th>
+      <th scope="col">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let country of userFlightBookings; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <!-- <td>
+        <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="me-2" style="width: 20px">
+        {{ country.name }}
+      </td>
+      <td>{{ country.area | number }}</td>
+      <td>{{ country.population | number }}</td> -->
+    </tr>
+    </tbody>
+  </table>

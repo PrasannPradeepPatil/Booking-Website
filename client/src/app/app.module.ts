@@ -9,7 +9,7 @@ import { FlightSearchComponent } from './flight/flight-search/flight-search.comp
 import {NgbdDatepickerRangePopup} from './flight/flight-search/datepicker-range-popup';
 import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FlightListingComponent } from './flight/flight-listing/flight-listing.component';
 import { FlightDetailsService } from './flight/service/flight-details.service'
 import { FlightDetailsComponent } from './flight/flight-details/flight-details.component';
@@ -28,6 +28,8 @@ import { NgOtpInputModule } from 'ng-otp-input';
 import { UserRegistrationComponent } from './user/user-registration/user-registration.component';
 import { UserService } from './user/service/user.service';
 import { UserLoginComponent } from './user/user-login/user-login.component';
+import { UserHistoryComponent } from './user-history/user-history.component';
+import { JwtInterceptor } from './common/jwt.interceptor';
 
 
 @NgModule({
@@ -48,7 +50,8 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
     HotelListingComponent,
     HotelListingFilterComponent,
     UserRegistrationComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    UserHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
     FontAwesomeModule,
     NgOtpInputModule
   ],
-  providers: [FlightDetailsService, DatePipe, UserService],
+  providers: [FlightDetailsService, DatePipe, UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

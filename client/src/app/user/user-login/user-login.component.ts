@@ -13,21 +13,40 @@ export class UserLoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
   submitted = false;
+  loginStatus: string;
+  errorMessage: string = "";
 
   constructor(
       private formBuilder: FormBuilder,
       private route: ActivatedRoute,
       private router: Router,
       private userService: UserService
+      
       // private accountService: AccountService,
       // private alertService: AlertService
   ) { }
 
   ngOnInit() {
       this.form = this.formBuilder.group({
-          email: ['', Validators.required,Validators.email],
+          email: ['', [Validators.required,Validators.email]],
           password: ['', Validators.required]
       });
+      this.errorMessage = "";
+
+      this.userService.userResponseObservable.subscribe(
+          (response) =>
+          {
+              if(response.loginStatus ==='success')
+              {
+                  this.router.navigate(['/']);
+              }
+              else
+              {
+                  this.errorMessage = "Login Failed! Check your credentials";
+                  this.loading = false;
+              }
+          }
+      )
   }
 
   // convenience getter for easy access to form fields
@@ -45,14 +64,7 @@ export class UserLoginComponent implements OnInit {
       }
 
       this.loading = true;
-      this.userService.login(this.form.get('email').value, this.form.get('password').value)
-          .subscribe({
-              next: () => {
-                  // get return url from query parameters or default to home page
-                  const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-                  this.router.navigateByUrl(returnUrl);
-              }
-          });
+      this.userService.login(this.form.get('email').value, this.form.get('password').value);
   }
 
 }

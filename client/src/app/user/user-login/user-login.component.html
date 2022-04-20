@@ -25,6 +25,7 @@
                     </button>
                     <a routerLink="../userRegistration" class="btn btn-link">Register</a>
                 </div>
+                <p *ngIf="errorMessage">{{errorMessage}}</p>
             </form>
         </div>
     </div>

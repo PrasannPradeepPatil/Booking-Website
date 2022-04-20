@@ -1,5 +1,6 @@
+import { UserService } from './../user/service/user.service';
 import { Router } from '@angular/router';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -9,12 +10,19 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class HeaderComponent implements OnInit {
   navButtonChoice: string= "flight"
   loginButtonChoice = "login"
+  userResponse: any;
+  isLoggedIn = false;
 
   @Output() messageEvent = new EventEmitter<string>();
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
-    
+    this.userService.userResponseObservable.subscribe(
+      (response) =>
+      {
+        this.isLoggedIn = response && response.token !== '';
+      }
+    )
   }
 
   sendMessage() {
@@ -30,6 +38,12 @@ export class HeaderComponent implements OnInit {
   {
     this.router.navigate(['/hotels']);
   }
+
+  logout()
+  {
+    this.userService.logout();
+  }
+
 
   
 

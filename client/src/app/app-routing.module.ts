@@ -11,6 +11,7 @@ import { PaymentStage3Component } from './flight/payment/payment-stage3/payment-
 import { HotelListingComponent } from './hotel-listing/hotel-listing.component';
 import { UserRegistrationComponent } from './user/user-registration/user-registration.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
+import { UserHistoryComponent } from './user-history/user-history.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'hotels', component: HotelSearchComponent},
   {path: 'hotelListing', component: HotelListingComponent},
   {path: 'userRegistration', component: UserRegistrationComponent},
-  {path: 'userLogin', component: UserLoginComponent}
+  {path: 'userLogin', component: UserLoginComponent},
+  {path: 'userHistory', component: UserHistoryComponent}
 
   
 ];

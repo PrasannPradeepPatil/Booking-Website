@@ -1,3 +1,4 @@
+import { FlightConfirmation } from './../../../model/flight-confirmation.model';
 import { PassengerInformation } from './../../../model/passenger-info';
 import { FlightDetails } from './../../../model/flightDetails.models';
 import { FlightDetailsService } from './../../service/flight-details.service';
@@ -45,6 +46,9 @@ export class PaymentStage4Component implements OnInit {
       this.price = this.flightDetails.ticketType === 'economy' ? this.flightDetails.standardPrice + this.returnFlightDetails.standardPrice
                                                                : this.flightDetails.flexiblePrice + this.returnFlightDetails.flexiblePrice;
     }
+
+    this.flightDetailsService.saveConfirmation(new FlightConfirmation("Success",this.flightDetails.departureTime, this.first_name + " " + this.last_name,
+                                               this.email, this.contact,this.flightDetails.sourceCity, this.flightDetails.destinationCity, this.flightDetails.id));
     
     console.log(this.id);
    }
