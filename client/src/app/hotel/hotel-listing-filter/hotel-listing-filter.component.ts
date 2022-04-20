@@ -1,5 +1,5 @@
-import { HotelSearch } from './../model/hotel-search.model';
-import { HotelSearchService } from './../hotel-search/hotel-search.service';
+import { HotelSearch } from '../../model/hotel-search.model';
+import { HotelSearchService } from '../hotel-search/hotel-search.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 

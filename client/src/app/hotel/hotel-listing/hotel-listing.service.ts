@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient , HttpResponse } from "@angular/common/http"
 import { BehaviorSubject } from 'rxjs';
 
-import { HotelDetails } from '../model/hotel-details.model';
+import { HotelDetails } from '../../model/hotel-details.model';
 
 @Injectable({
   providedIn: 'root'

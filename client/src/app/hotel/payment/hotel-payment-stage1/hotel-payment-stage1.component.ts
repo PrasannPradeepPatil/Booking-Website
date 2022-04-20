@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 
 
 
-import { HotelDetails} from '../model/hotel-details.model';
-import { HotelPayment } from '../model/hotel-payment.model';
+import { HotelDetails} from '../../../model/hotel-details.model';
+import { HotelPayment } from '../../../model/hotel-payment.model';
 
-import { HotelListingService } from '../hotel-listing/hotel-listing.service';
-import { HotelDetailsService } from '../hotel-details/hotel-details.service';
+import { HotelListingService } from '../../hotel-listing/hotel-listing.service';
+import { HotelDetailsService } from '../../hotel-details/hotel-details.service';
 import { HotelPaymentStage1Service } from './hotel-payment-stage1.service';
 
 @Component({

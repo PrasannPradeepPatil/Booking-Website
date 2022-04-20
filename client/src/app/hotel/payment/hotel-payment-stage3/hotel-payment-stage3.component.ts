@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { HotelDetails} from '../model/hotel-details.model';
-import { HotelPayment } from '../model/hotel-payment.model';
+import { HotelDetails} from '../../../model/hotel-details.model';
+import { HotelPayment } from '../../../model/hotel-payment.model';
 
 import { HotelPaymentStage1Service } from '../hotel-payment-stage1/hotel-payment-stage1.service';
 import { HotelPaymentStage2Service } from '../hotel-payment-stage2/hotel-payment-stage2.service';
-import { HotelPaymentStage3Service } from '../hotel-payment-stage3/hotel-payment-stage3.service';
-import { HotelListingService } from '../hotel-listing/hotel-listing.service';
+import { HotelPaymentStage3Service } from './hotel-payment-stage3.service';
+import { HotelListingService } from '../../hotel-listing/hotel-listing.service';
 
 @Component({
   selector: 'app-hotel-payment-stage3',

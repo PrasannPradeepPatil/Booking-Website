@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { HotelSearch } from '../model/hotel-search.model';
-import { DateRange } from './../model/dateRange.model';
+import { HotelSearch } from '../../model/hotel-search.model';
+import { DateRange } from '../../model/dateRange.model';
 import { HotelSearchService } from './hotel-search.service';
 import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 

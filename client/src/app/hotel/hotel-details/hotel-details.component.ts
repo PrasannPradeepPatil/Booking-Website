@@ -1,10 +1,10 @@
 import { Component, Input,OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
-import { Util } from './../common/util'
+import { Util } from '../../common/util'
 
-import { HotelListing } from '../model/hotel-listing.model';
-import { HotelDetails } from '../model/hotel-details.model';
+import { HotelListing } from '../../model/hotel-listing.model';
+import { HotelDetails } from '../../model/hotel-details.model';
 import { HotelListingService } from '../hotel-listing/hotel-listing.service';
 import { HotelDetailsService } from './hotel-details.service';
 @Component({

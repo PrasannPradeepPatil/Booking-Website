@@ -1,10 +1,10 @@
-import { HotelSearch } from './../model/hotel-search.model';
-import { HotelSearchService } from './../hotel-search/hotel-search.service';
+import { HotelSearch } from '../../model/hotel-search.model';
+import { HotelSearchService } from '../hotel-search/hotel-search.service';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
-import { HotelListing } from '../model/hotel-listing.model';
+import { HotelListing } from '../../model/hotel-listing.model';
 import { HotelListingService } from './hotel-listing.service';
 import { HotelDetailsComponent } from '../hotel-details/hotel-details.component';
 
@@ -48,7 +48,7 @@ export class HotelListingComponent implements OnInit {
         this.hotelSearchService.updateHotelSearch(this.hotelSearch);
       }
     }
-    
+
   openXl(hotelId:String){
     const modalRef = this.modalService.open(HotelDetailsComponent, { size: 'xl' });
     modalRef.componentInstance.hotel_id = hotelId;+

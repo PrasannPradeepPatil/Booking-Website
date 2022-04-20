@@ -20,20 +20,20 @@ import { PaymentStage1Component } from './flight/payment/payment-stage1/payment-
 import { PaymentStage4Component } from './flight/payment/payment-stage4/payment-stage4.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { PaymentStage3Component } from './flight/payment/payment-stage3/payment-stage3.component';
-import { HotelSearchComponent } from './hotel-search/hotel-search.component';
-import { HotelListingComponent } from './hotel-listing/hotel-listing.component';
-import { HotelListingFilterComponent } from './hotel-listing-filter/hotel-listing-filter.component';
+import { HotelSearchComponent } from './hotel/hotel-search/hotel-search.component';
+import { HotelListingComponent } from './hotel/hotel-listing/hotel-listing.component';
+import { HotelListingFilterComponent } from './hotel/hotel-listing-filter/hotel-listing-filter.component';
 import { DatePipe } from '@angular/common';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { UserRegistrationComponent } from './user/user-registration/user-registration.component';
 import { UserService } from './user/service/user.service';
 import { UserLoginComponent } from './user/user-login/user-login.component';
-import { UserHistoryComponent } from './user-history/user-history.component';
+import { UserHistoryComponent } from './user/user-history/user-history.component';
 import { JwtInterceptor } from './common/jwt.interceptor';
-import { HotelDetailsComponent } from './hotel-details/hotel-details.component';
-import { HotelPaymentStage1Component } from './hotel-payment-stage1/hotel-payment-stage1.component';
-import { HotelPaymentStage2Component } from './hotel-payment-stage2/hotel-payment-stage2.component';
-import { HotelPaymentStage3Component } from './hotel-payment-stage3/hotel-payment-stage3.component';
+import { HotelDetailsComponent } from './hotel/hotel-details/hotel-details.component';
+import { HotelPaymentStage1Component } from './hotel/payment/hotel-payment-stage1/hotel-payment-stage1.component';
+import { HotelPaymentStage2Component } from './hotel/payment/hotel-payment-stage2/hotel-payment-stage2.component';
+import { HotelPaymentStage3Component } from './hotel/payment/hotel-payment-stage3/hotel-payment-stage3.component';
 
 
 @NgModule({

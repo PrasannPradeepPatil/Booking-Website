@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient , HttpResponse } from "@angular/common/http"
 
-import { HotelDetails} from '../model/hotel-details.model';
-import { HotelPayment } from '../model/hotel-payment.model';
+import { HotelDetails} from '../../../model/hotel-details.model';
+import { HotelPayment } from '../../../model/hotel-payment.model';
 
 @Injectable({
   providedIn: 'root'

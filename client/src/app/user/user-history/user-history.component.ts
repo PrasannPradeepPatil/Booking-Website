@@ -1,7 +1,7 @@
-import { UserFlightBooking } from './../user/user-flight-booking.model';
-import { UserService } from './../user/service/user.service';
+import { UserFlightBooking } from '../user-flight-booking.model';
+import { UserService } from '../service/user.service';
 import { Component, OnInit } from '@angular/core';
-import { UserHotelBooking } from '../user/user-hotel-booking.model';
+import { UserHotelBooking } from '../user-hotel-booking.model';
 
 @Component({
   selector: 'app-user-history',

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient , HttpResponse } from "@angular/common/http"
 import { BehaviorSubject } from 'rxjs';
 
-import { HotelSearch } from './../model/hotel-search.model';
-import { HotelListing } from '../model/hotel-listing.model';
+import { HotelSearch } from '../../model/hotel-search.model';
+import { HotelListing } from '../../model/hotel-listing.model';
 
 @Injectable({
   providedIn: 'root'
