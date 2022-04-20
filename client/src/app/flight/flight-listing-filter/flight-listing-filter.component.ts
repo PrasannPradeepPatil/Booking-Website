@@ -114,8 +114,6 @@ export class FlightListingFilterComponent implements OnInit {
     this.selectedDuration = Number(maxDuration);
     this.currentFlightSearch = this.flightSearchService.getCurrentFlightSearch();
     this.currentFlightSearch.maxDurationLimit = maxDuration
-    console.log("Searchhhhhh");
-    console.log(this.currentFlightSearch);
     this.flightSearchService.updateFlightSearch(this.currentFlightSearch);
   }
 

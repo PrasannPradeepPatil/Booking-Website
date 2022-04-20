@@ -1,4 +1,4 @@
-<form >
+<form [formGroup]="hotelFilterForm" (ngSubmit)="onSubmit(hotelFilterForm)">
 
     <div class="card-body">
       <div class="card-group">
@@ -6,7 +6,7 @@
         <div class="col">
           <!-- DURATION -->
 
-  
+          
           <!-- FLIGHT TIME -->
           <div class="card">
 
@@ -17,54 +17,52 @@
                   <div class="form-check">
                     <ul>
                       <li style="text-align:left;">
-                        <input type="checkbox" formControlName="outBoundDepartureDuration1" class="form-check-input"
-                          value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">5+</label>
-                      </li>
-                      <li style="text-align:left;">
-                        <input type="checkbox" formControlName="outBoundDepartureDuration2" class="form-check-input"
-                          value="" id="flexCheckDefault">
+                        <input type="checkbox" formControlName="rating4Checkbox" class="form-check-input"
+                          value="true" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">4+</label>
                       </li>
                       <li style="text-align:left;">
-                        <input type="checkbox" formControlName="outBoundDepartureDuration3" class="form-check-input"
-                          value="" id="flexCheckDefault">
+                        <input type="checkbox" formControlName="rating3Checkbox" class="form-check-input"
+                          value=true id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">3+</label>
                       </li>
                       <li style="text-align:left;">
-                        <input type="checkbox" formControlName="outBoundDepartureDuration4" class="form-check-input"
+                        <input type="checkbox" formControlName="rating2Checkbox" class="form-check-input"
                           value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">2+</label>
                       </li>
-  
-                    </ul>
-  
+                      <li style="text-align:left;">
+                        <input type="checkbox" formControlName="rating1Checkbox" class="form-check-input"
+                          value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">1+</label>
+                      </li>
+                    </ul> 
                   </div>
                 </div>
   
                 <div>
-                  <b>Popular Filters</b>
+                  <b>Price Range</b>
                   <div class="form-check">
                     <ul>
                       <li style="text-align:left;">
-                        <input type="checkbox" formControlName="outBoundArrivalDuration1" class="form-check-input"
+                        <input type="checkbox" formControlName="priceRangeCheck1" class="form-check-input"
                           id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">Resorts</label>
+                        <label class="form-check-label" for="flexCheckDefault">$150+</label>
                       </li>
                       <li style="text-align:left;">
-                        <input type="checkbox" formControlName="outBoundArrivalDuration2" class="form-check-input"
+                        <input type="checkbox" formControlName="priceRangeCheck2" class="form-check-input"
                           id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">Hotels</label>
+                        <label class="form-check-label" for="flexCheckDefault">$100-$150</label>
                       </li>
                       <li style="text-align:left;">
-                        <input type="checkbox" formControlName="outBoundArrivalDuration3" class="form-check-input"
+                        <input type="checkbox" formControlName="priceRangeCheck3" class="form-check-input"
                           id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">Resort Villages</label>
+                        <label class="form-check-label" for="flexCheckDefault">$50-$100</label>
                       </li>
                       <li style="text-align:left;">
-                        <input type="checkbox" formControlName="outBoundArrivalDuration4" class="form-check-input"
+                        <input type="checkbox" formControlName="priceRangeCheck4" class="form-check-input"
                           id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">Private jaccuzi</label>
+                        <label class="form-check-label" for="flexCheckDefault">$10-$50</label>
                       </li>
   
                     </ul>
