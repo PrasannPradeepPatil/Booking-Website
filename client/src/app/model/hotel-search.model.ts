@@ -7,8 +7,12 @@ export class HotelSearch {
     public Checkout: string;
     public Pricefilter: string;
     public Ratingfilter : string;
+    public minrating: string;
+    public minpriceRange: string;
+    public maxpricerange: string
 
-    constructor(City: string, State: string, Checkin: string, Checkout: string, Pricefilter: string, Rangefilter: string)
+    constructor(City: string, State: string, Checkin: string, Checkout: string, Pricefilter: string, 
+                Rangefilter: string, minrating?: string, minpriceRange?: string, maxpricerange?: string)
     {
         this.City = City;
         this.State = State;
@@ -16,6 +20,9 @@ export class HotelSearch {
         this.Checkout = Checkout;
         this.Pricefilter = Pricefilter;
         this.Ratingfilter = Rangefilter;
+        this.minrating = minrating;
+        this.minpriceRange = minpriceRange;
+        this.maxpricerange = maxpricerange;
     }
 
 
