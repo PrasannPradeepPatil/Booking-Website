@@ -12,6 +12,7 @@ import { HotelListingComponent } from './hotel-listing/hotel-listing.component';
 import { UserRegistrationComponent } from './user/user-registration/user-registration.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserHistoryComponent } from './user-history/user-history.component';
+import { AuthGuard } from './common/auth.guard';
 
 
 const routes: Routes = [
@@ -27,7 +28,7 @@ const routes: Routes = [
   {path: 'hotelListing', component: HotelListingComponent},
   {path: 'userRegistration', component: UserRegistrationComponent},
   {path: 'userLogin', component: UserLoginComponent},
-  {path: 'userHistory', component: UserHistoryComponent}
+  {path: 'userHistory', component: UserHistoryComponent,  canActivate: [AuthGuard]}
 
   
 ];
