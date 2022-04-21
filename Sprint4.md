@@ -28,7 +28,7 @@ https://github.com/PrasannPradeepPatil/Booking-Website/projects/1?card_filter_qu
 2. hotels-listing component: This component displays the list of the hotels that were returned by the backend based on the 
 hotel-search inputs. The lists display the hotel image along with some hotel details returned by the backend.
 
-![Hotel-Search Component](Image/HotelListing.PNG)
+![Hotel-Listing Component](Images/hotel-listing.PNG)
 
 3. hotel-details component: This component is a modal component that appears when we seect a hotel from the list. Based on the 
 chosen hotel an ID will be passed to backend which will return an response with hotel details which are displayed on the front end
