@@ -1,4 +1,4 @@
-<p>Bookings</p>
+<p class="font-weight-bold" style="font-size: 180%; font-style: italic; padding-left: 10px">Bookings</p>
 
 <ul class="nav nav-tabs">
     <li class="nav-item">
@@ -28,7 +28,7 @@
     </td>
     <td>{{ userFlightBooking.source}}</td>
     <td>{{ userFlightBooking.destination}}</td>
-    <td>{{ userFlightBooking.bookingDates}}</td>
+    <td>{{ userFlightBooking.bookingDates | date: 'fullDate'}}</td>
     <td>{{ userFlightBooking.price}}</td>
   </tr>
   </tbody>
