@@ -40,7 +40,7 @@ https://github.com/PrasannPradeepPatil/Booking-Website/projects/1?card_filter_qu
 https://github.com/PrasannPradeepPatil/Booking-Website/projects/1?card_filter_query=label%3A%22sprint+4%22
 
 # SPRINT 4 DELIVERABLES
-
+https://github.com/PrasannPradeepPatil/Booking-Website/blob/master/Sprint4.md
 
 # TEAM MEMBERS
 - Pranali Suhas Narkar 
