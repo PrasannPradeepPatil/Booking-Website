@@ -60,8 +60,7 @@ ng serve
 This will start the webserver.
 
 End to end testing of Hotels Feature:-
-![Cypress Automation Testing for Hotels] (/Images/Cypress_Hotels.gif)
-
+![Cypress Testing for Flights](/Images/Cypress_Flights.gif)
 
 ### Backend API's: -
 
