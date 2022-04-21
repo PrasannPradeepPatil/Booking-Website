@@ -22,13 +22,13 @@ https://github.com/PrasannPradeepPatil/Booking-Website/projects/1?card_filter_qu
 
 ### Completed Features: -
 1. hotels-search component: We have implemented the hotel-search component with input fields like hotel location, start date, and end date. The user will hit the search button which will return a list of hotels at the input location and available within the input date range.
-![Hotel-Search Component](Insert image in images folder))
+![Hotel-Search Component](Image/HotelListing.PNG)
 
 
 2. hotels-listing component: This component displays the list of the hotels that were returned by the backend based on the 
 hotel-search inputs. The lists display the hotel image along with some hotel details returned by the backend.
 
-![Hotel-Search Component](Insert image in images folder))
+![Hotel-Search Component](Images/Image/HotelListing.PNG)
 
 3. hotel-details component: This component is a modal component that appears when we seect a hotel from the list. Based on the 
 chosen hotel an ID will be passed to backend which will return an response with hotel details which are displayed on the front end
