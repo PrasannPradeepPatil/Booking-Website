@@ -11,4 +11,9 @@ type SearchReq struct {
 	DepartureTimeFilter string
 	PriceRangeFilter    string
 	JourneyTimeFilter   string
+	MaxDurationLimit    string
+	StartTimeOutbound   string
+	EndTimeOutbound     string
+	StartTimeInbound    string
+	EndTimeInbound      string
 }
