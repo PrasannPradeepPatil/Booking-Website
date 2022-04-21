@@ -26,7 +26,8 @@ func HotelConfirmation(db *gorm.DB) gin.HandlerFunc {
 
 		log.Println("code verification status : ", req.CodeStatus)
 		if req.CodeStatus == "Success" {
-			refnum := "1487965784"
+			refnum := EncodeToString(10)
+			log.Println("Refnum for hotel booking : " + refnum)
 
 			emreq.EmailAdd = req.EmailAdd
 			emreq.CustomerName = req.CustomerName
@@ -56,6 +57,7 @@ func HotelConfirmation(db *gorm.DB) gin.HandlerFunc {
 				res.Apistatus = "success"
 				res.Emailstatus = emres.EmailStatus
 				res.Errorcode = ""
+				res.ReferenceNumber = refnum
 			}
 			if count < 0 {
 				res.Apistatus = "insertion failure"
