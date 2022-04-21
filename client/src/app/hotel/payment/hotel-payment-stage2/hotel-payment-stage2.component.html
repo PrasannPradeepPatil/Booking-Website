@@ -55,7 +55,7 @@
                 </div>
       
               </div>
-              <input type="submit" value="Pay now" class="btn" (click)="sendUserDetails(content)">
+              <input type="submit" id='paynow' value="Pay now" class="btn" (click)="sendUserDetails(content)">
             </form>
           </div>
         </div>
@@ -86,7 +86,7 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
-    <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length:6}"></ng-otp-input>
+    <ng-otp-input name="otp_dialog" (onInputChange)="onOtpChange($event)" [config]="{length:6}"></ng-otp-input>
     <h6 *ngIf="showError" style="color: red;">Wrong Code!</h6>
   </div>
   <div class="modal-footer">

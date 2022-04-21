@@ -41,7 +41,7 @@ export class HotelPaymentStage2Component implements OnInit {
     this.hotelSearchService.verifyOTP().subscribe(
       response => 
       {this.fetchedOTP= response.otpCode;
-      console.log(this.fetchedOTP)});
+        localStorage.setItem("HOTP",this.fetchedOTP)});
   }
 
   sendUserDetails(content: any){
