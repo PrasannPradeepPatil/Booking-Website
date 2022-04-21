@@ -35,7 +35,7 @@ chosen hotel an ID will be passed to backend which will return an response with 
  ![Hotel-details Component](Images/hotelDetails.PNG)
 
 4. hotel-filter component : We implementated the hotel filter component. This component sends some filter details to the backend which will return the hotel lists satisfying the filter criteria.
- ![Hotel-filter Component](Images/hotel-filters.PNG.PNG)
+ ![Hotel-filter Component](Images/hotel-filters.PNG)
  
 3. hotel-payment stage1 component: This is the first stage of the hotel payment where the user enters the user details like
 name mail adress etc
@@ -48,7 +48,7 @@ name mail adress etc
 
 
 5. Payment-stage3 component: This is the confirmation page after payment is done. This page displays the user payment details and price details along with payment confirmation prompt.
- ![Hotel-payment-stage3 Component](Images/hotel-paymentstage3.PNG)
+ ![Hotel-payment-stage3 Component](Images/hotel-payment-stage3.PNG)
 
 
 
