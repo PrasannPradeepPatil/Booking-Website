@@ -32,6 +32,18 @@ func main() {
 
 	x := gin.New()
 
+	x.POST("/booking/userRegistration", v.UserRegistration(db))
+	x.GET("/booking/userRegistration", v.UserRegistration(db))
+
+	x.POST("/booking/login", v.Login(db))
+	x.GET("/booking/login", v.Login(db))
+
+	x.POST("/booking/history/postLoginFlight", v.PostLoginFlight(db))
+	x.GET("/booking/history/postLoginFlight", v.PostLoginFlight(db))
+
+	x.POST("/booking/history/postLoginHotel", v.PostLoginHotel(db))
+	x.GET("/booking/history/postLoginHotel", v.PostLoginHotel(db))
+
 	x.POST("/booking/searchFlights", v.SearchFlights(db))
 	x.GET("/booking/searchFlights", v.SearchFlights(db))
 
