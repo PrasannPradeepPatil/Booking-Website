@@ -29,6 +29,22 @@ func HotelSearch(db *gorm.DB) gin.HandlerFunc {
 		query = "select city,state,Hotelname,rating,standardprice,id from HotelData where city = \"" + req.City + "\" and state = \"" + req.State + "\""
 		log.Println("Base query: " + query)
 
+		//min rating filter
+		if req.Minrating != "" {
+			log.Println("Price range minimum limit is : ", req.Minrating)
+			query = query + " and rating >= " + req.Minrating
+		}
+
+		//Price range filter
+		if req.MinPriceRange != "" {
+			log.Println("min price limit : " + req.MinPriceRange)
+			query = query + " and standardprice >= " + req.MinPriceRange
+		}
+		if req.Maxpricerange != "" {
+			log.Println("max price limit : " + req.Maxpricerange)
+			query = query + " and standardprice <= " + req.Maxpricerange
+		}
+
 		//filtering conditions
 		if req.Pricefilter != "" || req.Ratingfilter != "" {
 			query = query + " order by"
@@ -58,11 +74,8 @@ func HotelSearch(db *gorm.DB) gin.HandlerFunc {
 		}
 
 		log.Println(res)
-		if len(res) == 0 {
-			c.JSON(http.StatusOK, "No hotel data available for this city")
-		} else {
-			c.JSON(http.StatusOK, res)
-		}
+		c.JSON(http.StatusOK, res)
+
 	}
 
 	return gin.HandlerFunc(fn)
