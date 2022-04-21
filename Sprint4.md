@@ -22,7 +22,7 @@ https://github.com/PrasannPradeepPatil/Booking-Website/projects/1?card_filter_qu
 
 ### Completed Features: -
 1. hotels-search component: We have implemented the hotel-search component with input fields like hotel location, start date, and end date. The user will hit the search button which will return a list of hotels at the input location and available within the input date range.
-![Hotel-Search Component](Image/HotelListing.PNG)
+![Hotel-Search Component](Images/Hotel-Search.PNG)
 
 
 2. hotels-listing component: This component displays the list of the hotels that were returned by the backend based on the 
@@ -32,20 +32,23 @@ hotel-search inputs. The lists display the hotel image along with some hotel det
 
 3. hotel-details component: This component is a modal component that appears when we seect a hotel from the list. Based on the 
 chosen hotel an ID will be passed to backend which will return an response with hotel details which are displayed on the front end
-
+ ![Hotel-details Component](Images/hotelDetails.PNG)
 
 4. hotel-filter component : We implementated the hotel filter component. This component sends some filter details to the backend which will return the hotel lists satisfying the filter criteria.
-
+ ![Hotel-filter Component](Images/hotel-filters.PNG.PNG)
+ 
 3. hotel-payment stage1 component: This is the first stage of the hotel payment where the user enters the user details like
 name mail adress etc
+ ![Hotel-payment-stage1 Component](Images/hotel-paymentstage1.PNG)
 
 4. hotel-payment-stage2 component: This is the second stage of the payment page that we implemented. This will take the user information and based on the information entered in input which will be sent to the backend. The backend will send the an one time password to an email service. The user will be prompted to enter the otp details and once the details matches then the user will be directed to the confirmation page.
+ ![Hotel-payment-stage2 Component](Images/hotel-paymentstage2.PNG)
+ ![Email Verification ](Images/OTP.PNG)
+ ![Email Verification ](Images/EMAIL.PNG)
 
-![Payment-Stage-2 Component](Insert image in images folder)
 
 5. Payment-stage3 component: This is the confirmation page after payment is done. This page displays the user payment details and price details along with payment confirmation prompt.
-
-![Payment-Stage-3 Component](Insert image in images folder)
+ ![Hotel-payment-stage3 Component](Images/hotel-paymentstage3.PNG)
 
 
 
