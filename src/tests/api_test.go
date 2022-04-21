@@ -301,6 +301,60 @@ func TestHotelConfFail(t *testing.T) {
 	// assert.Equal(t, "{\"Status\":\"failure\",\"OtpCode\":\"\",\"ErrorCode\":\"\"}", w.Body.String(), "failure status should be returned")
 }
 
+func TestUserLoginFailCase(t *testing.T) {
+
+	w := httptest.NewRecorder()
+	req := m.LoginReq{
+		EmailID:  "",
+		Password: "",
+	}
+	payload, _ := json.Marshal(req)
+	req1, _ := http.NewRequest("POST", "/booking/login", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+
+	router.ServeHTTP(w, req1)
+	fmt.Print("Res body: ", w.Body)
+	assert.Equal(t, 200, w.Code, "Expected Response status is OK")
+}
+
+func TestUserPassRegCase(t *testing.T) {
+
+	w := httptest.NewRecorder()
+	req := m.RegistrationReq{
+		FirstName:    "Manish",
+		LastName:     "Alluri",
+		EmailId:      "manish199@gmail.com",
+		MobileNumber: "6673372828",
+		Password:     "Test123",
+	}
+	payload, _ := json.Marshal(req)
+	req1, _ := http.NewRequest("POST", "/booking/userRegistration", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+
+	router.ServeHTTP(w, req1)
+	fmt.Print("Res body: ", w.Body)
+	assert.Equal(t, 200, w.Code, "Expected Response status is OK")
+}
+
+func TestUserRegFailCase(t *testing.T) {
+
+	w := httptest.NewRecorder()
+	req := m.RegistrationReq{
+		FirstName:    "",
+		LastName:     "Alluri",
+		EmailId:      "manish157@gmail.com",
+		MobileNumber: "6673372",
+		Password:     "",
+	}
+	payload, _ := json.Marshal(req)
+	req1, _ := http.NewRequest("POST", "/booking/userRegistration", strings.NewReader(string(payload)))
+	req1.Header.Set("Content-Type", "application/json")
+
+	router.ServeHTTP(w, req1)
+	fmt.Print("Res body: ", w.Body)
+	assert.Equal(t, 200, w.Code, "Expected Response status is OK")
+}
+
 func TestRoundTripSearchPass(t *testing.T) {
 	fmt.Println("Inside round trip search pass case")
 
