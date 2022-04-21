@@ -11,7 +11,8 @@ This is a web application called Booking website. On this website, we have imple
 
 # Functionality videos:
 
-## Demo video functionality
+## Final Demo video functionality
+https://user-images.githubusercontent.com/89871418/164370899-b3b86213-cb97-4c0c-9ad2-94bc3a599e99.mp4
 
 ## Cypress test video
 
@@ -19,6 +20,8 @@ This is a web application called Booking website. On this website, we have imple
 ![Cypress Testing for Flights](/Images/Cypress_Hotels.gif)
 
 ## Backend unit test video 
+
+https://user-images.githubusercontent.com/89871418/164371023-375868c9-a801-4087-b435-f7fc4861203e.mp4
 
 # API DOCUMENTATION
 https://drive.google.com/file/d/1FgZafEthPGArc8dw_jO4reL9FYmrHJ_K/view?usp=sharing
@@ -57,8 +60,7 @@ https://github.com/PrasannPradeepPatil/Booking-Website/blob/master/Sprint4.md
 # DEPLOYMENT LINK
 https://darling-swan-e171e8.netlify.app/flights
 
-https://user-images.githubusercontent.com/89871418/164371023-375868c9-a801-4087-b435-f7fc4861203e.mp4
 
-https://user-images.githubusercontent.com/89871418/164370956-9817d41c-e8c8-4293-8d89-4234419b527e.mp4
 
-https://user-images.githubusercontent.com/89871418/164370899-b3b86213-cb97-4c0c-9ad2-94bc3a599e99.mp4
+
+
