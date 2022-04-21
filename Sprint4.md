@@ -22,7 +22,7 @@ https://github.com/PrasannPradeepPatil/Booking-Website/projects/1?card_filter_qu
 
 ### Completed Features: -
 1. hotels-search component: We have implemented the hotel-search component with input fields like hotel location, start date, and end date. The user will hit the search button which will return a list of hotels at the input location and available within the input date range.
-![Hotel-Search Component](Images/Hotel-Search.PNG)
+![Hotel-Search Component](Images/Hotel-search.PNG)
 
 
 2. hotels-listing component: This component displays the list of the hotels that were returned by the backend based on the 
